@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Paliar para Cuidar{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero-home">
+    <div class="hero-content">
+        <h1 class="hero-title" style="color: var(--primary);">Paliar para Cuidar</h1>
+        <h2 class="hero-subtitle" style="color: var(--gray-600);">
+            Nos diferentes estágios do câncer, a qualidade de vida também é uma forma de tratamento
+        </h2>
+        
+        <div class="hero-card">
+            <p>
+                Este é um espaço dedicado a educar pacientes, famílias e comunidades sobre cuidados paliativos 
+                e qualidade de vida. Aqui você encontrará informações sobre câncer, prevenção, tratamento e, 
+                principalmente, <strong>esperança e acolhimento</strong> para quem vive essa realidade.
+            </p>
+            <p style="margin-top: 1.5rem; font-weight: 500;">
+                💚 Você não está sozinho nessa jornada.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO: O QUE É CÂNCER -->
+<section class="feature-row reveal">
+    <div class="feature-image" style="background: url('{{ url_for('static', filename='images/cancer.jpg') }}') center/cover no-repeat;"></div>
+    <div class="feature-content">
+        <h3>Entendendo a Doença</h3>
+        <p>
+            Câncer é um conjunto de mais de 100 doenças caracterizadas pelo crescimento desordenado de células, 
+            capazes de invadir tecidos adjacentes e disseminar-se para outras regiões do organismo.
+        </p>
+        <p>
+            Seu desenvolvimento é um processo multifatorial, associado à interação entre fatores genéticos, 
+            ambientais e comportamentais.
+        </p>
+        <ul>
+            <li>Atualmente é um dos principais problemas de saúde pública mundial</li>
+            <li>Sua detecção precoce aumenta significativamente as chances de cura</li>
+            <li>A qualidade de vida é essencial em todas as fases do tratamento</li>
+        </ul>
+        <a href="/entendendo-cancer" class="btn btn-primary">Saber Mais</a>
+    </div>
+</section>
+
+<!-- SEÇÃO: JORNADA DO CUIDADO -->
+<section class="reveal">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2>A Jornada do Cuidado</h2>
+        <p style="color: var(--gray-600); font-size: 1.1rem;">
+            Assistência oncológica compreendida como um continuum, onde o cuidado é contínuo e integral
+        </p>
+    </div>
+
+    <div class="journey-container">
+        <div class="journey-step">
+            <div class="journey-icon">1.</div>
+            <h3>Prevenção & Diagnóstico</h3>
+            <p>Detecção precoce e rastreamento contínuo para melhorar prognósticos.</p>
+        </div>
+
+        <div class="journey-step">
+            <div class="journey-icon">2.</div>
+            <h3>Tratamento & Reabilitação</h3>
+            <p>Controle clínico rigoroso com acompanhamento integral da doença.</p>
+        </div>
+
+        <div class="journey-step highlight">
+            <div style="color: white; font-size: 3rem; margin-bottom: 1rem;">3.</div>
+            <h3>Cuidados Paliativos</h3>
+            <p>Qualidade de vida e suporte emocional em todas as fases.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO: DADOS EPIDEMIOLÓGICOS -->
+<section class="feature-row reveal">
+    <div class="feature-image" style="background: url('{{ url_for('static', filename='images/dados.jpg') }}') center/cover no-repeat; order: 2;"></div>
+    <div class="feature-content" style="order: 1;">
+        <h3>Panorama no Brasil</h3>
+        <p>
+            A coleta de dados epidemiológicos traz a conscientização das necessidades populacionais, 
+            evidenciando a importância dos cuidados paliativos no país.
+        </p>
+        <ul>
+            <li><strong>627.193</strong> novos casos registrados em 2024</li>
+            <li><strong>22,5%</strong> de aumento em serviços de apoio de 2019 a 2024</li>
+            <li><strong>75,3%</strong> da população depende exclusivamente do SUS</li>
+            <li><strong>DF lidera</strong> a região Centro-Oeste em leitos especializados</li>
+        </ul>
+        <a href="/direitos-rede" class="btn btn-primary">Encontre Apoio</a>
+    </div>
+</section>
+
+<!-- SEÇÃO: PILLARES DO CUIDADO -->
+<section class="section-accent reveal">
+    <h2 style="text-align: center; margin-bottom: 2rem; color: white;">Os Pilares do Cuidado Integral</h2>
+    
+    <div class="cards-grid" style="max-width: 1200px; margin: 0 auto;">
+        <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            <div style="font-size: 3rem; margin: 2rem 0;">❤️</div>
+            <h3 style="color: white;">Acolhimento Humanizado</h3>
+            <p style="color: rgba(255,255,255,0.95);">Escuta ativa, empatia e respeito às necessidades emocionais e espirituais.</p>
+        </div>
+
+        <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            <div style="font-size: 3rem; margin: 2rem 0;">🌿</div>
+            <h3 style="color: white;">Práticas Integrativas</h3>
+            <p style="color: rgba(255,255,255,0.95);">Yoga, acupuntura, meditação e outras práticas complementares à saúde.</p>
+        </div>
+
+        <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            <div style="font-size: 3rem; margin: 2rem 0;">👨‍👩‍👧‍👦</div>
+            <h3 style="color: white;">Apoio à Família</h3>
+            <p style="color: rgba(255,255,255,0.95);">Rede de suporte especializada para familiares e cuidadores.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO: CALL-TO-ACTION CARDS -->
+<section class="reveal">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2>Comece Sua Jornada Hoje</h2>
+        <p style="color: var(--gray-600); max-width: 600px; margin: 1rem auto;">
+            Escolha um tópico para aprender mais e encontrar recursos de apoio
+        </p>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/entendendo.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3>Entender o Câncer</h3>
+                <p>Sintomas, diagnóstico, tratamentos e como conviver melhor com a doença.</p>
+            </div>
+            <div class="card-footer">
+                <a href="/entendendo-cancer" class="btn btn-primary">Explorar</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/cuidados.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3>Cuidados & Acolhimento</h3>
+                <p>Cuidados paliativos, práticas integrativas e suporte emocional para você e sua família.</p>
+            </div>
+            <div class="card-footer">
+                <a href="/cuidado-acolhimento" class="btn btn-primary">Descobrir</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/direitos.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3>Direitos & Rede de Apoio</h3>
+                <p>Conheça seus direitos, recursos do SUS e organizações que podem ajudar no DF.</p>
+            </div>
+            <div class="card-footer">
+                <a href="/direitos-rede" class="btn btn-primary">Encontrar</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/hisotira.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3>Histórias & Vivências</h3>
+                <p>Relatos reais que inspiram, compartilhe sua história e encontre esperança.</p>
+            </div>
+            <div class="card-footer">
+                <a href="/vivencias" class="btn btn-primary">Ler Histórias</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SEÇÃO: MENSAGEM INSPIRADORA -->
+<section class="reveal" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%); border-radius: 20px; margin: 4rem 0;">
+    <h2 style="margin-bottom: 1.5rem; font-size: 2.2rem;">
+        A vida não é medida pelos anos que vivemos,<br>
+        <span style="color: var(--primary);">mas pela qualidade dos momentos que compartilhamos.</span>
+    </h2>
+    <p style="font-size: 1.1rem; color: var(--gray-600); max-width: 700px; margin: 1rem auto;">
+        Nesta plataforma, acreditamos que mesmo diante dos desafios, sempre há espaço para esperança, 
+        acolhimento e uma vida plena e significativa.
+    </p>
+</section>
+
+{% endblock %}

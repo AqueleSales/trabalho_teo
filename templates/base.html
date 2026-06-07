@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Paliar para Cuidar - Cuidados Paliativos{% endblock %}</title>
+    <meta name="description" content="Platform de educação sobre cuidados paliativos, câncer e qualidade de vida">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.png') }}?v=2" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="/" class="nav-logo" style="text-decoration: none; display: flex; align-items: center;">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Paliar para Cuidar" style="height: 60px; width: auto; transition: transform 0.3s ease;">
+
+                    <span style="color: var(--primary); font-family: var(--font-titulo); font-weight: 700; font-size: 1.5rem; margin-left: 12px;">
+                    Paliar para Cuidar
+                    </span>
+            </a>
+            <div class="nav-menu">
+                <a href="/">Home</a>
+                <a href="/entendendo-cancer">Entender Câncer</a>
+                <a href="/cuidado-acolhimento">Cuidados</a>
+                <a href="/direitos-rede">Direitos & Apoio</a>
+                <a href="/vivencias">Vivências</a>
+                <a href="/sobre">Sobre</a>
+            </div>
+
+            <div class="nav-actions" style="display: flex; gap: 8px;">
+                <button id="btn-fonte-menor" class="btn-listen" title="Diminuir fonte">A-</button>
+                <button id="btn-fonte-maior" class="btn-listen" title="Aumentar fonte">A+</button>
+                <button id="btn-ler-texto" class="btn-listen" title="Ouvir o conteúdo da página">
+                    <span>🔊</span> Ouvir
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--primary-dark) 100%); color: white; padding: 3rem 2rem; margin-top: 5rem; text-align: center;">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.9);">Paliar para Cuidar © 2024 | Projeto Acadêmico - UnB</p>
+            <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7);">Desenvolvido com ❤️ para educar e acolher</p>
+        </div>
+    </footer>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.speechSynthesis.cancel();
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.feature-row, .card, .section-accent, .mural-container').forEach(el => {
+                observer.observe(el);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            const btnOuvir = document.getElementById('btn-ler-texto');
+            if (btnOuvir) {
+                let isPlaying = false;
+                const synth = window.speechSynthesis;
+
+                btnOuvir.addEventListener('click', () => {
+                    const mainContent = document.getElementById('conteudo-principal');
+                    const text = mainContent.innerText;
+
+                    if (isPlaying) {
+                        synth.cancel();
+                        btnOuvir.innerHTML = '<span>🔊</span> Ouvir';
+                        isPlaying = false;
+                    } else {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = 'pt-BR';
+                        utterance.rate = 0.9;
+                        utterance.pitch = 1;
+
+                        utterance.onstart = () => {
+                            btnOuvir.innerHTML = '<span>⏸️</span> Pausar';
+                            isPlaying = true;
+                        };
+
+                        utterance.onend = () => {
+                            btnOuvir.innerHTML = '<span>🔊</span> Ouvir';
+                            isPlaying = false;
+                        };
+
+                        synth.speak(utterance);
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.scrollY;
+                const heroSection = document.querySelector('.hero-section');
+                if (heroSection) {
+                    heroSection.style.backgroundPosition = `0% ${scrolled * 0.5}px`;
+                }
+            });
+
+            let fontSizeNivel = 0;
+            const btnMaior = document.getElementById('btn-fonte-maior');
+            const btnMenor = document.getElementById('btn-fonte-menor');
+
+            if (btnMaior && btnMenor) {
+                btnMaior.addEventListener('click', () => {
+                    if(fontSizeNivel < 3) {
+                        fontSizeNivel++;
+                        atualizarFonte();
+                    }
+                });
+
+                btnMenor.addEventListener('click', () => {
+                    if(fontSizeNivel > -1) {
+                        fontSizeNivel--;
+                        atualizarFonte();
+                    }
+                });
+            }
+
+            function atualizarFonte() {
+                document.body.classList.remove('fonte-ampliada-1', 'fonte-ampliada-2', 'fonte-ampliada-3', 'fonte-reduzida');
+                if (fontSizeNivel === 1) document.body.classList.add('fonte-ampliada-1');
+                else if (fontSizeNivel === 2) document.body.classList.add('fonte-ampliada-2');
+                else if (fontSizeNivel === 3) document.body.classList.add('fonte-ampliada-3');
+                else if (fontSizeNivel === -1) document.body.classList.add('fonte-reduzida');
+            }
+        });
+
+        const revealElements = () => {
+            const elements = document.querySelectorAll('.reveal, .card, .journey-step, .flip-card');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementBottom = el.getBoundingClientRect().bottom;
+
+                if (elementTop < window.innerHeight && elementBottom > 0) {
+                    el.classList.add('visible');
+                } else {
+                    el.classList.remove('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealElements, { passive: true });
+        revealElements();
+
+        window.addEventListener('beforeunload', () => {
+            window.speechSynthesis.cancel();
+        });
+
+    </script>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre o Projeto - Paliar para Cuidar{% endblock %}
+
+{% block content %}
+
+<section class="hero-sobre">
+    <div class="hero-content">
+        <h1 class="hero-title" style="color: var(--primary);">Sobre o Projeto</h1>
+        <h2 class="hero-subtitle" style="color: var(--gray-600);">
+            Uma iniciativa acadêmica de acolhimento, educação e esperança
+        </h2>
+    </div>
+</section>
+
+<!-- MISSÃO, VISÃO E VALORES -->
+<section class="reveal">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/missão.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3 style="color: var(--primary);">Missão</h3>
+                <p>
+                    Educar e acolher pacientes, famílias e comunidades sobre câncer, cuidados paliativos 
+                    e qualidade de vida, proporcionando acesso a informações confiáveis e rede de apoio.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/visao.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3 style="color: var(--secondary);">Visão</h3>
+                <p>
+                    Um mundo onde todas as pessoas vivendo com câncer tenham acesso a informação humanizada, 
+                    suporte integral e oportunidade de viver com qualidade e dignidade.
+                </p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/valores.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3 style="color: var(--warning);">Valores</h3>
+                <p>
+                    Empatia, acolhimento, transparência, cientificidade, inclusão e esperança. 
+                    Acreditamos que toda vida tem valor e significado.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ORIGEM DO PROJETO -->
+<section class="feature-row reveal">
+    <!-- Substitua a div do card-header por esta feature-image -->
+<div class="feature-image" style="background: url('/static/images/unb.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
+    <div class="feature-content">
+        <h3>Origem do Projeto</h3>
+        <p>
+            Este website é um trabalho acadêmico desenvolvido para a disciplina <strong>ENF0062 – Cuidado 
+            do Adulto e Idoso</strong>, do Departamento de Enfermagem da <strong>Universidade de Brasília (UnB)</strong>.
+        </p>
+        <p>
+            O projeto nasceu da necessidade identificada em sala de aula de criar um espaço digital dedicado 
+            ao acolhimento, educação e orientação sobre cuidados paliativos no contexto da saúde oncológica, 
+            especialmente no Distrito Federal.
+        </p>
+        <ul>
+            <li>Desenvolvido com foco em educação em saúde</li>
+            <li>Baseado em evidências científicas atualizadas</li>
+            <li>Priorizando acessibilidade e inclusão</li>
+            <li>Mantendo abordagem humanizada em todos os conteúdos</li>
+        </ul>
+    </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 3rem;">A Equipe Por Trás do Projeto</h2>
+
+    <div class="section-accent" style="margin-bottom: 3rem;">
+        <h3 style="color: white; margin-bottom: 1.5rem;">Docentes Orientadoras</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                <p style="color: white; font-weight: 500; margin: 0;">Ana Beatriz Duarte Vieira</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                <p style="color: white; font-weight: 500; margin: 0;">Andrea Mathes Faustino</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                <p style="color: white; font-weight: 500; margin: 0;">Bruna Cristina de Araújo Lima</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                <p style="color: white; font-weight: 500; margin: 0;">Katiuscia Larsen de Abreu Aguiar</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                <p style="color: white; font-weight: 500; margin: 0;">Leides Barroso de Azevedo Moura</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
+                <p style="color: white; font-weight: 500; margin: 0;">Luciana Neves da Silva Bampi</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cards-grid" style="margin-bottom: 3rem;">
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+            <div style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%); padding: 2rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👩‍💼</div>
+                <h3 style="color: white; margin: 0; font-size: 1.1rem;">Discentes de Enfermagem</h3>
+            </div>
+            <div style="padding: 2rem; color: var(--gray-700);">
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Isadora Costa Cunha</strong> (241007338)
+                </p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Lauany da Silva</strong> (242039434)
+                </p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Lucas Gomes Cavalcante</strong> (241023761)
+                </p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Maria Eduarda Teodoro de Assis</strong> (241032804)
+                </p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Rafaela Tavares Raposo</strong> (242038419)
+                </p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Sophia Lima de Andrade</strong> (241007374)
+                </p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Tulasi Devii Tezelli</strong> (222026742)
+                </p>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+            <div style="background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%); padding: 2rem; text-align: center;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💻</div>
+                <h3 style="color: white; margin: 0;">Desenvolvimento do Website</h3>
+            </div>
+            <div style="padding: 2rem; text-align: center;">
+                <p style="color: var(--gray-700); margin: 0.5rem 0; font-size: 0.95rem;">
+                    <strong>Gabriel Sales Nogueira</strong>
+                </p>
+                <p style="color: var(--gray-500); margin: 1rem 0 0 0; font-size: 0.9rem;">
+                    Design, desenvolvimento frontend, animações e experiência do usuário
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REFERÊNCIAS BIBLIOGRÁFICAS -->
+<section class="reveal">
+    <h2>Referências Bibliográficas</h2>
+    <p style="color: var(--gray-600); margin-bottom: 2rem;">
+        Este projeto foi desenvolvido com base em literatura científica atualizada e diretrizes 
+        internacionais de saúde.
+    </p>
+
+    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+        <div style="max-height: 600px; overflow-y: auto; padding: 2rem;">
+            <ol style="color: var(--gray-700); line-height: 2; padding-left: 2rem;">
+                <li>ACADEMIA NACIONAL DE CUIDADOS PALIATIVOS (ANCP). <strong>Manual de cuidados paliativos</strong>. São Paulo: ANCP, 2012.</li>
+                <li>BRADT, J. et al. Music interventions for improving psychological and physical outcomes in people with cancer. <em>Cochrane Database of Systematic Reviews</em>, 2021.</li>
+                <li>BRASIL. Ministério da Saúde. Instituto Nacional de Câncer. <strong>Estimativa 2026: incidência de câncer no Brasil</strong>. Rio de Janeiro: INCA, 2026.</li>
+                <li>BRASIL. Ministério da Saúde. Portaria n.º 971, de 3 de maio de 2006. Aprova a Política Nacional de Práticas Integrativas e Complementares (PNPIC). <em>Brasília, DF</em>, 2006.</li>
+                <li>CAMARGOS, B. F.; DE MATOS, L. R. P.; PENA, H. P. O paciente frente ao diagnóstico de câncer e a atuação dos profissionais de enfermagem. <em>Revista de Enfermagem do Centro-Oeste Mineiro</em>, 2015.</li>
+                <li>CAVALCANTE, L. G. et al. Ensino da prática de cuidado em oncologia na graduação em enfermagem: estudo qualitativo. <em>Research, Society and Development</em>, 2022.</li>
+                <li>CONNOR, S. R. (ed.). <strong>Global Atlas of Palliative Care</strong>. 2. ed. London: WHPCA, 2020.</li>
+                <li>CRAMER, H. et al. Yoga for breast cancer patients and survivors: a systematic review and meta-analysis. <em>BMC Cancer</em>, 2012.</li>
+                <li>EQUIPE ONCOGUIA. <strong>Aderindo Corretamente ao Tratamento</strong>. 2015.</li>
+                <li>FÁBREGAS BOEIRA, S. et al. Cluster de Sintomas e Câncer na Pesquisa em Enfermagem: Revisão Sistemática. <em>Revista Brasileira de Cancerologia</em>, 2014.</li>
+                <li>FIOCRUZ. <strong>Projeto ATCancer (Plataforma de Monitoramento)</strong>, 2020.</li>
+                <li>GUIRRO, Ú. B. P. et al. <strong>Atlas dos cuidados paliativos no Brasil</strong>. São Paulo: ANCP, 2023.</li>
+                <li>HERDMAN, T. H.; KAMITSURU, S.; LOPES, C. T. (org.). <strong>NANDA International nursing diagnoses: definitions and classification, 2024-2026</strong>. 13. ed. New York: Thieme, 2024.</li>
+                <li>HOSPITAL SÍRIO LIBANÊS. <strong>Manual de Cuidados Paliativos</strong>, 2020.</li>
+                <li>INSTITUTO NACIONAL DE CÂNCER (INCA). <strong>Controle de Sintomas do Câncer Avançado em Adultos</strong>. <em>Revista Brasileira de Cancerologia</em>, 2000.</li>
+                <li>INSTITUTO NACIONAL DE CÂNCER (INCA). <strong>Tratamento do câncer</strong>. Rio de Janeiro: INCA, 2022.</li>
+                <li>INTERNATIONAL AGENCY FOR RESEARCH ON CANCER. <strong>Brazil: statistics at a glance, 2022</strong>. Lyon: IARC, 2024.</li>
+                <li>NATIONAL CANCER INSTITUTE. <strong>Office of Cancer Survivorship: definitions</strong>, [s.d.].</li>
+                <li>ORGANIZAÇÃO MUNDIAL DE SAÚDE (OMS). <strong>Adherence to long-term therapies: evidence for action</strong>, 2005.</li>
+                <li>RUBIO ARRIBAS, V. et al. Diagnóstico: cáncer. ¿Queremos conocer la verdad? <em>Atención Primaria</em>, 2004.</li>
+                <li>WORLD HEALTH ORGANIZATION. <strong>Palliative care</strong>. Geneva: WHO, 2020.</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<!-- POLÍTICA E DIREITOS -->
+<section class="section-accent reveal" style="text-align: center;">
+    <h3 style="color: white; margin-bottom: 1.5rem;">🔐 Política de Privacidade</h3>
+    <p style="color: rgba(255,255,255,0.95); max-width: 800px; margin: 0 auto;">
+        <strong>Este site possui fins estritamente acadêmicos e informativos.</strong> 
+        Nenhum dado pessoal é coletado, armazenado ou compartilhado por nossa plataforma. 
+        Os relatos publicados no Mural de Vivências são armazenados apenas no navegador do usuário.
+    </p>
+</section>
+
+<!-- AGRADECIMENTOS -->
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Agradecimentos</h2>
+    <div style="background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%); padding: 3rem 2rem; border-radius: 16px; text-align: center;">
+        <p style="font-size: 1.1rem; color: var(--gray-700); margin-bottom: 1.5rem;">
+            Agradecemos a todas as pessoas que vivem com câncer, seus familiares, cuidadores e 
+            profissionais de saúde que inspiraram e guiaram este projeto.
+        </p>
+        <p style="font-size: 1rem; color: var(--primary); font-weight: 600;">
+            Este trabalho é dedicado a quem se recusa a desistir e acredita no poder da esperança.
+        </p>
+    </div>
+</section>
+
+<!-- CONTATO -->
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Dúvidas ou Sugestões?</h2>
+    <p style="text-align: center; color: var(--gray-600); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Se você tiver sugestões para melhorar este site, dúvidas sobre os conteúdos ou gostaria de 
+        contribuir, entre em contato através do Departamento de Enfermagem da Universidade de Brasília.
+    </p>
+    <div style="text-align: center;">
+        <p style="color: var(--gray-700);">
+            📧 <strong>Departamento de Enfermagem - UnB</strong><br>
+            🏢 Campus Darcy Ribeiro, Brasília - DF<br>
+            ☎️ (61) 3107-1824
+        </p>
+    </div>
+</section>
+
+{% endblock %}

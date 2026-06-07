@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block title %}Entendendo o Câncer - Paliar para Cuidar{% endblock %}
+
+{% block content %}
+
+<section class="hero-entendendo">
+    <div class="hero-content">
+        <h1 class="hero-title" style="color: var(--primary);">Entendendo o Câncer</h1>
+        <h2 class="hero-subtitle" style="color: var(--gray-600);">
+            Conhecimento é o primeiro passo para o acolhimento e prevenção
+        </h2>
+    </div>
+</section>
+
+<!-- SEÇÃO NOVA: CONCEITO GERAL E ORIGEM DO CÂNCER -->
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 3rem;">Conceito Geral e Origem do Câncer</h2>
+
+    <!-- DEFINIÇÃO -->
+    <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 40px;">
+        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">O que é Câncer?</h3>
+        <p style="text-align: justify; font-size: 1.05rem; line-height: 1.9; color: var(--gray-700);">
+            O câncer é um <strong>conjunto de mais de 100 doenças malignas</strong> caracterizadas pelo <strong>crescimento desordenado de células</strong>, capazes de invadir tecidos adjacentes e disseminar-se para outras regiões do organismo. Essas células apresentam comportamento agressivo e descontrolado, formando tumores que podem comprometer a função de órgãos e tecidos.
+        </p>
+        <p style="text-align: justify; font-size: 1.05rem; line-height: 1.9; color: var(--gray-700);">
+            A disseminação das células cancerígenas para locais distantes do tumor primário é denominada <strong>metástase</strong>, sendo um dos principais fatores relacionados à gravidade da doença.
+        </p>
+    </div>
+
+    <!-- TIPOS DE CÂNCER -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 40px;">
+        <div style="background: white; padding: 25px; border-radius: 12px; border-left: 5px solid var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--primary); margin-top: 0;">Carcinoma</h4>
+            <p style="color: var(--gray-700); margin: 0;">
+                Tumores originados em <strong>tecidos epiteliais</strong> como pele, mucosas e órgãos internos.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--gray-500); margin: 10px 0 0 0;">Ex: Câncer de mama, pulmão, próstata</p>
+        </div>
+
+        <div style="background: white; padding: 25px; border-radius: 12px; border-left: 5px solid var(--secondary); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <h4 style="color: var(--secondary); margin-top: 0;">Sarcoma</h4>
+            <p style="color: var(--gray-700); margin: 0;">
+                Tumores originados em <strong>tecidos conjuntivos</strong> como ossos, músculos e cartilagens.
+            </p>
+            <p style="font-size: 0.9rem; color: var(--gray-500); margin: 10px 0 0 0;">Ex: Câncer de osso, músculo</p>
+        </div>
+    </div>
+
+    <!-- PROCESSO MULTIFATORIAL -->
+    <div style="background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%); padding: 40px; border-radius: 16px; margin-bottom: 40px;">
+        <h3 style="color: var(--primary); margin-top: 0;">Desenvolvimento do Câncer: Um Processo Multifatorial</h3>
+        <p style="text-align: justify; font-size: 1.05rem; line-height: 1.9; color: var(--gray-700);">
+            O desenvolvimento do câncer é um <strong>processo multifatorial</strong> associado à <strong>interação entre fatores genéticos, ambientais e comportamentais</strong>. Não existe uma única causa, mas sim uma combinação de exposições ao longo do tempo que pode levar ao surgimento da doença.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px;">
+            <div style="background: white; padding: 20px; border-radius: 12px; border-top: 3px solid var(--primary);">
+                <h4 style="color: var(--primary); margin-top: 0; font-size: 1rem;">Fatores Genéticos</h4>
+                <p style="color: var(--gray-600); font-size: 0.95rem; margin: 0;">Predisposição hereditária, mutações, histórico familiar</p>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 12px; border-top: 3px solid var(--secondary);">
+                <h4 style="color: var(--secondary); margin-top: 0; font-size: 1rem;">Fatores Ambientais</h4>
+                <p style="color: var(--gray-600); font-size: 0.95rem; margin: 0;">Exposição solar, poluição, agentes químicos, infecções virais</p>
+            </div>
+
+            <div style="background: white; padding: 20px; border-radius: 12px; border-top: 3px solid var(--accent);">
+                <h4 style="color: var(--accent); margin-top: 0; font-size: 1rem;">Fatores Comportamentais</h4>
+                <p style="color: var(--gray-600); font-size: 0.95rem; margin: 0;">Tabagismo, álcool, alimentação inadequada, sedentarismo</p>
+            </div>
+        </div>
+    </div>
+
+<!-- DADOS EPIDEMIOLÓGICOS NO BRASIL -->
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 3rem;">Panorama Epidemiológico no Brasil e DF</h2>
+
+    <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 40px;">
+        <h3 style="color: var(--primary); margin-top: 0; margin-bottom: 2rem;">Brasil 2022: Números e Realidade</h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+            <div style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%); color: white; padding: 25px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">627.193</div>
+                <p style="margin: 0; font-size: 0.95rem;">Novos casos de câncer</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #ef4444 0%, #f87171 100%); color: white; padding: 25px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">278.835</div>
+                <p style="margin: 0; font-size: 0.95rem;">Mortes por câncer</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%); color: white; padding: 25px; border-radius: 12px; text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">1.634.441</div>
+                <p style="margin: 0; font-size: 0.95rem;">Sobreviventes (últimos 5 anos)</p>
+            </div>
+        </div>
+
+        <h4 style="color: var(--primary); margin: 2rem 0 1rem 0;">Tipos de Câncer Mais Frequentes</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+                <p style="font-weight: 600; color: var(--gray-800); margin-bottom: 10px;">♂️ Homens (Incidência)</p>
+                <ul style="padding-left: 20px; margin: 0; color: var(--gray-700);">
+                    <li>Próstata (30,5%)</li>
+                    <li>Colorretal (10,3%)</li>
+                    <li>Pulmão (8,1%)</li>
+                </ul>
+            </div>
+            <div>
+                <p style="font-weight: 600; color: var(--gray-800); margin-bottom: 10px;">♀️ Mulheres (Incidência)</p>
+                <ul style="padding-left: 20px; margin: 0; color: var(--gray-700);">
+                    <li>Mama (30,0%)</li>
+                    <li>Colorretal (10,5%)</li>
+                    <li>Tireoide (7,4%)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- DF 2026 -->
+    <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 40px;">
+        <h3 style="color: var(--primary); margin-top: 0; margin-bottom: 2rem;">Distrito Federal 2026: Estimativas de Novos Casos</h3>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%); color: white; padding: 25px; border-radius: 12px;">
+                <div style="font-size: 2rem; font-weight: 700; margin-bottom: 10px;">1.410</div>
+                <b><p style="margin: 0; font-size: 0.95rem;">Câncer de Mama (Mulheres)</p></b>
+                <p style="margin: 5px 0 0 0; font-size: 0.85rem; opacity: 0.9;">Tipo mais frequente no DF</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%); color: white; padding: 25px; border-radius: 12px;">
+                <div style="font-size: 2rem; font-weight: 700; margin-bottom: 10px;">940</div>
+                <b><p style="margin: 0; font-size: 0.95rem;">Câncer de Próstata (Homens)</p></b>
+                <p style="margin: 5px 0 0 0; font-size: 0.85rem; opacity: 0.9;">Tipo mais frequente no DF</p>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--gray-600); margin-top: 20px; font-size: 0.95rem;">
+            <strong>Nota:</strong> O DF concentra uma das maiores quantidades de leitos de cuidados paliativos da região Centro-Oeste.
+        </p>
+    </div>
+</section>
+
+<!-- SINTOMAS E DIAGNÓSTICO -->
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 3rem;">Sintomas e Diagnóstico Clínico</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-bottom: 40px; align-items: center;">
+        <div style="background: var(--azul-profundo); color: var(--branco); padding: 30px; border-radius: 20px; font-style: italic;">
+            "<b>O diagnóstico do câncer transcende os aspectos biológicos; sua confirmação é um evento marcante na vida do indivíduo e de sua família.</b>"
+        </div>
+        <p style="text-align: justify; font-size: 1.1rem;">
+            As manifestações clínicas do câncer são variadas. Elas dependem da <strong style="color: var(--vermelho-borboleta);">localização do tumor</strong>, do estadiamento da doença e da presença de metástases. Os sintomas impactam a <strong>funcionalidade e a qualidade de vida</strong>, sendo comum a ocorrência de <em>clusters de sintomas</em> — quando vários sinais surgem simultaneamente, exigindo uma abordagem clínica integrada (Boeira et al., 2014).
+        </p>
+    </div>
+
+    <div style="background: var(--branco); padding: 40px; border-radius: 24px; border: 1px solid var(--borda-suave); margin-bottom: 40px;">
+        <h3 style="color: var(--verde-borboleta);">Investigação Diagnóstica</h3>
+        <p style="text-align: justify; line-height: 2;">
+            Diante de sinais sugestivos, torna-se necessária uma investigação criteriosa baseada na história clínica, exame físico e <strong>confirmação histopatológica</strong> — o padrão-ouro. A identificação precoce não apenas amplia a efetividade terapêutica, mas também oferece melhores perspectivas de prognóstico para o paciente (PENA; CAMARGOS; MATOS, 2014).
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; align-items: center;">
+        <p style="text-align: justify; font-size: 1.1rem; line-height: 1.8;">
+            As reações frente ao diagnóstico — como <strong>medo, angústia, negação e revolta</strong> — são únicas e dependem da bagagem sociocultural de cada indivíduo. Por isso, a comunicação da notícia deve ser <em>clara, ética e humanizada</em>. Um vínculo terapêutico forte entre profissionais, paciente e familiares é o elemento essencial para garantir a adesão ao tratamento e o suporte necessário em todas as etapas (RUBIO ARRIBAS et al., 2004).
+        </p>
+        <div style="background: #e4c898; padding: 30px; border-radius: 20px; border-left: 5px solid var(--amarelo-borboleta);">
+            <h4 style="margin-top: 0; color: var(--amarelo-borboleta);">O Papel da Família</h4>
+            <p style="font-size: 0.95rem;">A família assume papel fundamental como fonte de apoio, exigindo constante adaptação às mudanças físicas e emocionais impostas pelo tratamento.</p>
+        </div>
+    </div>
+</section>
+
+<div class="cards-grid" style="margin-top: 2rem;">
+
+    <!-- CARD 1: SINTOMAS -->
+    <div class="card">
+        <div class="card-header" style="background: url('/static/images/sintomas.jpg') center/cover no-repeat; min-height: 200px;"></div>
+        <div class="card-body">
+            <h3>Sintomas Frequentes</h3>
+            <p>Dor crônica, fadiga excessiva, perda de apetite, náuseas e alterações no padrão de sono.</p>
+        </div>
+    </div>
+
+    <!-- CARD 2: DIAGNÓSTICO -->
+    <div class="card">
+        <div class="card-header" style="background: url('/static/images/diagnostico.jpg') center/cover no-repeat; min-height: 200px;"></div>
+        <div class="card-body">
+            <h3>Métodos de Diagnóstico</h3>
+            <p>Biópsia, exames de imagem, testes laboratoriais e avaliação clínica completa.</p>
+        </div>
+    </div>
+
+    <!-- CARD 3: EMOCIONAL -->
+    <div class="card">
+        <div class="card-header" style="background: url('/static/images/emocional.jpg') center/cover no-repeat; min-height: 200px;"></div>
+        <div class="card-body">
+            <h3>Impacto Emocional</h3>
+            <p>Medo, angústia, incerteza são reações normais que requerem apoio especializado.</p>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<!-- DIAGNÓSTICOS DE ENFERMAGEM -->
+<section class="section-accent reveal">
+    <h2 style="color: white;">Diagnósticos de Enfermagem</h2>
+    <p style="color: rgba(255,255,255,0.95); margin-bottom: 2rem;">
+        Os diagnósticos de enfermagem desempenham papel fundamental no cuidado à pessoa com câncer.
+        A partir da avaliação integral, o enfermeiro identifica respostas humanas relacionadas à doença
+        e ao tratamento.
+    </p>
+
+    <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <h4 style="color: white; margin-bottom: 0.5rem;">Dor & Fadiga</h4>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Dor crônica (00133) e Carga excessiva de fadiga (00477)</p>
+            </div>
+
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <h4 style="color: white; margin-bottom: 0.5rem;">Nutrição & Infecção</h4>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Ingestão nutricional inadequada (00343) e Risco de infecção (00004)</p>
+            </div>
+
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <h4 style="color: white; margin-bottom: 0.5rem;">Enfrentamento</h4>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Enfrentamento desadaptativo (00405)</p>
+            </div>
+
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <h4 style="color: white; margin-bottom: 0.5rem;">Bem-estar Físico</h4>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Conforto físico prejudicado (00380)</p>
+            </div>
+
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <h4 style="color: white; margin-bottom: 0.5rem;">Saúde Mental</h4>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Ansiedade excessiva relacionada à morte (00399)</p>
+            </div>
+
+            <div style="padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 4px solid rgba(255,255,255,0.5);">
+                <h4 style="color: white; margin-bottom: 0.5rem;">Espiritualidade & Família</h4>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Bem-estar espiritual prejudicado (00454) e Padrões familiares conturbados (00389)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRATAMENTO ONCOLÓGICO -->
+<section class="feature-row reveal">
+    <div class="feature-image" style="background: url('/static/images/tratamento.jpg') center/cover no-repeat;">
+    </div>
+    <div class="feature-content">
+        <h3>Tratamento Oncológico</h3>
+        <p>
+            O objetivo é eliminar células malignas, controlar o avanço da doença e proporcionar qualidade de vida.
+            O tratamento é personalizado conforme o tipo, estágio e características individuais do paciente.
+        </p>
+        <ul>
+            <li><strong>Cirurgia:</strong> Visa eliminar a maior parte possível do tumor</li>
+            <li><strong>Quimioterapia:</strong> Usa medicamentos para destruir células cancerígenas</li>
+            <li><strong>Radioterapia:</strong> Utiliza radiações ionizantes (externa ou interna)</li>
+            <li><strong>Terapias Alvo:</strong> Medicamentos que atacam células específicas</li>
+            <li><strong>Imunoterapia:</strong> Ativa o sistema imunológico do paciente</li>
+        </ul>
+    </div>
+</section>
+
+<!-- PREVENÇÃO -->
+<section class="reveal">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2>Principais Medidas de Prevenção</h2>
+        <p style="color: var(--gray-600); max-width: 600px; margin: 1rem auto; font-size: 1.1rem;">
+            A prevenção primária consiste na adoção de medidas capazes de reduzir ou eliminar a exposição
+            a fatores de risco associados ao desenvolvimento da doença.
+        </p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Não Fumar -->
+        <div class="feature-row reveal" style="margin: 0;">
+            <div class="feature-image" style="background: url('/static/images/fumo.jpg') center/cover no-repeat;">
+            </div>
+            <div class="feature-content">
+                <h3>Não Fume</h3>
+                <p>
+                    O tabagismo é um dos principais fatores de risco para o câncer, especialmente para pulmão,
+                    cavidade oral, laringe, faringe e esôfago.
+                </p>
+                <p>Busque ajuda profissional para deixar este hábito. Existem muitos recursos disponíveis.</p>
+            </div>
+        </div>
+
+        <!-- Alimentação -->
+        <div class="feature-row reveal" style="margin: 0;">
+            <div class="feature-image" style="background: url('/static/images/alimentacao.jpg') center/cover no-repeat;">
+            </div>
+            <div class="feature-content">
+                <h3>Alimentação Saudável & Peso Adequado</h3>
+                <p>
+                    Priorize frutas, verduras, legumes e cereais integrais. O excesso de peso e a obesidade
+                    estão relacionados ao aumento do risco de diversos tipos de câncer.
+                </p>
+                <ul>
+                    <li>Consuma alimentos in natura e minimamente processados</li>
+                    <li>Limite processados, carnes vermelhas e alimentos com muito açúcar</li>
+                    <li>Pratique atividade física regularmente (30 min diários)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Vacinação -->
+        <div class="feature-row reveal" style="margin: 0;">
+            <div class="feature-image" style="background: url('/static/images/vacina.jpg') center/cover no-repeat;">
+            </div>
+            <div class="feature-content">
+                <h3>Vacinação & Exames Periódicos</h3>
+                <p>
+                    Mantenha vacinas em dia, especialmente HPV e Hepatite B. A detecção precoce aumenta
+                    significativamente as chances de cura.
+                </p>
+                <ul>
+                    <li>Vacina HPV: proteção contra cânceres associados ao vírus</li>
+                    <li>Vacina Hepatite B: reduz risco de câncer de fígado</li>
+                    <li>Exames de rastreamento (mamografia, papanicolau, colonoscopia)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Exposição Solar -->
+        <div class="feature-row reveal" style="margin: 0;">
+            <div class="feature-image" style="background: url('/static/images/atividade.jpg') center/cover no-repeat;">
+            </div>
+            <div class="feature-content">
+                <h3>Proteção Solar & Bem-estar Físico</h3>
+                <p>
+                    Proteja-se da exposição excessiva ao sol, especialmente entre 10h-16h. Mantenha-se ativo
+                    e gerencie o estresse para um sistema imunológico mais forte.
+                </p>
+                <ul>
+                    <li>Use protetor solar todos os dias (FPS 30+)</li>
+                    <li>Vista roupas apropriadas e use chapéu</li>
+                    <li>Exercício regular reduz risco de vários tipos de câncer</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MITOS E VERDADES -->
+<section class="reveal">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2>Mitos vs Verdades</h2>
+        <p style="color: var(--gray-600); font-size: 1.1rem;">
+            Clique nos cartões para virar e revelar a resposta 👇
+        </p>
+    </div>
+
+    <div id="mitos-container" class="interactive-cards"></div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('/api/mitos-verdades')
+        .then(response => response.json())
+        .then(dados => {
+            const container = document.getElementById('mitos-container');
+            dados.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.style.animationDelay = (index * 0.1) + 's';
+
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span style="font-size: 1.1rem; font-weight: 600;">${item.pergunta}</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span>${item.resposta}</span>
+                        </div>
+                    </div>
+                `;
+
+                // NOVO CÓDIGO AQUI: Adiciona o evento de clique
+                card.addEventListener('click', function() {
+                    this.classList.toggle('is-flipped');
+                });
+
+                container.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar mitos:', error));
+});
+</script>
+{% endblock %}
