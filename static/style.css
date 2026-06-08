@@ -1,7 +1,3 @@
-/* ====================================
-   PALIAR PARA CUIDAR - DESIGN
-   ==================================== */
-
 :root {
     --font-titulo: 'Playfair Display', serif;
     --font-texto: 'Merriweather', serif;
@@ -14,8 +10,7 @@
   --danger: #ef4444;
   --success: #10b981;
   --warning: #f59e0b;
-  
-  /* Grays refinados */
+
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
@@ -26,23 +21,20 @@
   --gray-700: #374151;
   --gray-800: #1f2937;
   --gray-900: #111827;
-  
-  /* Dimensões */
+
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
-  
-  /* Shadows */
+ 
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   
-  /* Transitions */
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: all 0.15s ease;
   --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -67,12 +59,11 @@ body {
   overflow-x: hidden;
 }
 
-/* O novo bloco do título com imagem transparente */
 .hero-vivencias {
     position: relative;
     padding: 8rem 2rem;
     text-align: center;
-    background-color: rgba(197, 197, 197, 0.42); /* Branco puro no bloco do título para dar destaque */
+    background-color: rgba(197, 197, 197, 0.42);
     background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/vivencias.jpg');
     background-size: cover;
     background-position: center;
@@ -84,7 +75,7 @@ body {
     position: relative;
     padding: 8rem 2rem;
     text-align: center;
-    background-color: rgba(197, 197, 197, 0.42); /* Branco puro no bloco do título para dar destaque */
+    background-color: rgba(197, 197, 197, 0.42);
     background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/sobres.jpg');
     background-size: cover;
     background-position: center;
@@ -96,7 +87,7 @@ body {
     position: relative;
     padding: 8rem 2rem;
     text-align: center;
-    background-color: rgba(197, 197, 197, 0.42); /* Branco puro no bloco do título para dar destaque */
+    background-color: rgba(197, 197, 197, 0.42); 
     background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cancers.jpg');
     background-size: cover;
     background-position: center;
@@ -108,7 +99,7 @@ body {
     position: relative;
     padding: 8rem 2rem;
     text-align: center;
-    background-color: rgba(197, 197, 197, 0.42); /* Branco puro no bloco do título para dar destaque */
+    background-color: rgba(197, 197, 197, 0.42);
     background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cuidados.jpg');
     background-size: cover;
     background-position: center;
@@ -120,7 +111,7 @@ body {
     position: relative;
     padding: 8rem 2rem;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.42); /* Branco puro no bloco do título para dar destaque */
+    background-color: rgba(255, 255, 255, 0.42);
     background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/direito.jpg');
     background-size: cover;
     background-position: center;
@@ -132,7 +123,7 @@ body {
     position: relative;
     padding: 8rem 2rem;
     text-align: center;
-    background-color: rgba(197, 197, 197, 0.42); /* Branco puro no bloco do título para dar destaque */
+    background-color: rgba(197, 197, 197, 0.42); 
     background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/heme.jpg');
     background-size: cover;
     background-position: center;
@@ -142,12 +133,8 @@ body {
 
 
 h1, h2, h3 {
-    font-family: var(--font-titulo); /* Aplicando Playfair Display nos títulos */
+    font-family: var(--font-titulo);
 }
-
-/* ====================================
-   HEADER & NAVIGATION
-   ==================================== */
 
 header {
   background: rgba(255, 255, 255, 0.95);
@@ -279,10 +266,6 @@ header {
   transform: translateY(0);
 }
 
-/* ====================================
-   MAIN CONTENT
-   ==================================== */
-
 main {
   max-width: 1400px;
   margin: 0 auto;
@@ -326,9 +309,6 @@ p {
   line-height: 1.8;
 }
 
-/* ====================================
-   HERO SECTION
-   ==================================== */
 
 .hero-section {
   padding: 6rem 2rem;
@@ -387,10 +367,8 @@ p {
     font-family: var(--font-titulo);
     font-size: 4rem;
     font-weight: 700;
-    /* Forçamos uma cor sólida escura aqui */
     color: #000000 !important;
     margin-bottom: 1.5rem;
-    /* Sombra suave para "descolar" o texto da imagem */
     text-shadow: 0 2px 4px rgba(149, 81, 44, 0.8);
 }
 
@@ -398,17 +376,16 @@ p {
     font-family: var(--font-texto);
     font-size: 1.4rem;
     font-style: italic;
-    /* Cor um pouco mais escura para facilitar a leitura */
     color: #000000 !important;
     margin-bottom: 2.5rem;
-    font-weight: 600; /* Um pouco mais de peso ajuda na legibilidade */
+    font-weight: 600; 
 }
 
 .hero-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   font-family: var(--font-texto);
-  text-align: justify; /* Justificado como você pediu */
+  text-align: justify;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 3rem;
   border-radius: 20px;
@@ -425,10 +402,6 @@ p {
   color: var(--gray-700);
   line-height: 1.9;
 }
-
-/* ====================================
-   FEATURE ROWS (Zigue-Zague)
-   ==================================== */
 
 .feature-row {
   display: grid;
@@ -513,9 +486,6 @@ p {
   font-size: 1.3rem;
 }
 
-/* ====================================
-   CARDS GRID
-   ==================================== */
 
 .cards-grid {
   display: grid;
@@ -531,8 +501,8 @@ p {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;  /* ADICIONE ESTA LINHA */
-    min-height: 450px;                /* ADICIONE ESTA LINHA - ajuste o valor conforme precisa */
+    justify-content: space-between; 
+    min-height: 450px; 
 }
 
 .card:nth-child(1) { animation-delay: 0.1s; }
@@ -548,8 +518,8 @@ p {
 .card-header {
     height: 200px;
     width: 100%;
-    background-size: cover;          /* IMPORTANTE: faz a imagem preencher o espaço */
-    background-position: center;     /* Centraliza a imagem */
+    background-size: cover;       
+    background-position: center;  
     background-repeat: no-repeat;
     display: block;
 }
@@ -615,10 +585,6 @@ p {
   color: white;
 }
 
-/* ====================================
-   SECTION WITH ACCENT
-   ==================================== */
-
 .section-accent {
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
   color: white;
@@ -653,9 +619,6 @@ p {
   z-index: 2;
 }
 
-/* ====================================
-   JOURNEY (Timeline)
-   ==================================== */
 
 .journey-container {
   display: flex;
@@ -720,9 +683,6 @@ p {
   margin-bottom: 1rem;
 }
 
-/* ====================================
-   LIST STYLES
-   ==================================== */
 
 .list-refined {
   list-style: none;
@@ -751,9 +711,6 @@ p {
   margin-bottom: 0.5rem;
 }
 
-/* ====================================
-   INTERACTIVE CARDS (Mitos & Verdades)
-   ==================================== */
 
 .interactive-cards {
   display: grid;
@@ -818,9 +775,6 @@ p {
   line-height: 1.6;
 }
 
-/* ====================================
-   COMMENT WALL
-   ==================================== */
 
 .mural-container {
   background: white;
@@ -844,7 +798,7 @@ p {
 
 .feed-comentarios {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Grid responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -930,10 +884,6 @@ p {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
-
-/* ====================================
-   RESPONSIVE
-   ==================================== */
 
 @media (max-width: 768px) {
   .navbar {
@@ -1033,10 +983,6 @@ p {
   }
 }
 
-/* ====================================
-   ANIMATIONS & UTILITIES
-   ==================================== */
-
 .reveal {
   animation: fadeInUp 0.8s ease both;
 }
@@ -1060,8 +1006,6 @@ p {
 .mb-lg {
   margin-bottom: var(--spacing-xl);
 }
-
-/* Scrollbar customizado */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -1079,22 +1023,11 @@ p {
   background: var(--primary-light);
 }
 
-
-/* ====================================
-   IMAGENS
-   ==================================== */
-
 .img-estilizada {
-    filter: grayscale(20%) brightness(1.1) contrast(1.05); /* Deixa a imagem mais "sóbria" */
+    filter: grayscale(20%) brightness(1.1) contrast(1.05);
     border-radius: 16px;
 }
 
-/* ====================================
-   ACESSIBILIDADE VISUAL (A+ / A-)
-   Focado estritamente na área de leitura (<main>)
-   ==================================== */
-
-/* Nível 1: Ampliação Leve */
 .fonte-ampliada-1 main p,
 .fonte-ampliada-1 main li,
 .fonte-ampliada-1 main span:not(.accordion-icon):not(.comentario-data) {
@@ -1105,7 +1038,6 @@ p {
 .fonte-ampliada-1 main h2 { font-size: 2.2rem; }
 .fonte-ampliada-1 main h3 { font-size: 1.7rem; }
 
-/* Nível 2: Ampliação Média */
 .fonte-ampliada-2 main p,
 .fonte-ampliada-2 main li,
 .fonte-ampliada-2 main span:not(.accordion-icon):not(.comentario-data) {
@@ -1116,7 +1048,6 @@ p {
 .fonte-ampliada-2 main h2 { font-size: 2.4rem; }
 .fonte-ampliada-2 main h3 { font-size: 1.9rem; }
 
-/* Nível 3: Ampliação Máxima */
 .fonte-ampliada-3 main p,
 .fonte-ampliada-3 main li,
 .fonte-ampliada-3 main span:not(.accordion-icon):not(.comentario-data) {
@@ -1127,7 +1058,6 @@ p {
 .fonte-ampliada-3 main h2 { font-size: 2.6rem; }
 .fonte-ampliada-3 main h3 { font-size: 2.1rem; }
 
-/* Nível -1: Redução (Para quem prefere mais conteúdo na tela) */
 .fonte-reduzida main p,
 .fonte-reduzida main li {
     font-size: 0.95rem;
@@ -1136,9 +1066,6 @@ p {
 .fonte-reduzida main h1 { font-size: 2.8rem; }
 .fonte-reduzida main h2 { font-size: 1.8rem; }
 .fonte-reduzida main h3 { font-size: 1.3rem; }
-/* ====================================
-   ACCORDION (Sanfona para PICS)
-   ==================================== */
 .accordion-container {
     display: flex;
     flex-direction: column;
@@ -1188,16 +1115,15 @@ p {
     transition: transform 0.3s ease;
 }
 
-/* Quando o item recebe a classe .active, o ícone gira e vira um "x" */
 .accordion-item.active .accordion-icon {
     transform: rotate(45deg);
     color: var(--accent);
 }
 
 .accordion-content {
-    max-height: 0; /* Esconde o conteúdo por padrão */
+    max-height: 0; 
     overflow: hidden;
-    transition: max-height 0.4s ease-out; /* Transição suave */
+    transition: max-height 0.4s ease-out; 
     background-color: white;
 }
 
