@@ -13,7 +13,6 @@
     </div>
 </section>
 
-<!-- CUIDADOS PALIATIVOS -->
 <section class="reveal">
     <h2>O que são Cuidados Paliativos?</h2>
     <p>
@@ -49,7 +48,6 @@
     </div>
 </section>
 
-<!-- SURVIVORSHIP -->
 <section class="section-accent reveal">
     <h2 style="color: white; margin-bottom: 1.5rem;">Sobrevivência ao Câncer (Survivorship)</h2>
     <p style="color: rgba(255,255,255,0.95); margin-bottom: 1.5rem; font-size: 1.1rem;">
@@ -63,7 +61,6 @@
     </p>
 </section>
 
-<!-- PRÁTICAS INTEGRATIVAS -->
 <section class="reveal" style="max-width: 800px; margin: 0 auto;">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Práticas Integrativas e Complementares (PICS)</h2>
@@ -72,9 +69,7 @@
             29 práticas diferentes, atuando diretamente na melhoria da saúde mental, emocional e física.
         </p>
     </div>
-
     <div class="accordion-container">
-        <!-- Yoga -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -86,8 +81,6 @@
                 <p>Influência positiva a longo prazo na saúde psicológica de pacientes, como evidenciado em casos de câncer de mama. Reduz ansiedade, melhora flexibilidade e traz equilíbrio emocional.</p>
             </div>
         </div>
-
-        <!-- Musicoterapia -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -99,8 +92,6 @@
                 <p>Apresenta grande influência na redução da ansiedade, depressão, dor e fadiga em adultos com câncer. A música acalma, alivia e reconecta.</p>
             </div>
         </div>
-
-        <!-- Acupuntura -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -112,8 +103,6 @@
                 <p>Reduz dor crônica, náuseas, fadiga e sintomas de ansiedade. Trabalha com o fluxo energético do corpo para restaurar o equilíbrio.</p>
             </div>
         </div>
-
-        <!-- Meditação -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -125,8 +114,6 @@
                 <p>Trabalha a aceitação, presença no momento e ressignificação emocional. Diminui ruminação e aumenta sensação de bem-estar.</p>
             </div>
         </div>
-
-        <!-- Aromaterapia -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -138,8 +125,6 @@
                 <p>Óleos essenciais auxiliam no relaxamento, reduzem náuseas, melhoram sono e têm propriedades anti-inflamatórias.</p>
             </div>
         </div>
-
-        <!-- Reiki -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -153,10 +138,7 @@
         </div>
     </div>
 </section>
-
-<!-- APOIO À FAMÍLIA -->
 <section class="feature-row reveal">
-    <!-- Substitua a div da imagem espremida da família por esta -->
 <div class="feature-image" style="background: url('/static/images/familia.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
     <div class="feature-content">
         <h3>Apoio à Família e Saúde Mental</h3>
@@ -177,8 +159,6 @@
         </ul>
     </div>
 </section>
-
-<!-- MENSAGEM DE CONFORTO -->
 <section class="section-accent reveal" style="text-align: center;">
     <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">
         💚 Uma Mensagem de Esperança e Acolhimento
@@ -190,8 +170,6 @@
         <p id="status-voz" style="font-style: italic; color: rgba(255,255,255,0.8); margin: 0;"></p>
     </div>
 </section>
-
-<!-- RECURSOS PRÁTICOS -->
 <section class="reveal">
     <h2>Dicas Práticas para Cuidadores</h2>
     <div class="list-refined">
@@ -268,7 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona todos os botões do accordion
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
     accordionHeaders.forEach(header => {
@@ -276,17 +253,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const accordionItem = header.parentElement;
             const accordionContent = header.nextElementSibling;
             const isActive = accordionItem.classList.contains('active');
-
-            // Regra de Ouro da UX: Fecha todos os outros accordions abertos
             document.querySelectorAll('.accordion-item').forEach(item => {
                 item.classList.remove('active');
                 item.querySelector('.accordion-content').style.maxHeight = null;
             });
-
-            // Se o que foi clicado NÃO estava ativo, nós o abrimos agora
             if (!isActive) {
                 accordionItem.classList.add('active');
-                // O scrollHeight calcula exatamente o tamanho que o texto precisa ter
                 accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
             }
         });
