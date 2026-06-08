@@ -13,7 +13,6 @@
     </div>
 </section>
 
-<!-- STORYTELLING INTRO -->
 <section class="reveal" style="text-align: center; margin-bottom: 3rem;">
     <h2>Por Que as Histórias Importam?</h2>
     <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: var(--gray-600);">
@@ -22,7 +21,6 @@
     </p>
 </section>
 
-<!-- VIDEO/STORY CARDS -->
 <section class="reveal">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
         <div class="card" style="overflow: hidden;">
@@ -75,7 +73,6 @@
     </div>
 </section>
 
-<!-- MURAL DE VIVÊNCIAS -->
 <section class="reveal">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Mural de Vivências</h2>
@@ -107,14 +104,11 @@
                 style="font-weight: 500;"
             >
 
-            <!-- ÁREA DE UPLOAD / DRAG & DROP -->
             <div id="drop-zone" style="border: 2px dashed #14b8a6; border-radius: 8px; padding: 1.5rem; text-align: center; cursor: pointer; transition: background 0.3s; margin-bottom: 1rem; background: #f8fafc;">
                 <span id="drop-zone-text" style="color: #0f766e; font-weight: 500;">
                     📷 Clique para abrir a galeria ou arraste uma foto (opcional)
                 </span>
-                <!-- O input real de arquivo fica escondido -->
                 <input type="file" id="input-foto-file" accept="image/*" style="display: none;">
-                <!-- Preview da imagem carregada -->
                 <img id="preview-foto" style="display: none; max-height: 120px; border-radius: 8px; margin-top: 10px; object-fit: cover; margin-left: auto; margin-right: auto;">
             </div>
 
@@ -132,7 +126,6 @@
     </div>
 </section>
 
-<!-- ORIENTAÇÕES ÉTICAS -->
 <section class="section-accent reveal">
     <h2 style="color: white; text-align: center; margin-bottom: 2rem;">
         Espaço Seguro & Respeitoso
@@ -169,7 +162,6 @@
     </div>
 </section>
 
-<!-- DICAS PARA COMPARTILHAR -->
 <section class="reveal">
     <h2>Dicas para Compartilhar Sua História</h2>
 
@@ -201,7 +193,6 @@
     </div>
 </section>
 
-<!-- MENSAGEM FINAL -->
 <section class="reveal" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%); border-radius: 20px;">
     <h2 style="margin-bottom: 1rem;">Você Não Está Sozinho</h2>
     <p style="font-size: 1.1rem; color: var(--gray-700); max-width: 700px; margin: 0 auto;">
@@ -216,11 +207,9 @@
 {% endblock %}
 {% block extra_scripts %}
 <script type="module">
-// IMPORTANTE: Removemos o Firebase Storage daqui
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCaUnIGrgvWO9xA1yEDAP0K-BEApjYfFOs",
   authDomain: "paliarparacuidar-be84e.firebaseapp.com",
@@ -230,27 +219,18 @@ const firebaseConfig = {
   appId: "1:1066823185976:web:9a8b543787f8ab138ad8cd",
   measurementId: "G-YF219MPQ5Y"
 };
-
-// Inicializando apenas o Banco de Dados
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 const form = document.getElementById('form-mural');
 const feed = document.getElementById('feed');
 const inputNome = document.getElementById('input-nome');
 const inputMensagem = document.getElementById('input-mensagem');
-
-// Elementos do Upload de Imagem
 const dropZone = document.getElementById('drop-zone');
 const fileInput = document.getElementById('input-foto-file');
 const previewFoto = document.getElementById('preview-foto');
 const dropZoneText = document.getElementById('drop-zone-text');
-
 let base64Image = '';
 
-// ==========================================
-// LÓGICA DE DRAG & DROP E GALERIA
-// ==========================================
 dropZone.addEventListener('click', (e) => {
     if (e.target !== fileInput) {
         fileInput.click();
@@ -280,7 +260,6 @@ fileInput.addEventListener('change', (e) => {
     }
 });
 
-// A sua função que reduz o peso da imagem
 function processarImagem(file) {
     if (!file.type.startsWith('image/')) {
         alert('Por favor, selecione apenas arquivos de imagem.');
@@ -312,9 +291,6 @@ function processarImagem(file) {
     reader.readAsDataURL(file);
 }
 
-// ==========================================
-// LÓGICA DE RENDERIZAÇÃO
-// ==========================================
 async function carregarComentarios() {
     feed.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--primary);">Carregando relatos do servidor...</div>';
 
@@ -415,9 +391,6 @@ async function carregarComentarios() {
     }
 }
 
-// ==========================================
-// SALVAMENTO DIRETO NO BANCO DE DADOS
-// ==========================================
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -434,7 +407,6 @@ form.addEventListener('submit', async (e) => {
     btnSubmit.innerText = "Salvando na nuvem...";
 
     try {
-        // Agora salvamos a imagem como texto direto no banco! Sem depender do Storage pago.
         await addDoc(collection(db, "relatos"), {
             nome: nome,
             foto: base64Image,
@@ -443,7 +415,6 @@ form.addEventListener('submit', async (e) => {
             timestamp: Date.now(),
             curtidas: 0
         });
-
         form.reset();
         base64Image = '';
         previewFoto.src = '';
