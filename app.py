@@ -4,10 +4,6 @@ import os
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-# ============================================
-# ROTAS PRINCIPAIS
-# ============================================
-
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -31,10 +27,6 @@ def vivencias():
 @app.route('/sobre')
 def sobre():
     return render_template('sobre.html')
-
-# ============================================
-# API - DADOS DINÂMICOS
-# ============================================
 
 @app.route('/api/mitos-verdades')
 def get_mitos_verdades():
@@ -140,10 +132,6 @@ def get_redes_apoio():
     ]
     return jsonify(redes)
 
-# ============================================
-# TRATAMENTO DE ERROS
-# ============================================
-
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('index.html'), 404
@@ -152,12 +140,7 @@ def page_not_found(error):
 def internal_error(error):
     return render_template('index.html'), 500
 
-# ============================================
-# RODANDO A APLICAÇÃO
-# ============================================
-
 if __name__ == '__main__':
-    # Para desenvolvimento local
     app.run(
         debug=True,
         host='localhost',
