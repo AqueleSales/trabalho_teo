@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Direitos & Rede de Apoio - Paliar para Cuidar{% endblock %}
+{% block title %}Direitos & Rede de Apoio - Essência do Cuidar{% endblock %}
 
 {% block content %}
 
@@ -20,45 +20,81 @@
         <strong>Guarde sempre cópias autenticadas de atestados, laudos e biópsias.</strong>
     </p>
 
-    <div class="cards-grid" style="display: flex; flex-direction: column; gap: 1.5rem;">
+    <!-- Adicionado grid dinâmico para os cards ficarem lado a lado em telas grandes e em coluna no celular -->
+    <div class="cards-grid">
+
+        <!-- CARDS NOVOS SOLICITADOS PELA PROFESSORA -->
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/saude/pt-br/acesso-a-informacao/acoes-e-programas/humanizasus" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Política Nacional de Humanização (PNH)</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Diretrizes oficiais do SUS para garantir um atendimento acolhedor, resolutivo e humano a todos.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/saude/pt-br/composicao/saes/cuidados-paliativos" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Política Nacional de Cuidados Paliativos</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Organização e diretrizes dos cuidados paliativos no âmbito do Sistema Único de Saúde (SUS).</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://bvsms.saude.gov.br/bvs/publicacoes/carta_direito_usuarios_2ed2007.pdf" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Direitos dos Usuários da Saúde</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Documento do Ministério da Saúde com os princípios básicos de cidadania no sistema de saúde.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/inca/pt-br/assuntos/pacientes/direitos-sociais" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Guia de Direitos INCA</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Página oficial do INCA com a cartilha completa e atualizada dos direitos do paciente oncológico.</p>
+        </div>
+
+        <!-- LINKS ATUALIZADOS PARA EVITAR O ERRO "PÁGINA NÃO EXISTE" -->
         <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
-            <a href="https://www.gov.br/inss/pt-br/saiba-mais/auxilios/auxilio-doenca" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+            <a href="https://www.gov.br/pt-br/servicos/solicitar-beneficio-por-incapacidade-temporaria" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
                 <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Auxílio-doença (INSS)</h3>
                 <span>🔗</span>
             </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Benefício a todo trabalhador incapacitado por mais de 15 dias. Requer atestado médico.</p>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Benefício a todo trabalhador incapacitado por mais de 15 dias. Requer atestado médico e perícia.</p>
         </div>
 
         <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
-            <a href="https://www.gov.br/inss/pt-br/saiba-mais/aposentadorias/aposentadoria-por-invalidez" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Aposentadoria Integral por Invalidez</h3>
+            <a href="https://www.gov.br/pt-br/servicos/solicitar-aposentadoria-por-invalidez" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Aposentadoria por Invalidez</h3>
                 <span>🔗</span>
             </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Direito de todo cidadão acometido, calculada com base na média dos últimos salários.</p>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Direito de todo segurado permanentemente incapacitado para o trabalho.</p>
         </div>
 
         <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
-            <a href="https://www.gov.br/mds/pt-br/acoes-e-programas/assistencia-social/beneficios-assistenciais/beneficio-de-prestacao-continuada-bpc" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Benefício de Prestação Continuada (LOAS)</h3>
+            <a href="https://www.gov.br/pt-br/servicos/solicitar-beneficio-de-prestacao-continuada-bpc" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Benefício de Prestação Continuada (BPC/LOAS)</h3>
                 <span>🔗</span>
             </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Equivalente a um salário mínimo para pessoas carentes sem vínculo previdenciário e incapacitadas.</p>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Equivalente a um salário mínimo para pessoas carentes sem vínculo previdenciário.</p>
         </div>
 
         <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
-            <a href="https://www.gov.br/infraestrutura/pt-br/assuntos/transporte-terrestre/passe-livre" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+            <a href="https://www.gov.br/pt-br/servicos/obter-passe-livre" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
                 <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Passe Livre (Urbano e Interestadual)</h3>
                 <span>🔗</span>
             </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Viagens gratuitas de ônibus, trem ou barco para pacientes carentes (renda até 1 salário mínimo por pessoa).</p>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Viagens gratuitas de ônibus, trem ou barco para pacientes com baixa renda.</p>
         </div>
 
         <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
             <a href="https://www.gov.br/receitafederal/pt-br/assuntos/orientacao-tributaria/isencoes" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Isenção de Impostos (IPI, ICMS, IPVA, IR)</h3>
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Isenção de Impostos (IPI, ICMS, IR)</h3>
                 <span>🔗</span>
             </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Descontos na compra de veículos especiais e isenção de Imposto de Renda sobre aposentadorias.</p>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Descontos na compra de veículos especiais e isenção de Imposto de Renda sobre aposentadorias.</p>
         </div>
 
         <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
@@ -66,29 +102,13 @@
                 <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Saque FGTS e PIS/PASEP</h3>
                 <span>🔗</span>
             </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Direito a sacar integralmente os depósitos para o seu tratamento ou de dependentes.</p>
-        </div>
-
-        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
-            <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/cancer-de-mama" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Cirurgia de Reconstrução Mamária</h3>
-                <span>🔗</span>
-            </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Obrigatória tanto no SUS quanto nos planos de saúde para mulheres mutiladas em decorrência do tratamento (Lei nº 9.797/1999).</p>
-        </div>
-
-        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
-            <a href="https://www.planalto.gov.br/ccivil_03/leis/l10048.htm" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Atendimento Prioritário</h3>
-                <span>🔗</span>
-            </a>
-            <p style="margin-top: 10px; margin-bottom: 0;">Acesso prioritário em filas, instituições e serviços públicos e privados.</p>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Direito a sacar integralmente os depósitos para custear o seu tratamento ou de dependentes.</p>
         </div>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Rede de Apoio no Distrito Federal</h2>
+    <h2 style="text-align: center; margin-bottom: 2rem;">Rede de Apoio no Distrito Federal & Instituições</h2>
 
     <div class="map-container" style="border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 3rem;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d122843.43575971485!2d-48.016369527632665!3d-15.823908990145452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shospitais%20oncologia%20df!5e0!3m2!1spt-BR!2sbr!4v1717772655000!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -118,17 +138,17 @@
         </div>
 
         <div style="background: var(--branco); padding: 2rem; border-radius: 16px; border-top: 5px solid var(--warning); box-shadow: var(--shadow-md);">
-            <h3 style="color: var(--warning); font-size: 1.3rem;">ONGs (DF)</h3>
+            <h3 style="color: var(--warning); font-size: 1.3rem;">ONGs & Instituições (CP)</h3>
             <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>Academia Nacional de Cuidados Paliativos (ANCP)</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Maior referência nacional para profissionais e pacientes, com cartilhas e manuais de apoio.</span><br>
+                    <a href="https://paliativo.org.br/" target="_blank" style="color: var(--warning); text-decoration: none;">🌐 Site Oficial (Apoio ao Paciente)</a>
+                </li>
                 <li style="margin-bottom: 1.5rem;">
                     <strong>Rede Feminina de Combate ao Câncer</strong><br>
                     <span style="font-size: 0.9rem; color: var(--gray-500);">Acolhimento e hospedagem (Casa Rosa).</span><br>
                     <a href="tel:+556133151221" style="color: var(--warning); text-decoration: none; font-weight: 500;">📞 (61) 3315-1221</a> | <a href="https://redefemininabrasilia.org.br/" target="_blank" style="color: var(--warning); text-decoration: none;">🌐 Site Oficial</a>
-                </li>
-                <li style="margin-bottom: 1.5rem;">
-                    <strong>ABAC-Luz</strong><br>
-                    <span style="font-size: 0.9rem; color: var(--gray-500);">Educação e apoio psicológico.</span><br>
-                    <a href="https://abacluz.org.br/" target="_blank" style="color: var(--warning); text-decoration: none;">🌐 Site Oficial</a>
                 </li>
                 <li>
                     <strong>Canomama</strong><br>
@@ -211,7 +231,7 @@
         </li>
         <li>
             <strong>Como encontro grupos de apoio?</strong>
-            <p>Procure as ONGs listadas ou converse com o assistente social do hospital onde você é atendido.</p>
+            <p>Procure as ONGs listadas (como a ANCP) ou converse com o assistente social do hospital onde você é atendido.</p>
         </li>
     </div>
 </section>

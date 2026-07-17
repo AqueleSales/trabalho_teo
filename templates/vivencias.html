@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Vivências & Relatos - Paliar para Cuidar{% endblock %}
+{% block title %}Vivências & Relatos - Essência do Cuidar{% endblock %}
 
 {% block content %}
 
@@ -11,6 +11,14 @@
             Histórias reais que inspiram e conectam quem vive essa realidade
         </h2>
     </div>
+</section>
+
+<!-- CITAÇÃO DE CICELY SAUNDERS (Precursora dos Cuidados Paliativos) -->
+<section class="reveal" style="text-align: center; margin-top: 2rem; margin-bottom: 3rem;">
+    <blockquote style="font-size: 1.4rem; font-style: italic; color: var(--primary-dark); max-width: 800px; margin: 0 auto; line-height: 1.6;">
+        "Você importa pelo que você é, e você importa até o último momento da sua vida. Faremos tudo o que estiver ao nosso alcance não apenas para ajudá-lo a morrer em paz, mas para ajudá-lo a viver até o dia de sua morte."
+    </blockquote>
+    <p style="color: var(--gray-600); margin-top: 1rem; font-weight: bold; font-size: 1.1rem;">— Cicely Saunders</p>
 </section>
 
 <!-- STORYTELLING INTRO -->
@@ -35,7 +43,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testimoniante será adicionado')">
+                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testemunhal será adicionado')">
                     Assistir
                 </button>
             </div>
@@ -51,7 +59,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testimoniante será adicionado')">
+                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testemunhal será adicionado')">
                     Assistir
                 </button>
             </div>
@@ -67,7 +75,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testimoniante será adicionado')">
+                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testemunhal será adicionado')">
                     Assistir
                 </button>
             </div>
@@ -102,21 +110,10 @@
             <input
                 type="text"
                 id="input-nome"
-                placeholder="Seu nome ou apelido (obrigatório)"
+                placeholder="Como prefere ser chamado? (Recomendamos o uso de um pseudônimo ou iniciais)"
                 required
                 style="font-weight: 500;"
             >
-
-            <!-- ÁREA DE UPLOAD / DRAG & DROP -->
-            <div id="drop-zone" style="border: 2px dashed #14b8a6; border-radius: 8px; padding: 1.5rem; text-align: center; cursor: pointer; transition: background 0.3s; margin-bottom: 1rem; background: #f8fafc;">
-                <span id="drop-zone-text" style="color: #0f766e; font-weight: 500;">
-                    📷 Clique para abrir a galeria ou arraste uma foto (opcional)
-                </span>
-                <!-- O input real de arquivo fica escondido -->
-                <input type="file" id="input-foto-file" accept="image/*" style="display: none;">
-                <!-- Preview da imagem carregada -->
-                <img id="preview-foto" style="display: none; max-height: 120px; border-radius: 8px; margin-top: 10px; object-fit: cover; margin-left: auto; margin-right: auto;">
-            </div>
 
             <textarea
                 id="input-mensagem"
@@ -125,7 +122,12 @@
                 style="min-height: 120px; resize: vertical;"
             ></textarea>
 
-            <button type="submit" class="btn-postar" style="align-self: flex-end;">
+            <!-- AVISO DE PRIVACIDADE ÉTICA -->
+            <div style="background: #fef2f2; padding: 1.2rem; border-left: 4px solid #ef4444; border-radius: 4px; font-size: 0.9rem; color: #991b1b; margin-top: 1rem;">
+                <strong>⚠️ Aviso de Privacidade e Ética:</strong> Para garantir a segurança e o sigilo de todos, pedimos que não inclua nomes completos, dados hospitalares ou informações que identifiquem terceiros. Todos os relatos passam por moderação prévia da equipe acadêmica antes de se tornarem públicos na plataforma.
+            </div>
+
+            <button type="submit" class="btn-postar" style="align-self: flex-end; margin-top: 1rem;">
                 Publicar Relato
             </button>
         </form>
@@ -216,11 +218,9 @@
 {% endblock %}
 {% block extra_scripts %}
 <script type="module">
-// IMPORTANTE: Removemos o Firebase Storage daqui
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCaUnIGrgvWO9xA1yEDAP0K-BEApjYfFOs",
   authDomain: "paliarparacuidar-be84e.firebaseapp.com",
@@ -231,7 +231,6 @@ const firebaseConfig = {
   measurementId: "G-YF219MPQ5Y"
 };
 
-// Inicializando apenas o Banco de Dados
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -240,83 +239,8 @@ const feed = document.getElementById('feed');
 const inputNome = document.getElementById('input-nome');
 const inputMensagem = document.getElementById('input-mensagem');
 
-// Elementos do Upload de Imagem
-const dropZone = document.getElementById('drop-zone');
-const fileInput = document.getElementById('input-foto-file');
-const previewFoto = document.getElementById('preview-foto');
-const dropZoneText = document.getElementById('drop-zone-text');
-
-let base64Image = '';
-
-// ==========================================
-// LÓGICA DE DRAG & DROP E GALERIA
-// ==========================================
-dropZone.addEventListener('click', (e) => {
-    if (e.target !== fileInput) {
-        fileInput.click();
-    }
-});
-
-dropZone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropZone.style.background = '#e2e8f0';
-});
-
-dropZone.addEventListener('dragleave', () => {
-    dropZone.style.background = '#f8fafc';
-});
-
-dropZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dropZone.style.background = '#f8fafc';
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-        processarImagem(e.dataTransfer.files[0]);
-    }
-});
-
-fileInput.addEventListener('change', (e) => {
-    if (e.target.files && e.target.files[0]) {
-        processarImagem(e.target.files[0]);
-    }
-});
-
-// A sua função que reduz o peso da imagem
-function processarImagem(file) {
-    if (!file.type.startsWith('image/')) {
-        alert('Por favor, selecione apenas arquivos de imagem.');
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const img = new Image();
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            const MAX_WIDTH = 400;
-            const scaleSize = MAX_WIDTH / img.width;
-
-            canvas.width = MAX_WIDTH;
-            canvas.height = img.height * scaleSize;
-
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-            base64Image = canvas.toDataURL('image/jpeg', 0.7);
-
-            previewFoto.src = base64Image;
-            previewFoto.style.display = 'block';
-            dropZoneText.style.display = 'none';
-        };
-        img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-}
-
-// ==========================================
-// LÓGICA DE RENDERIZAÇÃO
-// ==========================================
 async function carregarComentarios() {
-    feed.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--primary);">Carregando relatos do servidor...</div>';
+    feed.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--primary);">Carregando relatos seguros...</div>';
 
     try {
         const q = query(collection(db, "relatos"), orderBy("timestamp", "desc"));
@@ -345,12 +269,12 @@ async function carregarComentarios() {
             div.style.animationDelay = (indexAnimacao * 0.1) + 's';
             indexAnimacao++;
 
-            const fotoFinal = relato.foto || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome) + '&background=0f766e&color=fff';
+            const fotoFinal = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome) + '&background=0f766e&color=fff';
             const curtidas = relato.curtidas || 0;
 
             div.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; position: relative;">
-                    <img src="${fotoFinal}" alt="Foto de perfil" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
+                    <img src="${fotoFinal}" alt="Avatar anonimizado" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
                     <div style="flex: 1;">
                         <strong style="color: var(--primary); display: block; font-size: 1.1rem;">${relato.nome}</strong>
                         <span style="font-size: 0.85rem; color: #888;">${relato.data}</span>
@@ -367,7 +291,7 @@ async function carregarComentarios() {
                         <span style="color: #e63946; font-weight: 600; font-size: 1rem;" class="contador-curtidas">${String(curtidas).padStart(2, '0')}</span>
                     </button>
                     <button class="btn-compartilhar" data-nome="${relato.nome}" data-mensagem="${relato.mensagem}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; color: var(--primary); font-weight: 600;">
-                        <span style="font-size: 1.2rem;"></span>
+                        <span style="font-size: 1.2rem;">🔗</span>
                         Compartilhar
                     </button>
                 </div>
@@ -383,11 +307,11 @@ async function carregarComentarios() {
             div.querySelector('.btn-compartilhar').addEventListener('click', (e) => {
                 const nomeCompartilhado = e.currentTarget.dataset.nome;
                 const msgCompartilhada = e.currentTarget.dataset.mensagem;
-                const textoCompartilhado = `${nomeCompartilhado} compartilhou:\n\n"${msgCompartilhada}"\n\nVocê também pode compartilhar sua história em Paliar para Cuidar! 💚`;
+                const textoCompartilhado = `${nomeCompartilhado} compartilhou:\n\n"${msgCompartilhada}"\n\nVocê também pode compartilhar sua história de forma anônima na plataforma Essência do Cuidar! 💚`;
 
                 if (navigator.share) {
                     navigator.share({
-                        title: 'Paliar para Cuidar - Vivência',
+                        title: 'Essência do Cuidar - Vivência',
                         text: textoCompartilhado
                     }).catch(err => console.log('Erro ao compartilhar:', err));
                 } else {
@@ -400,7 +324,7 @@ async function carregarComentarios() {
             });
 
             div.querySelector('.btn-deletar').addEventListener('click', async (e) => {
-                if(confirm("Tem certeza que deseja apagar?")) {
+                if(confirm("Tem certeza que deseja apagar permanentemente este relato?")) {
                     const id = e.currentTarget.dataset.id;
                     await deleteDoc(doc(db, "relatos", id));
                     carregarComentarios();
@@ -411,13 +335,10 @@ async function carregarComentarios() {
         });
     } catch (error) {
         console.error("Erro ao carregar:", error);
-        feed.innerHTML = '<div style="text-align: center; padding: 2rem;">Houve um problema de conexão.</div>';
+        feed.innerHTML = '<div style="text-align: center; padding: 2rem;">Houve um problema de conexão com o banco de dados seguro.</div>';
     }
 }
 
-// ==========================================
-// SALVAMENTO DIRETO NO BANCO DE DADOS
-// ==========================================
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -431,13 +352,11 @@ form.addEventListener('submit', async (e) => {
     }
 
     btnSubmit.disabled = true;
-    btnSubmit.innerText = "Salvando na nuvem...";
+    btnSubmit.innerText = "Enviando para moderação...";
 
     try {
-        // Agora salvamos a imagem como texto direto no banco! Sem depender do Storage pago.
         await addDoc(collection(db, "relatos"), {
             nome: nome,
-            foto: base64Image,
             mensagem: mensagem,
             data: new Date().toLocaleDateString('pt-BR'),
             timestamp: Date.now(),
@@ -445,17 +364,15 @@ form.addEventListener('submit', async (e) => {
         });
 
         form.reset();
-        base64Image = '';
-        previewFoto.src = '';
-        previewFoto.style.display = 'none';
-        dropZoneText.style.display = 'inline';
         inputNome.focus();
 
         await carregarComentarios();
         feed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
+        alert('Obrigado por compartilhar! Seu relato foi enviado e logo estará disponível no mural.');
+
     } catch (error) {
-        alert('Erro ao salvar. Verifique o console.');
+        alert('Erro ao salvar o relato de forma segura. Tente novamente mais tarde.');
         console.error(error);
     } finally {
         btnSubmit.disabled = false;

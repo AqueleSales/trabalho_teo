@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Cuidados & Acolhimento - Paliar para Cuidar{% endblock %}
+{% block title %}Cuidados & Acolhimento - Essência do Cuidar{% endblock %}
 
 {% block content %}
 
@@ -13,21 +13,28 @@
     </div>
 </section>
 
-<!-- CUIDADOS PALIATIVOS -->
 <section class="reveal">
     <h2>O que são Cuidados Paliativos?</h2>
     <p>
-        De acordo com a Organização Mundial de Saúde, os cuidados paliativos previnem e aliviam o sofrimento 
-        por meio da identificação precoce e tratamento da dor (física, psicossocial ou espiritual), melhorando 
+        De acordo com a Organização Mundial de Saúde, os cuidados paliativos previnem e aliviam o sofrimento
+        por meio da identificação precoce e tratamento da dor (física, psicossocial ou espiritual), melhorando
         a qualidade de vida dos pacientes e familiares diante de doenças graves que ameaçam a continuidade da vida.
     </p>
+
+    <!-- NOVA SEÇÃO: Esclarecimento sobre terminalidade exigido pela banca -->
+    <div style="background: #f0fdfa; border-left: 5px solid var(--primary-light); padding: 1.5rem; margin: 2rem 0; border-radius: 8px; box-shadow: var(--shadow-sm);">
+        <h4 style="color: var(--primary-dark); margin-top: 0; font-size: 1.2rem;">⚠️ Uma Abordagem Contínua (Além da Terminalidade)</h4>
+        <p style="margin-bottom: 0; color: var(--gray-700); line-height: 1.8;">
+            É fundamental desmistificar que os cuidados paliativos são exclusivos para o fim da vida. Eles <strong>não se restringem à terminalidade ou aos momentos finais</strong>. Na verdade, constituem uma abordagem de cuidado contínuo que deve ser iniciada <strong>desde o diagnóstico</strong> de uma doença ameaçadora da vida, estendendo-se por todo o tratamento e indo até o apoio à família após o luto. O foco central é sempre a promoção da qualidade de vida, o controle rigoroso de sintomas e o apoio biopsicossocial.
+        </p>
+    </div>
 
     <div class="cards-grid">
         <div class="card">
             <div class="card-header" style="background: url('/static/images/holistico2.jpg') center/cover no-repeat; min-height: 100px;"></div>
             <div class="card-body">
-                <h3>Holístico</h3>
-                <p>Abordagem integral considerando aspectos físicos, emocionais, sociais e espirituais.</p>
+                <h3>Integrativo</h3>
+                <p>Abordagem integrativa considerando aspectos físicos, emocionais, sociais e espirituais.</p>
             </div>
         </div>
 
@@ -49,32 +56,38 @@
     </div>
 </section>
 
-<!-- SURVIVORSHIP -->
 <section class="section-accent reveal">
     <h2 style="color: white; margin-bottom: 1.5rem;">Sobrevivência ao Câncer (Survivorship)</h2>
     <p style="color: rgba(255,255,255,0.95); margin-bottom: 1.5rem; font-size: 1.1rem;">
-        Survivorship é o estado de espírito que engloba as perspectivas, necessidades e desafios físicos, 
+        Survivorship é o estado de espírito que engloba as perspectivas, necessidades e desafios físicos,
         psicológicos, sociais e econômicos vivenciados após o diagnóstico.
     </p>
     <p style="color: rgba(255,255,255,0.95); font-size: 1.1rem;">
-        Por meio dos cuidados paliativos, pode-se proporcionar aos sobreviventes uma saída do estado de 
-        puramente sobrevivência para voltar a aproveitar o que a vida tem a oferecer. Isso significa 
+        Por meio dos cuidados paliativos, pode-se proporcionar aos sobreviventes uma saída do estado de
+        puramente sobrevivência para voltar a aproveitar o que a vida tem a oferecer. Isso significa
         recuperar autonomia, retomar relacionamentos significativos e encontrar novo propósito.
     </p>
 </section>
 
-<!-- PRÁTICAS INTEGRATIVAS -->
-<section class="reveal" style="max-width: 800px; margin: 0 auto;">
+<section class="reveal" style="max-width: 900px; margin: 0 auto;">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Práticas Integrativas e Complementares (PICS)</h2>
-        <p style="color: var(--gray-600); font-size: 1.1rem;">
-            As PICS oferecem uma dimensão humanizada, contínua e integral ao cuidado. São ofertadas no SUS
-            29 práticas diferentes, atuando diretamente na melhoria da saúde mental, emocional e física.
+
+        <!-- TEXTO AMPLIADO SOBRE AS PICS E SUBSTITUIÇÃO DO TERMO HOLÍSTICA -->
+        <p style="color: var(--gray-700); font-size: 1.1rem; line-height: 1.8; text-align: justify; margin-bottom: 1rem;">
+            As PICS oferecem uma dimensão <strong>integrativa</strong>, contínua e humanizada ao cuidado. Os objetivos dessas práticas envolvem a prevenção de agravos, a promoção e a recuperação da saúde, com ênfase na escuta acolhedora, no desenvolvimento do vínculo terapêutico e na integração do ser humano com a sociedade.
         </p>
+        <p style="color: var(--gray-700); font-size: 1.1rem; line-height: 1.8; text-align: justify; margin-bottom: 2rem;">
+            No cuidado oncológico e paliativo, as possibilidades de aplicação são vastas: elas atuam desde o alívio de sintomas físicos intensos até o suporte emocional sistêmico. Atualmente, são ofertadas no SUS 29 práticas diferentes, reforçando as diretrizes da saúde pública brasileira.
+        </p>
+
+        <!-- LINK OFICIAL PARA A POLÍTICA DAS PICS -->
+        <a href="https://www.gov.br/saude/pt-br/composicao/saps/pics" target="_blank" class="btn btn-outline" style="font-size: 1rem; padding: 0.8rem 1.5rem; margin-bottom: 2rem;">
+            🔗 Acessar as Políticas Oficiais das PICS (Ministério da Saúde)
+        </a>
     </div>
 
     <div class="accordion-container">
-        <!-- Yoga -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -87,7 +100,6 @@
             </div>
         </div>
 
-        <!-- Musicoterapia -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -100,7 +112,6 @@
             </div>
         </div>
 
-        <!-- Acupuntura -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -113,7 +124,6 @@
             </div>
         </div>
 
-        <!-- Meditação -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -126,7 +136,6 @@
             </div>
         </div>
 
-        <!-- Aromaterapia -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -139,7 +148,6 @@
             </div>
         </div>
 
-        <!-- Reiki -->
         <div class="accordion-item">
             <button class="accordion-header">
                 <span style="display: flex; align-items: center; gap: 10px;">
@@ -154,18 +162,16 @@
     </div>
 </section>
 
-<!-- APOIO À FAMÍLIA -->
 <section class="feature-row reveal">
-    <!-- Substitua a div da imagem espremida da família por esta -->
-<div class="feature-image" style="background: url('/static/images/familia.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
+    <div class="feature-image" style="background: url('/static/images/familia.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
     <div class="feature-content">
         <h3>Apoio à Família e Saúde Mental</h3>
         <p>
-            O adoecimento oncológico exige do paciente e de seus familiares constante adaptação. A família 
+            O adoecimento oncológico exige do paciente e de seus familiares constante adaptação. A família
             assume papel fundamental como fonte de apoio e suporte emocional.
         </p>
         <p>
-            As reações ao diagnóstico — incredulidade, negação, desespero, medo — são normais e variam 
+            As reações ao diagnóstico — incredulidade, negação, desespero, medo — são normais e variam
             conforme as experiências e crenças de cada um.
         </p>
         <ul>
@@ -178,7 +184,6 @@
     </div>
 </section>
 
-<!-- MENSAGEM DE CONFORTO -->
 <section class="section-accent reveal" style="text-align: center;">
     <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">
         💚 Uma Mensagem de Esperança e Acolhimento
@@ -191,7 +196,6 @@
     </div>
 </section>
 
-<!-- RECURSOS PRÁTICOS -->
 <section class="reveal">
     <h2>Dicas Práticas para Cuidadores</h2>
     <div class="list-refined">
@@ -230,8 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnVoz = document.getElementById('btn-voz-ajuda');
     const statusVoz = document.getElementById('status-voz');
     const synth = window.speechSynthesis;
-    
-    const mensagemConforto = `Respire fundo. O que você está sentindo é completamente válido e normal. 
+
+    const mensagemConforto = `Respire fundo. O que você está sentindo é completamente válido e normal.
     Cuidar de quem amamos é um ato de imensa coragem, mas lembre-se: você também merece cuidado.
     Permita-se sentir, permita-se chorar e, acima de tudo, não tenha medo de pedir ajuda.
     Você não está sozinho nessa jornada.
@@ -268,7 +272,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona todos os botões do accordion
     const accordionHeaders = document.querySelectorAll('.accordion-header');
 
     accordionHeaders.forEach(header => {
@@ -277,16 +280,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const accordionContent = header.nextElementSibling;
             const isActive = accordionItem.classList.contains('active');
 
-            // Regra de Ouro da UX: Fecha todos os outros accordions abertos
             document.querySelectorAll('.accordion-item').forEach(item => {
                 item.classList.remove('active');
                 item.querySelector('.accordion-content').style.maxHeight = null;
             });
 
-            // Se o que foi clicado NÃO estava ativo, nós o abrimos agora
             if (!isActive) {
                 accordionItem.classList.add('active');
-                // O scrollHeight calcula exatamente o tamanho que o texto precisa ter
                 accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
             }
         });
@@ -294,4 +294,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 {% endblock %}
-

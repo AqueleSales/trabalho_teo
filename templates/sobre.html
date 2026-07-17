@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Sobre o Projeto - Paliar para Cuidar{% endblock %}
+{% block title %}Sobre o Projeto - Essência do Cuidar{% endblock %}
 
 {% block content %}
 
@@ -13,7 +13,6 @@
     </div>
 </section>
 
-<!-- MISSÃO, VISÃO E VALORES -->
 <section class="reveal">
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
         <div class="card">
@@ -21,7 +20,7 @@
             <div class="card-body">
                 <h3 style="color: var(--primary);">Missão</h3>
                 <p>
-                    Educar e acolher pacientes, famílias e comunidades sobre câncer, cuidados paliativos 
+                    Educar e acolher pacientes, famílias e comunidades sobre câncer, cuidados paliativos
                     e qualidade de vida, proporcionando acesso a informações confiáveis e rede de apoio.
                 </p>
             </div>
@@ -32,7 +31,7 @@
             <div class="card-body">
                 <h3 style="color: var(--secondary);">Visão</h3>
                 <p>
-                    Um mundo onde todas as pessoas vivendo com câncer tenham acesso a informação humanizada, 
+                    Um mundo onde todas as pessoas vivendo com câncer tenham acesso a informação humanizada,
                     suporte integral e oportunidade de viver com qualidade e dignidade.
                 </p>
             </div>
@@ -43,7 +42,7 @@
             <div class="card-body">
                 <h3 style="color: var(--warning);">Valores</h3>
                 <p>
-                    Empatia, acolhimento, transparência, cientificidade, inclusão e esperança. 
+                    Empatia, acolhimento, transparência, cientificidade, inclusão e esperança.
                     Acreditamos que toda vida tem valor e significado.
                 </p>
             </div>
@@ -51,19 +50,24 @@
     </div>
 </section>
 
-<!-- ORIGEM DO PROJETO -->
 <section class="feature-row reveal">
-    <!-- Substitua a div do card-header por esta feature-image -->
-<div class="feature-image" style="background: url('/static/images/unb.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
+    <div class="feature-image" style="background: url('/static/images/unb.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
     <div class="feature-content">
+        <!-- Inclusão das Logos para identificar a origem institucional como exigido pela banca -->
+        <div style="display: inline-flex; gap: 15px; align-items: center; background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+            <img src="{{ url_for('static', filename='images/logo-unb.png') }}" alt="Universidade de Brasília" style="height: 50px;" onerror="this.style.display='none';">
+            <img src="{{ url_for('static', filename='images/logo-enfermagem.png') }}" alt="Departamento de Enfermagem" style="height: 50px;" onerror="this.style.display='none';">
+            <span style="font-weight: bold; color: var(--primary-dark); font-size: 1.1rem; border-left: 2px solid var(--gray-300); padding-left: 15px;">FS - UnB</span>
+        </div>
+
         <h3>Origem do Projeto</h3>
         <p>
-            Este website é um trabalho acadêmico desenvolvido para a disciplina <strong>ENF0062 – Cuidado 
+            Esta plataforma de tecnologia em saúde é um trabalho acadêmico desenvolvido para a disciplina <strong>ENF0062 – Cuidado
             do Adulto e Idoso</strong>, do Departamento de Enfermagem da <strong>Universidade de Brasília (UnB)</strong>.
         </p>
         <p>
-            O projeto nasceu da necessidade identificada em sala de aula de criar um espaço digital dedicado 
-            ao acolhimento, educação e orientação sobre cuidados paliativos no contexto da saúde oncológica, 
+            O projeto nasceu da necessidade identificada em sala de aula de criar um espaço digital dedicado
+            ao acolhimento, educação e orientação sobre cuidados paliativos no contexto da saúde oncológica,
             especialmente no Distrito Federal.
         </p>
         <ul>
@@ -75,7 +79,6 @@
     </div>
 </section>
 
-<!-- EQUIPE -->
 <section class="reveal">
     <h2 style="text-align: center; margin-bottom: 3rem;">A Equipe Por Trás do Projeto</h2>
 
@@ -83,22 +86,10 @@
         <h3 style="color: white; margin-bottom: 1.5rem;">Docentes Orientadoras</h3>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
             <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <p style="color: white; font-weight: 500; margin: 0;">Ana Beatriz Duarte Vieira</p>
+                <p style="color: white; font-weight: 500; margin: 0;">Profª. Dra. Ana Beatriz Duarte Vieira</p>
             </div>
             <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <p style="color: white; font-weight: 500; margin: 0;">Andrea Mathes Faustino</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <p style="color: white; font-weight: 500; margin: 0;">Bruna Cristina de Araújo Lima</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <p style="color: white; font-weight: 500; margin: 0;">Katiuscia Larsen de Abreu Aguiar</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <p style="color: white; font-weight: 500; margin: 0;">Leides Barroso de Azevedo Moura</p>
-            </div>
-            <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <p style="color: white; font-weight: 500; margin: 0;">Luciana Neves da Silva Bampi</p>
+                <p style="color: white; font-weight: 500; margin: 0;">Profª. Dra. Bruna Cristina de Araújo Lima</p>
             </div>
         </div>
     </div>
@@ -106,56 +97,49 @@
     <div class="cards-grid" style="margin-bottom: 3rem;">
         <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
             <div style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%); padding: 2rem; text-align: center;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👩‍💼</div>
-                <h3 style="color: white; margin: 0; font-size: 1.1rem;">Discentes de Enfermagem</h3>
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">👩‍⚕️</div>
+                <h3 style="color: white; margin: 0; font-size: 1.2rem;">Autoras & Idealizadoras (Enfermagem)</h3>
             </div>
             <div style="padding: 2rem; color: var(--gray-700);">
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Isadora Costa Cunha</strong> (241007338)
+                <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--primary-dark); font-weight: 600; text-align: center; background: #f0fdfa; padding: 10px; border-radius: 8px;">
+                    Responsáveis pela concepção da tecnologia, pesquisa baseada em evidências, estruturação clínica e autoria de todo o conteúdo educativo.
                 </p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Lauany da Silva</strong> (242039434)
-                </p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Lucas Gomes Cavalcante</strong> (241023761)
-                </p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Maria Eduarda Teodoro de Assis</strong> (241032804)
-                </p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Rafaela Tavares Raposo</strong> (242038419)
-                </p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Sophia Lima de Andrade</strong> (241007374)
-                </p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem;">
-                    <strong>Tulasi Devii Tezelli</strong> (222026742)
-                </p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Isadora Costa Cunha</strong> (241007338)</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Lauany da Silva</strong> (242039434)</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Lucas Gomes Cavalcante</strong> (241023761)</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Maria Eduarda Assis</strong> (241032804)</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Rafaela Tavares Raposo</strong> (242038419)</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Sophia Lima de Andrade</strong> (241007374)</p>
+                    <p style="margin: 0.2rem 0; font-size: 0.95rem;"><strong>Tulasi Devii Tezelli</strong> (222026742)</p>
+                </div>
             </div>
         </div>
 
         <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
             <div style="background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%); padding: 2rem; text-align: center;">
                 <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💻</div>
-                <h3 style="color: white; margin: 0;">Desenvolvimento do Website</h3>
+                <h3 style="color: white; margin: 0; font-size: 1.2rem;">Apoio Técnico Interdisciplinar</h3>
             </div>
-            <div style="padding: 2rem; text-align: center;">
-                <p style="color: var(--gray-700); margin: 0.5rem 0; font-size: 0.95rem;">
+            <div style="padding: 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                <p style="color: var(--gray-800); margin: 0.5rem 0; font-size: 1.1rem;">
                     <strong>Gabriel Sales Nogueira</strong>
                 </p>
-                <p style="color: var(--gray-500); margin: 1rem 0 0 0; font-size: 0.9rem;">
-                    Design, desenvolvimento frontend, animações e experiência do usuário
+                <p style="color: var(--secondary); font-weight: 500; margin-bottom: 1rem; font-size: 0.9rem;">
+                    (Engenharia de Software)
+                </p>
+                <p style="color: var(--gray-600); margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                    Colaboração interdisciplinar prestando suporte técnico na codificação frontend, responsividade e implementação digital do design projetado pela equipe de Enfermagem.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- REFERÊNCIAS BIBLIOGRÁFICAS -->
 <section class="reveal">
     <h2>Referências Bibliográficas</h2>
     <p style="color: var(--gray-600); margin-bottom: 2rem;">
-        Este projeto foi desenvolvido com base em literatura científica atualizada e diretrizes 
+        Este projeto foi desenvolvido com base em literatura científica atualizada e diretrizes
         internacionais de saúde.
     </p>
 
@@ -188,22 +172,20 @@
     </div>
 </section>
 
-<!-- POLÍTICA E DIREITOS -->
 <section class="section-accent reveal" style="text-align: center;">
     <h3 style="color: white; margin-bottom: 1.5rem;">🔐 Política de Privacidade</h3>
     <p style="color: rgba(255,255,255,0.95); max-width: 800px; margin: 0 auto;">
-        <strong>Este site possui fins estritamente acadêmicos e informativos.</strong> 
-        Nenhum dado pessoal é coletado, armazenado ou compartilhado por nossa plataforma. 
-        Os relatos publicados no Mural de Vivências são armazenados apenas no navegador do usuário.
+        <strong>Este site possui fins estritamente acadêmicos e informativos.</strong>
+        Nenhum dado pessoal sensível é coletado ou comercializado por nossa plataforma.
+        Os relatos publicados no Mural de Vivências passam por moderação ética para garantir o anonimato e a proteção das informações dos participantes.
     </p>
 </section>
 
-<!-- AGRADECIMENTOS -->
 <section class="reveal">
     <h2 style="text-align: center; margin-bottom: 2rem;">Agradecimentos</h2>
     <div style="background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%); padding: 3rem 2rem; border-radius: 16px; text-align: center;">
         <p style="font-size: 1.1rem; color: var(--gray-700); margin-bottom: 1.5rem;">
-            Agradecemos a todas as pessoas que vivem com câncer, seus familiares, cuidadores e 
+            Agradecemos a todas as pessoas que vivem com câncer, seus familiares, cuidadores e
             profissionais de saúde que inspiraram e guiaram este projeto.
         </p>
         <p style="font-size: 1rem; color: var(--primary); font-weight: 600;">
@@ -212,11 +194,10 @@
     </div>
 </section>
 
-<!-- CONTATO -->
 <section class="reveal">
     <h2 style="text-align: center; margin-bottom: 2rem;">Dúvidas ou Sugestões?</h2>
     <p style="text-align: center; color: var(--gray-600); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-        Se você tiver sugestões para melhorar este site, dúvidas sobre os conteúdos ou gostaria de 
+        Se você tiver sugestões para melhorar este site, dúvidas sobre os conteúdos ou gostaria de
         contribuir, entre em contato através do Departamento de Enfermagem da Universidade de Brasília.
     </p>
     <div style="text-align: center;">

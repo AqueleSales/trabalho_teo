@@ -1,12 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, jsonify
 import os
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
-
-# ============================================
-# ROTAS PRINCIPAIS
-# ============================================
 
 @app.route('/')
 def home():
@@ -32,13 +28,8 @@ def vivencias():
 def sobre():
     return render_template('sobre.html')
 
-# ============================================
-# API - DADOS DINÂMICOS
-# ============================================
-
 @app.route('/api/mitos-verdades')
 def get_mitos_verdades():
-    """Retorna dados para o jogo de mitos e verdades - Flip Cards"""
     dados = [
         {
             "id": 1,
@@ -93,7 +84,6 @@ def get_mitos_verdades():
 
 @app.route('/api/redes-apoio-df')
 def get_redes_apoio():
-    """Retorna dados de redes de apoio no DF"""
     redes = [
         {
             "nome": "Hospital de Base (HBDF)",
@@ -140,10 +130,6 @@ def get_redes_apoio():
     ]
     return jsonify(redes)
 
-# ============================================
-# TRATAMENTO DE ERROS
-# ============================================
-
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('index.html'), 404
@@ -152,18 +138,5 @@ def page_not_found(error):
 def internal_error(error):
     return render_template('index.html'), 500
 
-# ============================================
-# RODANDO A APLICAÇÃO
-# ============================================
-
 if __name__ == '__main__':
-    # Para desenvolvimento local
-    app.run(
-        debug=True,
-        host='localhost',
-        port=5000,
-        threaded=True
-    )
-    
-    # Para produção, use um servidor WSGI como gunicorn:
-    # gunicorn -w 4 -b 0.0.0.0:5000 app:app
+    app.run(debug=True, host='localhost', port=5000, threaded=True)
