@@ -7,9 +7,9 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 # ==========================================
 # CONFIGURAÇÃO DA IA (GEMINI)
-# Substitua 'SUA_CHAVE_AQUI' pela chave gerada no Google AI Studio
 # ==========================================
-genai.configure(api_key="SUA_CHAVE_AQUI")
+chave_api = os.environ.get("GEMINI_API_KEY")
+genai.configure(api_key=chave_api)
 modelo_ia = genai.GenerativeModel('gemini-1.5-flash')
 
 @app.route('/')
