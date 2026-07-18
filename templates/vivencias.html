@@ -3,6 +3,115 @@
 {% block title %}Vivências & Relatos - Palioguia{% endblock %}
 
 {% block content %}
+<style>
+    /* Estilos do Pop-up (Modal) LGPD */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 550px;
+        position: relative;
+        transform: translateY(-20px);
+        transition: transform 0.3s ease;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-top: 6px solid var(--primary);
+    }
+
+    .modal-overlay.active .modal-content {
+        transform: translateY(0);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--gray-500);
+        transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+        color: var(--danger);
+    }
+
+    .modal-body {
+        margin: 1.5rem 0;
+        color: var(--gray-700);
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .modal-body ul {
+        margin-top: 1rem;
+        padding-left: 1.5rem;
+    }
+
+    .modal-body li {
+        margin-bottom: 0.5rem;
+    }
+
+    .modal-checkbox-label {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        cursor: pointer;
+        background: #f8fafc;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-checkbox-label input[type="checkbox"] {
+        margin-top: 3px;
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary);
+        cursor: pointer;
+    }
+
+    .btn-publicar-final {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        background: var(--primary);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s, opacity 0.3s;
+    }
+
+    .btn-publicar-final:disabled {
+        background: var(--gray-400);
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+</style>
 
 <section class="hero-vivencias">
     <div class="hero-content">
@@ -43,9 +152,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testemunhal será adicionado')">
-                    Assistir
-                </button>
+                <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" class="btn btn-primary">Assistir</a>
             </div>
         </div>
 
@@ -59,9 +166,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testemunhal será adicionado')">
-                    Assistir
-                </button>
+                <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" class="btn btn-primary">Assistir</a>
             </div>
         </div>
 
@@ -75,9 +180,7 @@
                 </p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary" onclick="alert('Em breve: vídeo testemunhal será adicionado')">
-                    Assistir
-                </button>
+                <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" class="btn btn-primary">Assistir</a>
             </div>
         </div>
     </div>
@@ -122,17 +225,38 @@
                 style="min-height: 120px; resize: vertical;"
             ></textarea>
 
-            <!-- AVISO DE PRIVACIDADE ÉTICA -->
-            <div style="background: #fef2f2; padding: 1.2rem; border-left: 4px solid #ef4444; border-radius: 4px; font-size: 0.9rem; color: #991b1b; margin-top: 1rem;">
-                <strong>⚠️ Aviso de Privacidade e Ética:</strong> Para garantir a segurança e o sigilo de todos, pedimos que não inclua nomes completos, dados hospitalares ou informações que identifiquem terceiros. Todos os relatos passam por moderação prévia da equipe acadêmica antes de se tornarem públicos na plataforma.
-            </div>
-
-            <button type="submit" class="btn-postar" style="align-self: flex-end; margin-top: 1rem;">
+            <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; margin-top: 1rem;">
                 Publicar Relato
             </button>
         </form>
     </div>
 </section>
+
+<!-- POP-UP / MODAL LGPD -->
+<div id="modal-lgpd" class="modal-overlay">
+    <div class="modal-content">
+        <span class="modal-close" id="fechar-modal">&times;</span>
+        <h3 style="color: var(--primary-dark); margin-top: 0; margin-bottom: 10px;">Termos de Segurança e Privacidade</h3>
+
+        <div class="modal-body">
+            <p>Para garantir um espaço seguro e em conformidade com as diretrizes éticas e a LGPD, leia as regras abaixo:</p>
+            <ul>
+                <li><strong>Anonimato e Sigilo:</strong> Não utilize nomes completos, contatos pessoais ou exponha dados de terceiros e prontuários.</li>
+                <li><strong>Respeito Mútuo:</strong> Este é um local de acolhimento. Discursos de ódio ou julgamentos serão removidos.</li>
+                <li><strong>Moderação de Conteúdo:</strong> Ao prosseguir, você concorda que seu relato passará por nosso sistema inteligente de moderação para garantir a conformidade ética antes e depois da publicação.</li>
+            </ul>
+        </div>
+
+        <label class="modal-checkbox-label">
+            <input type="checkbox" id="checkbox-termos">
+            <span>Li, compreendo as diretrizes e aceito os Termos de Uso.</span>
+        </label>
+
+        <button id="btn-enviar-banco" class="btn-publicar-final" disabled>
+            Aceitar e Publicar
+        </button>
+    </div>
+</div>
 
 <!-- ORIENTAÇÕES ÉTICAS -->
 <section class="section-accent reveal">
@@ -239,6 +363,13 @@ const feed = document.getElementById('feed');
 const inputNome = document.getElementById('input-nome');
 const inputMensagem = document.getElementById('input-mensagem');
 
+// Elementos do Modal LGPD
+const btnAbrirModal = document.getElementById('btn-abrir-modal');
+const modalLgpd = document.getElementById('modal-lgpd');
+const btnFecharModal = document.getElementById('fechar-modal');
+const checkboxTermos = document.getElementById('checkbox-termos');
+const btnEnviarBanco = document.getElementById('btn-enviar-banco');
+
 async function carregarComentarios() {
     feed.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--primary);">Carregando relatos seguros...</div>';
 
@@ -339,20 +470,45 @@ async function carregarComentarios() {
     }
 }
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
+// Lógica de Abertura do Modal
+btnAbrirModal.addEventListener('click', () => {
     const nome = inputNome.value.trim();
     const mensagem = inputMensagem.value.trim();
-    const btnSubmit = form.querySelector('.btn-postar');
 
+    // Verifica se os campos não estão vazios antes de mostrar os termos
     if (!nome || !mensagem) {
-        alert('Por favor, preencha todos os campos obrigatórios.');
+        alert('Por favor, preencha seu nome/apelido e sua mensagem antes de publicar.');
         return;
     }
 
-    btnSubmit.disabled = true;
-    btnSubmit.innerText = "Enviando para moderação...";
+    // Se estiver tudo preenchido, abre o pop-up
+    modalLgpd.classList.add('active');
+});
+
+// Fechar Modal no X
+btnFecharModal.addEventListener('click', () => {
+    modalLgpd.classList.remove('active');
+});
+
+// Fechar Modal clicando fora dele
+modalLgpd.addEventListener('click', (e) => {
+    if (e.target === modalLgpd) {
+        modalLgpd.classList.remove('active');
+    }
+});
+
+// Habilitar botão apenas quando o checkbox for marcado
+checkboxTermos.addEventListener('change', () => {
+    btnEnviarBanco.disabled = !checkboxTermos.checked;
+});
+
+// Envio final para o Firebase após aceitar os termos
+btnEnviarBanco.addEventListener('click', async () => {
+    const nome = inputNome.value.trim();
+    const mensagem = inputMensagem.value.trim();
+
+    btnEnviarBanco.disabled = true;
+    btnEnviarBanco.innerText = "Publicando...";
 
     try {
         await addDoc(collection(db, "relatos"), {
@@ -363,20 +519,22 @@ form.addEventListener('submit', async (e) => {
             curtidas: 0
         });
 
+        // Limpa o formulário e reseta o modal
         form.reset();
-        inputNome.focus();
+        checkboxTermos.checked = false;
+        btnEnviarBanco.innerText = "Aceitar e Publicar";
+        modalLgpd.classList.remove('active');
 
         await carregarComentarios();
         feed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-        alert('Obrigado por compartilhar! Seu relato foi enviado e logo estará disponível no mural.');
+        alert('Obrigado por compartilhar! Seu relato foi enviado com sucesso.');
 
     } catch (error) {
-        alert('Erro ao salvar o relato de forma segura. Tente novamente mais tarde.');
+        alert('Erro ao salvar o relato. Verifique a conexão com o banco.');
         console.error(error);
-    } finally {
-        btnSubmit.disabled = false;
-        btnSubmit.innerText = "Publicar Relato";
+        btnEnviarBanco.disabled = false;
+        btnEnviarBanco.innerText = "Aceitar e Publicar";
     }
 });
 
