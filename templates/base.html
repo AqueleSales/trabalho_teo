@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Essência do Cuidar - Cuidados Paliativos{% endblock %}</title>
+    <title>{% block title %}Palioguia - Cuidados Paliativos{% endblock %}</title>
     <meta name="description" content="Plataforma de educação sobre cuidados paliativos, câncer e qualidade de vida">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,9 +15,9 @@
     <header>
         <nav class="navbar">
             <a href="/" class="nav-logo" style="text-decoration: none; display: flex; align-items: center;">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Essência do Cuidar" style="height: 60px; width: auto; transition: transform 0.3s ease;">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo Palioguia" style="height: 60px; width: auto; transition: transform 0.3s ease;">
                 <span style="color: var(--primary); font-family: var(--font-titulo); font-weight: 700; font-size: 1.5rem; margin-left: 12px;">
-                    Essência do Cuidar
+                    Palioguia
                 </span>
             </a>
             <div class="nav-menu">
@@ -43,20 +43,19 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- RODAPÉ ATUALIZADO COM AS EXIGÊNCIAS DA BANCA -->
+    <!-- RODAPÉ ATUALIZADO COM AS EXIGÊNCIAS DA BANCA E NOMES CORRETOS DAS IMAGENS -->
     <footer style="background: linear-gradient(135deg, var(--gray-900) 0%, var(--primary-dark) 100%); color: white; padding: 3rem 2rem; margin-top: 5rem; text-align: center;">
         <div style="max-width: 1400px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
 
             <!-- Logos Institucionais -->
             <div style="display: flex; gap: 20px; align-items: center; justify-content: center; background: white; padding: 10px 20px; border-radius: 12px;">
-                <!-- DICA: Baixe as logos da UnB e de Enfermagem em PNG com fundo transparente e salve na sua pasta images com esses nomes -->
-                <img src="{{ url_for('static', filename='images/logo-unb.png') }}" alt="Universidade de Brasília" style="height: 50px;" onerror="this.style.display='none';">
-                <img src="{{ url_for('static', filename='images/logo-enfermagem.png') }}" alt="Departamento de Enfermagem" style="height: 50px;" onerror="this.style.display='none';">
+                <img src="{{ url_for('static', filename='images/logo-unb.png.png') }}" alt="Universidade de Brasília" style="height: 50px;" onerror="this.style.display='none';">
+                <img src="{{ url_for('static', filename='images/logo-enfermagem.jpg') }}" alt="Departamento de Enfermagem" style="height: 50px;" onerror="this.style.display='none';">
                 <!-- Fallback em texto caso a imagem não carregue -->
                 <span style="color: var(--gray-800); font-weight: bold; font-family: var(--font-titulo); font-size: 1.1rem;">Universidade de Brasília - Enfermagem</span>
             </div>
 
-            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.9);">Essência do Cuidar © 2026 | Projeto Acadêmico - Departamento de Enfermagem UnB</p>
+            <p style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.9);">Palioguia © 2026 | Projeto Acadêmico - Departamento de Enfermagem UnB</p>
 
             <!-- Links Oficiais Adicionados -->
             <div style="display: flex; gap: 15px; justify-content: center; font-size: 1rem; font-weight: bold;">

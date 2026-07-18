@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Vivências & Relatos - Essência do Cuidar{% endblock %}
+{% block title %}Vivências & Relatos - Palioguia{% endblock %}
 
 {% block content %}
 
@@ -307,11 +307,11 @@ async function carregarComentarios() {
             div.querySelector('.btn-compartilhar').addEventListener('click', (e) => {
                 const nomeCompartilhado = e.currentTarget.dataset.nome;
                 const msgCompartilhada = e.currentTarget.dataset.mensagem;
-                const textoCompartilhado = `${nomeCompartilhado} compartilhou:\n\n"${msgCompartilhada}"\n\nVocê também pode compartilhar sua história de forma anônima na plataforma Essência do Cuidar! 💚`;
+                const textoCompartilhado = `${nomeCompartilhado} compartilhou:\n\n"${msgCompartilhada}"\n\nVocê também pode compartilhar sua história de forma anônima na plataforma Palioguia! 💚`;
 
                 if (navigator.share) {
                     navigator.share({
-                        title: 'Essência do Cuidar - Vivência',
+                        title: 'Palioguia - Vivência',
                         text: textoCompartilhado
                     }).catch(err => console.log('Erro ao compartilhar:', err));
                 } else {
