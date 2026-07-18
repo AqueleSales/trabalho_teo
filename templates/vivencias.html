@@ -475,13 +475,11 @@ btnAbrirModal.addEventListener('click', () => {
     const nome = inputNome.value.trim();
     const mensagem = inputMensagem.value.trim();
 
-    // Verifica se os campos não estão vazios antes de mostrar os termos
     if (!nome || !mensagem) {
         alert('Por favor, preencha seu nome/apelido e sua mensagem antes de publicar.');
         return;
     }
 
-    // Se estiver tudo preenchido, abre o pop-up
     modalLgpd.classList.add('active');
 });
 
@@ -502,24 +500,55 @@ checkboxTermos.addEventListener('change', () => {
     btnEnviarBanco.disabled = !checkboxTermos.checked;
 });
 
-// Envio final para o Firebase após aceitar os termos
+// CONEXÃO COM A INTELIGÊNCIA ARTIFICIAL
 btnEnviarBanco.addEventListener('click', async () => {
     const nome = inputNome.value.trim();
-    const mensagem = inputMensagem.value.trim();
+    const mensagemOriginal = inputMensagem.value.trim();
 
     btnEnviarBanco.disabled = true;
-    btnEnviarBanco.innerText = "Publicando...";
+    btnEnviarBanco.innerText = "Analisando com IA...";
 
     try {
+        // 1. Envia para o Backend (Flask) analisar
+        const respostaIA = await fetch('/api/moderar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ mensagem: mensagemOriginal })
+        });
+
+        const dadosIA = await respostaIA.json();
+        let mensagemFinal = dadosIA.texto_limpo;
+
+        // 2. Travas de segurança baseadas na resposta da IA
+        if (mensagemFinal.includes("BLOQUEADO_SPAM")) {
+            alert('🚫 Não é permitido postar links, propagandas ou spam no mural.');
+            btnEnviarBanco.disabled = false;
+            btnEnviarBanco.innerText = "Aceitar e Publicar";
+            modalLgpd.classList.remove('active');
+            return;
+        }
+
+        if (mensagemFinal.includes("BLOQUEADO_ODIO")) {
+            alert('⚠️ Seu relato contém ofensas diretas ou discurso de ódio e viola as regras de respeito do espaço.');
+            btnEnviarBanco.disabled = false;
+            btnEnviarBanco.innerText = "Aceitar e Publicar";
+            modalLgpd.classList.remove('active');
+            return;
+        }
+
+        // 3. Salva no banco de dados
+        btnEnviarBanco.innerText = "Salvando no Banco...";
         await addDoc(collection(db, "relatos"), {
             nome: nome,
-            mensagem: mensagem,
+            mensagem: mensagemFinal,
             data: new Date().toLocaleDateString('pt-BR'),
             timestamp: Date.now(),
             curtidas: 0
         });
 
-        // Limpa o formulário e reseta o modal
+        // 4. Limpa e atualiza
         form.reset();
         checkboxTermos.checked = false;
         btnEnviarBanco.innerText = "Aceitar e Publicar";
@@ -528,10 +557,10 @@ btnEnviarBanco.addEventListener('click', async () => {
         await carregarComentarios();
         feed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-        alert('Obrigado por compartilhar! Seu relato foi enviado com sucesso.');
+        alert('Obrigado por compartilhar! Seu relato foi analisado e publicado com sucesso.');
 
     } catch (error) {
-        alert('Erro ao salvar o relato. Verifique a conexão com o banco.');
+        alert('Erro ao processar o relato. Verifique a conexão.');
         console.error(error);
         btnEnviarBanco.disabled = false;
         btnEnviarBanco.innerText = "Aceitar e Publicar";

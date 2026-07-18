@@ -1,8 +1,16 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import os
+import google.generativeai as genai
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+
+# ==========================================
+# CONFIGURAÇÃO DA IA (GEMINI)
+# Substitua 'SUA_CHAVE_AQUI' pela chave gerada no Google AI Studio
+# ==========================================
+genai.configure(api_key="SUA_CHAVE_AQUI")
+modelo_ia = genai.GenerativeModel('gemini-1.5-flash')
 
 @app.route('/')
 def home():
@@ -129,6 +137,46 @@ def get_redes_apoio():
         }
     ]
     return jsonify(redes)
+
+@app.route('/api/moderar', methods=['POST'])
+def moderar_texto():
+    dados = request.json
+    texto_original = dados.get('mensagem', '')
+
+    # O "Super Prompt" com a lógica contextual
+    prompt_comando = f"""
+    Você é um moderador inteligente e empático de um fórum de pacientes de câncer e cuidados paliativos.
+    Sua tarefa é higienizar o relato abaixo aplicando regras estritas de contexto.
+
+    REGRA 1 - DADOS PESSOAIS (APAGAR): 
+    Substitua nomes de pacientes, familiares, telefones pessoais e endereços residenciais por [DADO PROTEGIDO].
+
+    REGRA 2 - RECOMENDAÇÕES (MANTER): 
+    NÃO apague nomes de hospitais, clínicas, ONGs, médicos sendo elogiados/recomendados, nem telefones públicos de instituições. Isso é rede de apoio útil.
+
+    REGRA 3 - SPAM (BLOQUEAR): 
+    Se o texto contiver links (URLs), spam de emojis sem sentido ou "ASCII art", retorne EXATAMENTE o código: BLOQUEADO_SPAM
+
+    REGRA 4 - PALAVRÕES E CONTEXTO EMOCIONAL (MANTER): 
+    Palavrões usados como expressão de dor, medo, frustração ou desabafo pessoal (ex: "puta merda, estou com medo") DEVEM SER MANTIDOS. Fazem parte do luto.
+
+    REGRA 5 - ÓDIO E OFENSAS (BLOQUEAR): 
+    Se o palavrão ou o texto for um ataque direto, ofensa a outra pessoa, discriminação ou discurso de ódio, retorne EXATAMENTE o código: BLOQUEADO_ODIO
+
+    Responda APENAS com o texto final higienizado ou com um dos códigos de bloqueio. Não adicione mais nenhuma palavra.
+
+    Texto para analisar:
+    "{texto_original}"
+    """
+
+    try:
+        resposta = modelo_ia.generate_content(prompt_comando)
+        texto_limpo = resposta.text.strip()
+        return jsonify({'status': 'sucesso', 'texto_limpo': texto_limpo})
+    except Exception as e:
+        print(f"Erro na IA: {e}")
+        # Em caso de falha na API do Google, deixa o texto original passar para não quebrar o site
+        return jsonify({'status': 'erro', 'texto_limpo': texto_original})
 
 @app.errorhandler(404)
 def page_not_found(error):
