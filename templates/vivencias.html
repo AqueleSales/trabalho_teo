@@ -111,6 +111,23 @@
         cursor: not-allowed;
         opacity: 0.7;
     }
+
+    /* LIMITADOR E SCROLL INVISÍVEL DOS COMENTÁRIOS */
+    .comentario-texto {
+        max-height: 200px;
+        overflow-y: auto;
+        color: var(--gray-700);
+        line-height: 1.6;
+        font-size: 1.05rem;
+        padding-right: 5px;
+        margin-top: 10px;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;  /* IE and Edge */
+    }
+
+    .comentario-texto::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
+    }
 </style>
 
 <section class="hero-vivencias">
@@ -414,7 +431,8 @@ async function carregarComentarios() {
                         Deletar
                     </button>
                 </div>
-                <p style="color: var(--gray-700); line-height: 1.6; font-size: 1.05rem;">${relato.mensagem.replace(/\n/g, '<br>')}</p>
+
+                <div class="comentario-texto">${relato.mensagem.replace(/\n/g, '<br>')}</div>
 
                 <div style="margin-top: 15px; display: flex; gap: 15px; align-items: center;">
                     <button class="btn-curtir" data-id="${docId}" data-curtidas="${curtidas}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0;">
@@ -539,7 +557,7 @@ btnEnviarBanco.addEventListener('click', async () => {
         }
 
         // 3. Salva no banco de dados
-        btnEnviarBanco.innerText = "Salvando no Banco...";
+        btnEnviarBanco.innerText = "Salvando...";
         await addDoc(collection(db, "relatos"), {
             nome: nome,
             mensagem: mensagemFinal,
@@ -548,19 +566,24 @@ btnEnviarBanco.addEventListener('click', async () => {
             curtidas: 0
         });
 
-        // 4. Limpa e atualiza
+        // 4. Limpa, atualiza e dá feedback visual (Sem Alert nativo chato)
         form.reset();
         checkboxTermos.checked = false;
-        btnEnviarBanco.innerText = "Aceitar e Publicar";
-        modalLgpd.classList.remove('active');
+
+        btnEnviarBanco.innerText = "✅ Publicado!";
+        btnEnviarBanco.style.background = "#10b981"; // Verde sucesso
 
         await carregarComentarios();
         feed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-        alert('Obrigado por compartilhar! Seu relato foi analisado e publicado com sucesso.');
+        setTimeout(() => {
+            modalLgpd.classList.remove('active');
+            btnEnviarBanco.innerText = "Aceitar e Publicar";
+            btnEnviarBanco.style.background = "var(--primary)";
+            btnEnviarBanco.disabled = false;
+        }, 1500);
 
     } catch (error) {
-        alert('Erro ao processar o relato. Verifique a conexão.');
         console.error(error);
         btnEnviarBanco.disabled = false;
         btnEnviarBanco.innerText = "Aceitar e Publicar";
