@@ -135,23 +135,44 @@ def moderar_texto():
     """
 
     try:
-        # ATUALIZADO: Usando o nome correto do modelo (gemini-1.5-flash-latest)
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={chave_api}"
+        # =========================================================
+        # 1. AUTO-DETECT: PERGUNTA AO GOOGLE QUAL MODELO ESTÁ ATIVO
+        # =========================================================
+        get_models_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={chave_api}"
+        lista_modelos = requests.get(get_models_url).json()
+
+        modelo_ativo = "models/gemini-1.5-flash"  # Fallback de segurança
+
+        if 'models' in lista_modelos:
+            for m in lista_modelos['models']:
+                nome_modelo = m.get('name', '')
+                metodos = m.get('supportedGenerationMethods', [])
+                # Pega o primeiro modelo Gemini que suporte geração de texto
+                if 'generateContent' in metodos and 'gemini' in nome_modelo and 'vision' not in nome_modelo:
+                    modelo_ativo = nome_modelo
+                    print(f"🤖 Modelo IA selecionado automaticamente: {modelo_ativo}")
+                    break
+
+        # =========================================================
+        # 2. FAZ A REQUISIÇÃO USANDO O MODELO CORRETO
+        # =========================================================
+        url = f"https://generativelanguage.googleapis.com/v1beta/{modelo_ativo}:generateContent?key={chave_api}"
         payload = {"contents": [{"parts": [{"text": prompt_comando}]}]}
         headers = {"Content-Type": "application/json"}
 
         resposta = requests.post(url, json=payload, headers=headers)
         dados_resposta = resposta.json()
 
-        # Tratamento de erro caso o Google recuse a requisição
+        # Tratamento de erro caso a requisição falhe por outro motivo
         if 'error' in dados_resposta:
             print(f"❌ Erro do Google Gemini: {dados_resposta['error']}")
-            return jsonify({'status': 'erro', 'msg': 'Falha na comunicação com a IA do Google.'})
+            return jsonify({'status': 'erro',
+                            'msg': f"IA indisponível: {dados_resposta['error'].get('message', 'Erro desconhecido')}"})
 
         try:
             texto_limpo = dados_resposta['candidates'][0]['content']['parts'][0]['text'].strip()
         except KeyError:
-            # Se o próprio filtro de segurança do Google bloquear antes
+            # Se o próprio filtro de segurança do Google bloquear antes de ler
             return jsonify({'status': 'bloqueado_odio'})
 
         if "BLOQUEADO_SPAM" in texto_limpo:
@@ -172,7 +193,6 @@ def moderar_texto():
     except Exception as e:
         print(f"❌ Erro no Backend: {e}")
         return jsonify({'status': 'erro', 'msg': str(e)})
-
 
 @app.errorhandler(404)
 def page_not_found(error): return render_template('index.html'), 404
