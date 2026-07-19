@@ -283,9 +283,9 @@ MAIN CONTENT
 ==================================== */
 
 main {
-max-width: 1400px;
-margin: 0 auto;
-padding: 0 2rem;
+    max-width: 100%; /* ou até 100% */
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 section {
