@@ -339,56 +339,8 @@
         </p>
     </div>
 
-    <div class="interactive-cards">
-        <div class="flip-card" style="animation-delay: 0.1s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Se não tem histórico familiar não há risco</span></div>
-                <div class="flip-card-back"><span>❌ MITO. Apenas 5-10% dos casos estão relacionados a histórico familiar. Fatores ambientais e comportamentais são muito relevantes.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.2s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Mamografia substitui o cuidado com as mamas</span></div>
-                <div class="flip-card-back"><span>❌ MITO. A mamografia complementa, mas não substitui o auto-exame e a atenção às mudanças nas mamas.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.3s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">É possível evitar o câncer através da alimentação</span></div>
-                <div class="flip-card-back"><span>✅ VERDADE. Uma dieta rica em alimentos in natura, especialmente vegetal, reduz significativamente o risco.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.4s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Existem alimentos milagrosos que curam câncer</span></div>
-                <div class="flip-card-back"><span>❌ MITO. Não há alimento que cure câncer. A alimentação saudável contribui para prevenção e resposta ao tratamento.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.5s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Micro-ondas provoca câncer</span></div>
-                <div class="flip-card-back"><span>❌ MITO. A radiação apenas aquece alimentos, não alterando sua estrutura molecular ou criando substâncias cancerígenas.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.6s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Atividade física reduz risco de câncer mesmo sem perder peso</span></div>
-                <div class="flip-card-back"><span>✅ VERDADE. O exercício reduz risco independentemente da perda de peso, equilibrando hormônios e sistema imunológico.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.7s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Excesso de gordura corporal aumenta o risco</span></div>
-                <div class="flip-card-back"><span>✅ VERDADE. O excesso de gordura provoca alterações hormonais inflamatórias que estimulam proliferação celular anormal.</span></div>
-            </div>
-        </div>
-        <div class="flip-card" style="animation-delay: 0.8s;">
-            <div class="flip-card-inner">
-                <div class="flip-card-front"><span style="font-size: 1.1rem; font-weight: 600;">Câncer é sempre uma sentença de morte</span></div>
-                <div class="flip-card-back"><span>❌ MITO. Muitos tipos de câncer têm altas taxas de cura quando detectados precocemente. A qualidade de vida é possível.</span></div>
-            </div>
-        </div>
-    </div>
+    <!-- Container original que o seu CSS e JS reconhecem -->
+    <div id="mitos-container" class="interactive-cards"></div>
 </section>
 
 {% endblock %}
@@ -396,11 +348,38 @@
 {% block extra_scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.flip-card').forEach(card => {
-        card.addEventListener('click', function() {
-            this.classList.toggle('is-flipped');
+    // Usando o método original do seu projeto que renderiza e alinha via JS
+    fetch('/api/mitos-verdades')
+        .then(response => response.json())
+        .then(dados => {
+            const container = document.getElementById('mitos-container');
+            dados.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'flip-card';
+                card.style.animationDelay = (index * 0.1) + 's';
+
+                card.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <span style="font-size: 1.1rem; font-weight: 600; padding: 10px; display: block; text-align: center;">${item.pergunta}</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <span style="padding: 10px; display: block; text-align: center; font-size: 0.95rem;">${item.resposta}</span>
+                        </div>
+                    </div>
+                `;
+
+                card.addEventListener('click', function() {
+                    this.classList.toggle('is-flipped');
+                });
+
+                container.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao carregar mitos:', error);
+            document.getElementById('mitos-container').innerHTML = '<p style="color: red; text-align: center; width: 100%;">Não foi possível carregar os mitos no momento.</p>';
         });
-    });
 });
 </script>
 {% endblock %}
