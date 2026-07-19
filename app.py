@@ -57,59 +57,6 @@ def sobre():
     return render_template('sobre.html')
 
 
-@app.route('/api/mitos-verdades')
-def get_mitos_verdades():
-    dados = [
-        {"id": 1, "pergunta": "Se não tem histórico familiar não há risco",
-         "resposta": "❌ MITO. Apenas 5-10% dos casos estão relacionados a histórico familiar. Fatores ambientais e comportamentais são muito relevantes.",
-         "tipo": "mito"},
-        {"id": 2, "pergunta": "Mamografia substitui o cuidado com as mamas",
-         "resposta": "❌ MITO. A mamografia complementa, mas não substitui o auto-exame e a atenção às mudanças nas mamas.",
-         "tipo": "mito"},
-        {"id": 3, "pergunta": "É possível evitar o câncer através da alimentação",
-         "resposta": "✅ VERDADE. Uma dieta rica em alimentos in natura, especialmente de origem vegetal, reduz significativamente o risco.",
-         "tipo": "verdade"},
-        {"id": 4, "pergunta": "Existem alimentos milagrosos que curam câncer",
-         "resposta": "❌ MITO. Não há alimento que cure câncer. A alimentação saudável apenas contribui para a prevenção e melhor resposta ao tratamento.",
-         "tipo": "mito"},
-        {"id": 5, "pergunta": "Exposição a forno micro-ondas provoca câncer",
-         "resposta": "❌ MITO. A radiação do micro-ondas apenas aquece alimentos, não alterando sua estrutura molecular ou criando substâncias cancerígenas.",
-         "tipo": "mito"},
-        {"id": 6, "pergunta": "Atividade física reduz risco de câncer mesmo sem perder peso",
-         "resposta": "✅ VERDADE. O exercício reduz risco independentemente da perda de peso, através do equilíbrio hormonal e fortalecimento imunológico.",
-         "tipo": "verdade"},
-        {"id": 7, "pergunta": "Excesso de gordura corporal aumenta o risco de câncer",
-         "resposta": "✅ VERDADE. O excesso de gordura provoca alterações hormonais e inflamatórias que estimulam proliferação celular anormal.",
-         "tipo": "verdade"},
-        {"id": 8, "pergunta": "Câncer é sempre uma sentença de morte",
-         "resposta": "❌ MITO. Muitos tipos de câncer têm altas taxas de cura quando detectados precocemente. A qualidade de vida é possível em todas as fases.",
-         "tipo": "mito"}
-    ]
-    return jsonify(dados)
-
-
-@app.route('/api/redes-apoio-df')
-def get_redes_apoio():
-    redes = [
-        {"nome": "Hospital de Base (HBDF)", "endereco": "SGAN 915 Norte, Asa Norte, Brasília - DF",
-         "telefone": "(61) 3315-1234", "tipo": "sus_oncologia",
-         "especialidades": ["Quimioterapia", "Cirurgia Oncológica", "Radioterapia"]},
-        {"nome": "Hospital Regional de Taguatinga (HRT)", "endereco": "Taguatinga, Brasília - DF",
-         "telefone": "(61) 3305-1000", "tipo": "sus_oncologia",
-         "especialidades": ["Oncologia", "Radioterapia", "Suporte Psicológico"]},
-        {"nome": "Hospital Universitário de Brasília (HUB)", "endereco": "Campus Darcy Ribeiro, Brasília - DF",
-         "telefone": "(61) 3307-7000", "tipo": "sus_oncologia",
-         "especialidades": ["Radioterapia", "Oncologia Clínica"]},
-        {"nome": "Rede Feminina / Casa Rosa", "endereco": "HBDF - Asa Norte", "telefone": "Contato via HBDF",
-         "tipo": "ong", "especialidades": ["Hospedagem", "Suporte Emocional", "Assistência Social"]},
-        {"nome": "ABAC-Luz", "endereco": "Brasília - DF", "telefone": "A confirmar", "tipo": "ong",
-         "especialidades": ["Educação em Saúde", "Prevenção de Mama", "Grupos de Apoio"]},
-        {"nome": "Canomama", "endereco": "Brasília - DF", "telefone": "A confirmar", "tipo": "ong",
-         "especialidades": ["Reabilitação", "Esportes", "Empoderamento Feminino"]}
-    ]
-    return jsonify(redes)
-
-
 @app.route('/api/moderar', methods=['POST'])
 def moderar_texto():
     dados = request.json
@@ -135,27 +82,26 @@ def moderar_texto():
     """
 
     try:
-        # =========================================================
-        # 1. AUTO-DETECT: PERGUNTA AO GOOGLE QUAL MODELO ESTÁ ATIVO
-        # =========================================================
-        get_models_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={chave_api}"
-        lista_modelos = requests.get(get_models_url).json()
+        # ATUALIZADO: Forçando o modelo mais recente de 2026 (Gemini 3.5 Flash ou 3.1 Flash-Lite)
+        # Vamos tentar o gemini-3.5-flash primeiro, que é o modelo atual e gratuito
+        modelo_ativo = "models/gemini-3.5-flash"
 
-        modelo_ativo = "models/gemini-1.5-flash"  # Fallback de segurança
+        # Faz uma verificação rápida para ver quais modelos a chave suporta, e pega o primeiro ativo
+        try:
+            get_models_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={chave_api}"
+            lista_modelos = requests.get(get_models_url, timeout=3).json()
+            if 'models' in lista_modelos:
+                for m in lista_modelos['models']:
+                    nome_modelo = m.get('name', '')
+                    metodos = m.get('supportedGenerationMethods', [])
+                    # Preferência para modelos 3.5 ou 3.1
+                    if 'generateContent' in metodos and (
+                            'gemini-3.5-flash' in nome_modelo or 'gemini-3.1-flash-lite' in nome_modelo):
+                        modelo_ativo = nome_modelo
+                        break
+        except:
+            pass  # Se a checagem falhar, usa o fallback 3.5-flash
 
-        if 'models' in lista_modelos:
-            for m in lista_modelos['models']:
-                nome_modelo = m.get('name', '')
-                metodos = m.get('supportedGenerationMethods', [])
-                # Pega o primeiro modelo Gemini que suporte geração de texto
-                if 'generateContent' in metodos and 'gemini' in nome_modelo and 'vision' not in nome_modelo:
-                    modelo_ativo = nome_modelo
-                    print(f"🤖 Modelo IA selecionado automaticamente: {modelo_ativo}")
-                    break
-
-        # =========================================================
-        # 2. FAZ A REQUISIÇÃO USANDO O MODELO CORRETO
-        # =========================================================
         url = f"https://generativelanguage.googleapis.com/v1beta/{modelo_ativo}:generateContent?key={chave_api}"
         payload = {"contents": [{"parts": [{"text": prompt_comando}]}]}
         headers = {"Content-Type": "application/json"}
@@ -163,16 +109,19 @@ def moderar_texto():
         resposta = requests.post(url, json=payload, headers=headers)
         dados_resposta = resposta.json()
 
-        # Tratamento de erro caso a requisição falhe por outro motivo
         if 'error' in dados_resposta:
             print(f"❌ Erro do Google Gemini: {dados_resposta['error']}")
-            return jsonify({'status': 'erro',
-                            'msg': f"IA indisponível: {dados_resposta['error'].get('message', 'Erro desconhecido')}"})
+            # Tentativa de fallback de emergência
+            fallback_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key={chave_api}"
+            resposta_fallback = requests.post(fallback_url, json=payload, headers=headers)
+            dados_resposta = resposta_fallback.json()
+            if 'error' in dados_resposta:
+                return jsonify({'status': 'erro',
+                                'msg': f"IA indisponível: {dados_resposta['error'].get('message', 'Erro desconhecido')}"})
 
         try:
             texto_limpo = dados_resposta['candidates'][0]['content']['parts'][0]['text'].strip()
         except KeyError:
-            # Se o próprio filtro de segurança do Google bloquear antes de ler
             return jsonify({'status': 'bloqueado_odio'})
 
         if "BLOQUEADO_SPAM" in texto_limpo:
@@ -180,7 +129,6 @@ def moderar_texto():
         if "BLOQUEADO_ODIO" in texto_limpo:
             return jsonify({'status': 'bloqueado_odio'})
 
-        # PYTHON É QUEM SALVA NO FIREBASE
         db.collection("relatos").add({
             "nome": nome,
             "mensagem": texto_limpo,
@@ -193,13 +141,6 @@ def moderar_texto():
     except Exception as e:
         print(f"❌ Erro no Backend: {e}")
         return jsonify({'status': 'erro', 'msg': str(e)})
-
-@app.errorhandler(404)
-def page_not_found(error): return render_template('index.html'), 404
-
-
-@app.errorhandler(500)
-def internal_error(error): return render_template('index.html'), 500
 
 
 if __name__ == '__main__':

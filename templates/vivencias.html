@@ -205,7 +205,7 @@ btnEnviarBanco.addEventListener('click', async () => {
             body: JSON.stringify({ nome: inputNome.value.trim(), mensagem: inputMensagem.value.trim() })
         });
         const resultado = await resposta.json();
-
+        
         if (resultado.status === 'sucesso') {
             form.reset(); checkboxTermos.checked = false;
             btnEnviarBanco.innerText = "✅ Publicado!"; btnEnviarBanco.style.background = "#10b981";
@@ -225,9 +225,9 @@ btnEnviarBanco.addEventListener('click', async () => {
             alert('❌ Erro no servidor: ' + (resultado.msg || 'Tente novamente.'));
             btnEnviarBanco.innerText = "Aceitar e Publicar"; btnEnviarBanco.disabled = false;
         }
-    } catch (e) {
-        alert('Erro na conexão com o servidor.');
-        btnEnviarBanco.innerText = "Aceitar e Publicar"; btnEnviarBanco.disabled = false;
+    } catch (e) { 
+        alert('Erro na conexão com o servidor.'); 
+        btnEnviarBanco.innerText = "Aceitar e Publicar"; btnEnviarBanco.disabled = false; 
     }
 });
 
