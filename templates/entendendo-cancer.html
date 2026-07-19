@@ -67,6 +67,7 @@
             </div>
         </div>
     </div>
+</section>
 
 <section class="reveal">
     <h2 style="text-align: center; margin-bottom: 3rem;">Panorama Epidemiológico no Brasil e DF</h2>
@@ -139,16 +140,16 @@
     <h2 style="text-align: center; margin-bottom: 3rem;">Sintomas e Diagnóstico Clínico</h2>
 
     <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; margin-bottom: 40px; align-items: center;">
-        <div style="background: var(--azul-profundo); color: var(--branco); padding: 30px; border-radius: 20px; font-style: italic;">
+        <div style="background: var(--primary-dark); color: white; padding: 30px; border-radius: 20px; font-style: italic;">
             "<b>O diagnóstico do câncer transcende os aspectos biológicos; sua confirmação é um evento marcante na vida do indivíduo e de sua família.</b>"
         </div>
         <p style="text-align: justify; font-size: 1.1rem;">
-            As manifestações clínicas do câncer são variadas. Elas dependem da <strong style="color: var(--vermelho-borboleta);">localização do tumor</strong>, do estadiamento da doença e da presença de metástases. Os sintomas impactam a <strong>funcionalidade e a qualidade de vida</strong>, sendo comum a ocorrência de <em>clusters de sintomas</em> — quando vários sinais surgem simultaneamente, exigindo uma abordagem clínica integrada (Boeira et al., 2014).
+            As manifestações clínicas do câncer são variadas. Elas dependem da <strong style="color: var(--danger);">localização do tumor</strong>, do estadiamento da doença e da presença de metástases. Os sintomas impactam a <strong>funcionalidade e a qualidade de vida</strong>, sendo comum a ocorrência de <em>clusters de sintomas</em> — quando vários sinais surgem simultaneamente, exigindo uma abordagem clínica integrada (Boeira et al., 2014).
         </p>
     </div>
 
-    <div style="background: var(--branco); padding: 40px; border-radius: 24px; border: 1px solid var(--borda-suave); margin-bottom: 40px;">
-        <h3 style="color: var(--verde-borboleta);">Investigação Diagnóstica</h3>
+    <div style="background: white; padding: 40px; border-radius: 24px; border: 1px solid var(--gray-200); margin-bottom: 40px;">
+        <h3 style="color: var(--success);">Investigação Diagnóstica</h3>
         <p style="text-align: justify; line-height: 2;">
             Diante de sinais sugestivos, torna-se necessária uma investigação criteriosa baseada na história clínica, exame físico e <strong>confirmação histopatológica</strong> — o padrão-ouro. A identificação precoce não apenas amplia a efetividade terapêutica, mas também oferece melhores perspectivas de prognóstico para o paciente (PENA; CAMARGOS; MATOS, 2014).
         </p>
@@ -158,15 +159,14 @@
         <p style="text-align: justify; font-size: 1.1rem; line-height: 1.8;">
             As reações frente ao diagnóstico — como <strong>medo, angústia, negação e revolta</strong> — são únicas e dependem da bagagem sociocultural de cada indivíduo. Por isso, a comunicação da notícia deve ser <em>clara, ética e humanizada</em>. Um vínculo terapêutico forte entre profissionais, paciente e familiares é o elemento essencial para garantir a adesão ao tratamento e o suporte necessário em todas as etapas (RUBIO ARRIBAS et al., 2004).
         </p>
-        <div style="background: #e4c898; padding: 30px; border-radius: 20px; border-left: 5px solid var(--amarelo-borboleta);">
-            <h4 style="margin-top: 0; color: var(--amarelo-borboleta);">O Papel da Família</h4>
-            <p style="font-size: 0.95rem;">A família assume papel fundamental como fonte de apoio, exigindo constante adaptação às mudanças físicas e emocionais impostas pelo tratamento.</p>
+        <div style="background: #fef3c7; padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent);">
+            <h4 style="margin-top: 0; color: var(--accent);">O Papel da Família</h4>
+            <p style="font-size: 0.95rem; color: var(--gray-800);">A família assume papel fundamental como fonte de apoio, exigindo constante adaptação às mudanças físicas e emocionais impostas pelo tratamento.</p>
         </div>
     </div>
 </section>
 
 <div class="cards-grid" style="margin-top: 2rem;">
-
     <div class="card">
         <div class="card-header" style="background: url('/static/images/sintomas.jpg') center/cover no-repeat; min-height: 200px;"></div>
         <div class="card-body">
@@ -192,9 +192,7 @@
     </div>
 </div>
 
-</section>
-
-<section class="section-accent reveal">
+<section class="section-accent reveal" style="margin-top: 4rem;">
     <h2 style="color: white;">Diagnósticos de Enfermagem</h2>
     <p style="color: rgba(255,255,255,0.95); margin-bottom: 2rem;">
         Os diagnósticos de enfermagem desempenham papel fundamental no cuidado à pessoa com câncer.
@@ -332,6 +330,60 @@
     </div>
 </section>
 
+<!-- ============================================== -->
+<!-- CSS EMBUTIDO APENAS PARA OS CARTÕES DOS MITOS  -->
+<!-- ============================================== -->
+<style>
+    .mitos-grid-block {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        margin-top: 2rem;
+    }
+    .mito-card-box {
+        background-color: transparent;
+        width: 100%;
+        height: 280px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+    .mito-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+    .mito-card-box.is-flipped .mito-card-inner {
+        transform: rotateY(180deg);
+    }
+    .mito-card-front, .mito-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .mito-card-front {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light, #14b8a6) 100%);
+        color: white;
+    }
+    .mito-card-back {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light, #fbbf24) 100%);
+        color: white;
+        transform: rotateY(180deg);
+        font-size: 0.95rem;
+    }
+</style>
+
 <section class="reveal">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Mitos vs Verdades</h2>
@@ -340,42 +392,77 @@
         </p>
     </div>
 
-    <div id="mitos-container" class="interactive-cards"></div>
+    <!-- O GRID DOS MITOS ESCRITO DIRETO AQUI PARA NÃO QUEBRAR NUNCA -->
+    <div class="mitos-grid-block">
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Se não tem histórico familiar não há risco</span></div>
+                <div class="mito-card-back"><span>❌ MITO. Apenas 5-10% dos casos estão relacionados a histórico familiar. Fatores ambientais e comportamentais são muito relevantes.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Mamografia substitui o cuidado com as mamas</span></div>
+                <div class="mito-card-back"><span>❌ MITO. A mamografia complementa, mas não substitui o auto-exame e a atenção às mudanças nas mamas.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">É possível evitar o câncer através da alimentação</span></div>
+                <div class="mito-card-back"><span>✅ VERDADE. Uma dieta rica em alimentos in natura, especialmente de origem vegetal, reduz significativamente o risco.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Existem alimentos milagrosos que curam câncer</span></div>
+                <div class="mito-card-back"><span>❌ MITO. Não há alimento que cure câncer. A alimentação saudável apenas contribui para prevenção e melhor resposta ao tratamento.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Exposição a forno micro-ondas provoca câncer</span></div>
+                <div class="mito-card-back"><span>❌ MITO. A radiação do micro-ondas apenas aquece alimentos, não alterando sua estrutura molecular ou criando substâncias cancerígenas.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Atividade física reduz risco de câncer mesmo sem perder peso</span></div>
+                <div class="mito-card-back"><span>✅ VERDADE. O exercício reduz risco independentemente da perda de peso, através do equilíbrio hormonal e fortalecimento imunológico.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Excesso de gordura corporal aumenta o risco de câncer</span></div>
+                <div class="mito-card-back"><span>✅ VERDADE. O excesso de gordura provoca alterações hormonais e inflamatórias que estimulam proliferação celular anormal.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Câncer é sempre uma sentença de morte</span></div>
+                <div class="mito-card-back"><span>❌ MITO. Muitos tipos de câncer têm altas taxas de cura quando detectados precocemente. A qualidade de vida é possível em todas as fases.</span></div>
+            </div>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
+// Um script muito simples apenas para fazer a carta girar ao clicar
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/mitos-verdades')
-        .then(response => response.json())
-        .then(dados => {
-            const container = document.getElementById('mitos-container');
-            dados.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = 'flip-card';
-                card.style.animationDelay = (index * 0.1) + 's';
-
-                card.innerHTML = `
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span style="font-size: 1.1rem; font-weight: 600;">${item.pergunta}</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span>${item.resposta}</span>
-                        </div>
-                    </div>
-                `;
-
-                card.addEventListener('click', function() {
-                    this.classList.toggle('is-flipped');
-                });
-
-                container.appendChild(card);
-            });
-        })
-        .catch(error => console.error('Erro ao carregar mitos:', error));
+    document.querySelectorAll('.mito-card-box').forEach(card => {
+        card.addEventListener('click', function() {
+            this.classList.toggle('is-flipped');
+        });
+    });
 });
 </script>
 {% endblock %}
