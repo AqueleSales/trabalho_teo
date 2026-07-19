@@ -1,96 +1,327 @@
 {% extends "base.html" %}
 
-{% block title %}Cuidado e Acolhimento - Palioguia{% endblock %}
+{% block title %}Cuidados & Acolhimento - Palioguia{% endblock %}
 
 {% block content %}
-<section class="hero" style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; padding: 4rem 2rem; text-align: center;">
-    <div class="hero-content" style="max-width: 800px; margin: 0 auto;">
-        <h1 class="hero-title" style="margin-bottom: 1rem;">Cuidado & Acolhimento</h1>
-        <h2 class="hero-subtitle" style="font-weight: 300; opacity: 0.9;">Compreendendo os cuidados paliativos, a atuação da enfermagem e as Práticas Integrativas no bem-estar do paciente.</h2>
+
+<section class="hero-cuidado">
+    <div class="hero-content">
+        <h1 class="hero-title" style="color: var(--primary);">Cuidados Paliativos & Acolhimento</h1>
+        <h2 class="hero-subtitle" style="color: var(--gray-600);">
+            Qualidade de vida integral em todas as fases do processo
+        </h2>
     </div>
 </section>
 
-<!-- SEÇÃO: O QUE SÃO CUIDADOS PALIATIVOS -->
-<section class="reveal" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto;">
-    <h2 style="color: var(--primary-dark); text-align: center; margin-bottom: 2rem;">A Abordagem dos Cuidados Paliativos</h2>
-    <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--primary); line-height: 1.8; color: var(--gray-700); font-size: 1.1rem;">
-        <p style="margin-bottom: 1.5rem;">
-            É comum o equívoco de pensar que cuidados paliativos se restringem apenas aos momentos finais de vida, apesar de estarem longe de se resumir a isso. <strong>Os cuidados paliativos constituem uma abordagem de cuidado integral</strong> a qual deve ser iniciada desde o diagnóstico de uma doença que ameace a continuidade da vida.
+<section class="reveal">
+    <h2>O que são Cuidados Paliativos?</h2>
+    <p>
+        De acordo com a Organização Mundial de Saúde, os cuidados paliativos previnem e aliviam o sofrimento
+        por meio da identificação precoce e tratamento da dor (física, psicossocial ou espiritual), melhorando
+        a qualidade de vida dos pacientes e familiares diante de doenças graves que ameaçam a continuidade da vida.
+    </p>
+
+    <!-- TEXTO DAS ALUNAS APLICADO AQUI (MANTIDO DO SEU ORIGINAL) -->
+    <div style="background: #f0fdfa; border-left: 5px solid var(--primary-light); padding: 2rem; margin: 2rem 0; border-radius: 8px; box-shadow: var(--shadow-sm);">
+        <h3 style="color: var(--primary-dark); margin-top: 0; font-size: 1.3rem;">Abordagem Contínua e Terminalidade</h3>
+        <p style="margin-bottom: 1rem; color: var(--gray-700); line-height: 1.8; text-align: justify;">
+            É comum o equívoco de pensar que cuidados paliativos se restringem apenas aos momentos finais de vida, apesar de estarem longe de se resumir a isso. Os cuidados paliativos constituem uma abordagem de cuidado integral a qual deve ser iniciada <strong>desde o diagnóstico de uma doença que ameace a continuidade da vida</strong>. É uma assistência que se estende de forma contínua, estando presente até mesmo no apoio aos familiares durante o luto. É importante destacar que o objetivo não é apressar nem mesmo adiar a morte, mas trazer a dignidade e conforto previstos como direitos do paciente e sua família.
         </p>
-        <p style="margin-bottom: 1.5rem;">
-            É uma assistência que se estende de forma contínua, estando presente até mesmo no apoio aos familiares durante o luto. É importante destacar que <strong>o objetivo não é apressar nem mesmo adiar a morte</strong>, mas trazer a dignidade e conforto previstos como direitos do paciente e sua família.
+        <p style="margin-bottom: 0; color: var(--gray-700); line-height: 1.8; text-align: justify;">
+            Destaca-se também o conceito de <strong>terminalidade de vida</strong>, que é um critério clínico utilizado pela equipe de saúde quando uma doença grave e progressiva avança a um estágio crítico. Tal momento é marcado pela incurabilidade (quando tratamentos modificadores da doença já não são disponíveis ou eficazes) e pela irreversibilidade (declínio funcional contínuo do organismo). Ressalta-se que reconhecer a terminalidade é de extrema importância no processo do devido tratamento, havendo foco no controle de sintomas, alívio da dor, garantia do conforto e acolhimento do paciente e sua família.
         </p>
-        <h3 style="color: var(--primary); margin-top: 2rem; margin-bottom: 1rem;">A Terminalidade da Vida</h3>
-        <p>
-            Destaca-se também o conceito de <strong>terminalidade de vida</strong>, que é um critério clínico utilizado pela equipe de saúde quando uma doença grave e progressiva avança a um estágio crítico. Tal momento é marcado pela incurabilidade, que é quando os tratamentos modificadores da doença já não são disponíveis ou eficazes, e pela irreversibilidade, caracterizada por um declínio funcional contínuo do organismo.
-        </p>
-        <p style="margin-top: 1rem;">
-            Ressalta-se que reconhecer a terminalidade é de extrema importância no processo do devido tratamento, havendo foco no controle de sintomas, alívio da dor, garantia do conforto e acolhimento do paciente e sua família.
-        </p>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/holistico2.jpg') center/cover no-repeat; min-height: 100px;"></div>
+            <div class="card-body">
+                <h3>Integrativo</h3>
+                <p>Abordagem integrativa considerando aspectos físicos, emocionais, sociais e espirituais.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/multi.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3>Multiprofissional</h3>
+                <p>Equipe integrada de médicos, enfermeiros, psicólogos, assistentes sociais e voluntários.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" style="background: url('/static/images/humanizado.jpg') center/cover no-repeat; min-height: 200px;"></div>
+            <div class="card-body">
+                <h3>Humanizado</h3>
+                <p>Respeito à dignidade, autonomia e desejos do paciente e sua família.</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- SEÇÃO: O PAPEL DA ENFERMAGEM -->
+<!-- NOVA SEÇÃO: O PAPEL DA ENFERMAGEM ENCAIXADO NO SEU LAYOUT -->
 <section class="reveal section-accent" style="padding: 4rem 2rem;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <h2 style="color: white; text-align: center; margin-bottom: 3rem;">O Papel Essencial da Enfermagem</h2>
-        <p style="color: rgba(255,255,255,0.9); text-align: center; font-size: 1.1rem; max-width: 800px; margin: 0 auto 3rem;">
-            No contexto do câncer e dos cuidados paliativos, a equipe de enfermagem atua como o elo de cuidado mais próximo do paciente, desenvolvendo ações vitais em diversas frentes.
+    <h2 style="text-align: center; color: white; margin-bottom: 3rem;">O Papel da Enfermagem</h2>
+    <div class="cards-grid">
+        <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            <div class="card-body">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🧭</div>
+                <h3 style="color: white;">Navegação</h3>
+                <p style="color: rgba(255,255,255,0.95);">Enfermeiras(os) guiam pacientes desde o diagnóstico até a reabilitação, coordenando o cuidado e facilitando acesso aos serviços de saúde e equipe multiprofissional.</p>
+            </div>
+        </div>
+
+        <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            <div class="card-body">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🩹</div>
+                <h3 style="color: white;">Estomaterapia</h3>
+                <p style="color: rgba(255,255,255,0.95);">Foco no cuidado especializado de feridas oncológicas e estomias (colostomias, ileostomias), educando o paciente para o autocuidado e prevenindo complicações graves.</p>
+            </div>
+        </div>
+
+        <div class="card" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            <div class="card-body">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🏡</div>
+                <h3 style="color: white;">Atenção Domiciliar</h3>
+                <p style="color: rgba(255,255,255,0.95);">Monitoramento de sintomas, manejo de dispositivos e curativos no conforto do lar, além do rastreamento e prevenção primária de neoplasias na comunidade.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>Sobrevivência ao Câncer (Survivorship)</h2>
+    <p>
+        Survivorship é o estado de espírito que engloba as perspectivas, necessidades e desafios físicos,
+        psicológicos, sociais e econômicos vivenciados após o diagnóstico.
+    </p>
+    <p>
+        Por meio dos cuidados paliativos, pode-se proporcionar aos sobreviventes uma saída do estado de
+        puramente sobrevivência para voltar a aproveitar o que a vida tem a oferecer. Isso significa
+        recuperar autonomia, retomar relacionamentos significativos e encontrar novo propósito.
+    </p>
+</section>
+
+<section class="reveal" style="max-width: 900px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 3rem;">
+        <h2>Práticas Integrativas e Complementares (PICS)</h2>
+
+        <p style="color: var(--gray-700); font-size: 1.1rem; line-height: 1.8; text-align: justify; margin-bottom: 1rem;">
+            As PICS oferecem uma dimensão <strong>integrativa</strong>, contínua e humanizada ao cuidado. Os objetivos dessas práticas envolvem a prevenção de agravos, a promoção e a recuperação da saúde, com ênfase na escuta acolhedora, no desenvolvimento do vínculo terapêutico e na integração do ser humano com a sociedade.
+        </p>
+        <p style="color: var(--gray-700); font-size: 1.1rem; line-height: 1.8; text-align: justify; margin-bottom: 2rem;">
+            No cuidado oncológico e paliativo, as possibilidades de aplicação são vastas: elas atuam desde o alívio de sintomas físicos intensos até o suporte emocional sistêmico. Atualmente, são ofertadas no SUS 29 práticas diferentes, reforçando as diretrizes da saúde pública brasileira.
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+        <a href="https://www.gov.br/saude/pt-br/composicao/saps/pics" target="_blank" class="btn btn-outline" style="font-size: 1rem; padding: 0.8rem 1.5rem; margin-bottom: 2rem;">
+            🔗 Acessar as Políticas Oficiais das PICS (Ministério da Saúde)
+        </a>
+    </div>
 
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🧭</div>
-                <h3 style="color: white; margin-bottom: 1rem;">Enfermagem em Navegação</h3>
-                <p style="color: rgba(255,255,255,0.85); line-height: 1.6;">
-                    Enfermeiras(os) navegadoras(es) guiam o caminho dos pacientes dentro do tratamento oncológico e dos cuidados paliativos. Acompanham o indivíduo desde a suspeita diagnóstica até a reabilitação. Atuam coordenando o cuidado, facilitando acesso aos serviços, reduzindo barreiras assistenciais e favorecendo a comunicação entre paciente, família e equipe multiprofissional.
-                </p>
+    <div class="accordion-container">
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.4rem;">➻</span> <strong>Yoga</strong>
+                </span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Influência positiva a longo prazo na saúde psicológica de pacientes, como evidenciado em casos de câncer de mama. Reduz ansiedade, melhora flexibilidade e traz equilíbrio emocional.</p>
             </div>
+        </div>
 
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🩹</div>
-                <h3 style="color: white; margin-bottom: 1rem;">Estomaterapia</h3>
-                <p style="color: rgba(255,255,255,0.85); line-height: 1.6;">
-                    Nessa área, a enfermagem lida com o cuidado especializado de feridas oncológicas e com estomias decorrentes de remoção de tumores (como colostomias, ileostomias e urostomias). O foco é educar o paciente para o autocuidado, promovendo independência e prevenindo complicações graves.
-                </p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.4rem;">➻</span> <strong>Musicoterapia</strong>
+                </span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Apresenta grande influência na redução da ansiedade, depressão, dor e fadiga em adultos com câncer. A música acalma, alivia e reconecta.</p>
             </div>
+        </div>
 
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🏡</div>
-                <h3 style="color: white; margin-bottom: 1rem;">Atenção Primária & Domiciliar</h3>
-                <p style="color: rgba(255,255,255,0.85); line-height: 1.6;">
-                    Permite que o paciente receba cuidados no conforto de seu lar. A enfermagem realiza visitas domiciliares com monitoramento de sintomas, manejo de dispositivos, curativos e orientação familiar. Na Atenção Primária, atua também no rastreamento e prevenção, como na realização de exames preventivos (ex: colo de útero) e identificação precoce de queixas neoplásicas.
-                </p>
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.4rem;">➻</span> <strong>Acupuntura</strong>
+                </span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Reduz dor crônica, náuseas, fadiga e sintomas de ansiedade. Trabalha com o fluxo energético do corpo para restaurar o equilíbrio.</p>
             </div>
+        </div>
 
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.4rem;">➻</span> <strong>Meditação & Mindfulness</strong>
+                </span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Trabalha a aceitação, presença no momento e ressignificação emocional. Diminui ruminação e aumenta sensação de bem-estar.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.4rem;">➻</span> <strong>Aromaterapia</strong>
+                </span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Óleos essenciais auxiliam no relaxamento, reduzem náuseas, melhoram sono e têm propriedades anti-inflamatórias.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <span style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 1.4rem;">➻</span> <strong>Reiki</strong>
+                </span>
+                <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+                <p>Prática de cura energética que promove relaxamento profundo, alívio de dor e restauração da energia vital.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- SEÇÃO: PRÁTICAS INTEGRATIVAS (PICS) -->
-<section class="reveal" style="padding: 4rem 2rem; max-width: 1000px; margin: 0 auto;">
-    <h2 style="color: var(--primary-dark); text-align: center; margin-bottom: 2rem;">Práticas Integrativas e Complementares (PICS)</h2>
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-        <div style="flex: 1; min-width: 300px; color: var(--gray-700); font-size: 1.1rem; line-height: 1.8;">
-            <p style="margin-bottom: 1.5rem;">
-                As <strong>Práticas Integrativas e Complementares em Saúde (PICS)</strong> são tratamentos que utilizam recursos terapêuticos baseados em conhecimentos tradicionais e evidências científicas, voltados para prevenir diversas doenças e auxiliar na recuperação da saúde.
-            </p>
-            <p>
-                No contexto oncológico, elas <strong>não substituem</strong> os tratamentos convencionais (como quimioterapia ou radioterapia), mas atuam de forma <em>complementar</em>. O objetivo é aliviar os sintomas do tratamento, como náuseas, fadiga e dor, além de promover o bem-estar mental e espiritual do paciente, integrando mente, corpo e ambiente.
-            </p>
-        </div>
-        <div style="flex: 1; min-width: 300px; background: var(--gray-100); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--secondary);">
-            <h3 style="color: var(--primary-dark); margin-bottom: 1rem;">Exemplos de PICS no SUS</h3>
-            <ul style="list-style-position: inside; color: var(--gray-700); line-height: 1.8;">
-                <li><strong>Acupuntura:</strong> Auxilia no controle da dor e náuseas.</li>
-                <li><strong>Aromaterapia:</strong> Ajuda na redução da ansiedade e estresse.</li>
-                <li><strong>Arteterapia e Musicoterapia:</strong> Fomentam a expressão emocional e alívio mental.</li>
-                <li><strong>Meditação e Yoga:</strong> Promovem relaxamento e conexão corpo-mente.</li>
-                <li><strong>Reiki e Terapia Floral:</strong> Buscam o reequilíbrio energético.</li>
-            </ul>
-        </div>
+<section class="feature-row reveal">
+    <div class="feature-image" style="background: url('/static/images/familia.jpg') center/cover no-repeat; min-height: 400px; border-radius: 16px; width: 100%; box-shadow: var(--shadow-md);"></div>
+    <div class="feature-content">
+        <h3>Apoio à Família e Saúde Mental</h3>
+        <p>
+            O adoecimento oncológico exige do paciente e de seus familiares constante adaptação. A família
+            assume papel fundamental como fonte de apoio e suporte emocional.
+        </p>
+        <p>
+            As reações ao diagnóstico — incredulidade, negação, desespero, medo — são normais e variam
+            conforme as experiências e crenças de cada um.
+        </p>
+        <ul>
+            <li>Busque profissionais de saúde mental especializados em oncologia</li>
+            <li>Participe de grupos de apoio com pessoas que vivem a mesma situação</li>
+            <li>Mantenha comunicação aberta e honesta com o paciente</li>
+            <li>Cuide de você também para poder cuidar melhor</li>
+            <li>Permita-se sentir todas as emoções sem culpa</li>
+        </ul>
     </div>
 </section>
 
+<section class="reveal" style="text-align: center; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); padding: 3rem; border-radius: 16px;">
+    <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.3rem;">
+        💚 Uma Mensagem de Esperança e Acolhimento
+    </h3>
+    <div style="max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+        <button id="btn-voz-ajuda" class="btn btn-primary" style="background: linear-gradient(135deg, #fbbf24 0%, #fcd34d 100%); font-size: 1.1rem; padding: 1rem 2rem; color: var(--gray-900);">
+            <span style="font-size: 1.3rem;"></span> Ouvir uma Voz de Ajuda
+        </button>
+        <p id="status-voz" style="font-style: italic; color: rgba(255,255,255,0.8); margin: 0;"></p>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>Dicas Práticas para Cuidadores</h2>
+    <div class="list-refined">
+        <li>
+            <strong>Organize a casa</strong>
+            <p>Mantenha medicações organizadas, facilite acesso a alimentos e crie ambiente confortável e acessível.</p>
+        </li>
+        <li>
+            <strong>Estabeleça rotinas</strong>
+            <p>Rotinas previsíveis reduzem ansiedade e facilitam o gerenciamento da fadiga.</p>
+        </li>
+        <li>
+            <strong>Comunique-se claramente</strong>
+            <p>Pergunte o que o paciente precisa, escute sem julgar, valide sentimentos.</p>
+        </li>
+        <li>
+            <strong>Cuide da sua própria saúde</strong>
+            <p>Durma bem, alimente-se, exercite-se e busque apoio profissional se necessário.</p>
+        </li>
+        <li>
+            <strong>Procure recursos comunitários</strong>
+            <p>Grupos de apoio, voluntários, assistência social e serviços de saúde mental.</p>
+        </li>
+        <li>
+            <strong>Mantenha momentos de leveza</strong>
+            <p>Música, filmes, risadas, conversar sobre outros assuntos também é importante.</p>
+        </li>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const btnVoz = document.getElementById('btn-voz-ajuda');
+    const statusVoz = document.getElementById('status-voz');
+    const synth = window.speechSynthesis;
+
+    const mensagemConforto = `Respire fundo. O que você está sentindo é completamente válido e normal.
+    Cuidar de quem amamos é um ato de imensa coragem, mas lembre-se: você também merece cuidado.
+    Permita-se sentir, permita-se chorar e, acima de tudo, não tenha medo de pedir ajuda.
+    Você não está sozinho nessa jornada.
+    Viva um dia de cada vez. Pequenas vitórias são grandes conquistas.
+    Há sempre esperança.`;
+
+    btnVoz.addEventListener('click', () => {
+        if (synth.speaking) {
+            synth.cancel();
+            statusVoz.innerText = "";
+            btnVoz.innerHTML = '<span style="font-size: 1.3rem;">💚</span> Ouvir uma Voz de Ajuda';
+            return;
+        }
+
+        const utterance = new SpeechSynthesisUtterance(mensagemConforto);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.85;
+        utterance.pitch = 1.0;
+
+        utterance.onstart = () => {
+            statusVoz.innerText = "Reproduzindo mensagem de acolhimento...";
+            btnVoz.innerHTML = '<span style="font-size: 1.3rem;"></span> Parar Mensagem';
+        };
+
+        utterance.onend = () => {
+            statusVoz.innerText = "";
+            btnVoz.innerHTML = '<span style="font-size: 1.3rem;">💚</span> Ouvir uma Voz de Ajuda';
+        };
+
+        synth.speak(utterance);
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const accordionItem = header.parentElement;
+            const accordionContent = header.nextElementSibling;
+            const isActive = accordionItem.classList.contains('active');
+
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.accordion-content').style.maxHeight = null;
+            });
+
+            if (!isActive) {
+                accordionItem.classList.add('active');
+                accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

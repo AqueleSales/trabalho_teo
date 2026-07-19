@@ -1,43 +1,237 @@
+{% extends "base.html" %}
+
+{% block title %}Direitos & Rede de Apoio - Palioguia{% endblock %}
+
+{% block content %}
+
+<section class="hero-direitos">
+    <div class="hero-content">
+        <h1 class="hero-title" style="color: var(--primary);">Direitos & Rede de Apoio</h1>
+        <h2 class="hero-subtitle" style="color: var(--gray-600);">
+            Conheça seus direitos e encontre recursos de apoio no DF
+        </h2>
     </div>
 </section>
 
-{% endblock %}
+<section class="reveal">
+    <h2>Direitos Legais dos Pacientes com Câncer</h2>
+    <p style="margin-bottom: 2rem;">
+        A Legislação Brasileira assegura aos portadores de neoplasia maligna (câncer) alguns direitos especiais.
+        <strong>Guarde sempre cópias autenticadas de atestados, laudos e biópsias.</strong>
+    </p>
 
-{% block extra_scripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', async () => {
-        try {
-            const resposta = await fetch('/api/redes-apoio-df');
-            const redes = await resposta.json();
-            const container = document.getElementById('lista-redes');
-            container.innerHTML = '';
+    <div class="cards-grid">
+        <!-- CARDS SOLICITADOS PELA PROFESSORA -->
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/saude/pt-br/acesso-a-informacao/acoes-e-programas/humanizasus" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Política Nacional de Humanização (PNH)</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Diretrizes oficiais do SUS para garantir um atendimento acolhedor, resolutivo e humano a todos.</p>
+        </div>
 
-            redes.forEach(rede => {
-                const especialidadesHTML = rede.especialidades.map(esp =>
-                    `<span style="background: #e2e8f0; color: #475569; padding: 4px 10px; border-radius: 20px; font-size: 0.85rem; margin-right: 5px; display: inline-block; margin-bottom: 5px;">${esp}</span>`
-                ).join('');
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/saude/pt-br/composicao/saes/cuidados-paliativos" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Política Nacional de Cuidados Paliativos</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Organização e diretrizes dos cuidados paliativos no âmbito do Sistema Único de Saúde (SUS).</p>
+        </div>
 
-                const tipoBadge = rede.tipo === 'ong'
-                    ? `<span style="background: #fdf2f8; color: #db2777; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">ONG/Apoio</span>`
-                    : `<span style="background: #eff6ff; color: #2563eb; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">SUS/Hospital</span>`;
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/hubrasil/pt-br/hospitais-universitarios/regiao-sudeste/hc-ufu/acesso-a-informacao/acoes-e-programas/conheca-a-carta-de-direitos-dos-usuarios-da-saude" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Direitos dos Usuários da Saúde</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Documento do Ministério da Saúde com os princípios básicos de cidadania no sistema de saúde.</p>
+        </div>
 
-                container.innerHTML += `
-                    <div style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.5rem; background: white; display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: start; justify-content: space-between;">
-                        <div style="flex: 1; min-width: 250px;">
-                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
-                                <h3 style="color: var(--primary-dark); margin: 0;">${rede.nome}</h3>
-                                ${tipoBadge}
-                            </div>
-                            <p style="color: var(--gray-600); margin-bottom: 0.5rem;">📍 ${rede.endereco}</p>
-                            <p style="color: var(--gray-600); margin-bottom: 1rem;">📞 ${rede.telefone}</p>
-                            <div>${especialidadesHTML}</div>
-                        </div>
-                    </div>
-                `;
-            });
-        } catch (error) {
-            document.getElementById('lista-redes').innerHTML = '<div style="color: red; text-align: center;">Erro ao carregar dados.</div>';
-        }
-    });
-</script>
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--secondary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.inca.gov.br/sites/ufu.sti.inca.local/files/media/document/direitos_sociais_da_pessoa_com_cancer_5edicao.pdf" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--secondary); margin: 0; font-size: 1.2rem;">Guia de Direitos INCA</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Página oficial do INCA com a cartilha completa e atualizada dos direitos do paciente oncológico.</p>
+        </div>
+
+        <!-- OUTROS BENEFÍCIOS -->
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/pt-br/servicos/solicitar-beneficio-por-incapacidade-temporaria-auxilio-doenca" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Auxílio-doença (INSS)</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Benefício a todo trabalhador incapacitado por mais de 15 dias. Requer atestado médico e perícia.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/pt-br/servicos/solicitar-beneficio-por-incapacidade-permanente-aposentadoria-por-invalidez" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Aposentadoria por Invalidez</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Direito de todo segurado permanentemente incapacitado para o trabalho.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/pt-br/servicos/solicitar-beneficio-assistencial-a-pessoa-com-deficiencia" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Benefício de Prestação Continuada (BPC/LOAS)</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Equivalente a um salário mínimo para pessoas carentes sem vínculo previdenciário.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.gov.br/pt-br/servicos/obter-passe-livre-interestadual-digital" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Passe Livre (Urbano e Interestadual)</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Viagens gratuitas de ônibus, trem ou barco para pacientes com baixa renda.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.receita.fazenda.gov.br/PessoaFisica/IRPF/2012/perguntao/assuntos/isencao.htm" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Isenção de Impostos (IPI, ICMS, IR)</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Descontos na compra de veículos especiais e isenção de Imposto de Renda sobre aposentadorias.</p>
+        </div>
+
+        <div style="background: white; padding: 1.5rem; border-left: 5px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-sm);">
+            <a href="https://www.caixa.gov.br/beneficios-trabalhador/fgts/saque-FGTS/Paginas/default.aspx" target="_blank" style="text-decoration: none; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); margin: 0; font-size: 1.2rem;">Saque FGTS e PIS/PASEP</h3>
+                <span>🔗</span>
+            </a>
+            <p style="margin-top: 10px; margin-bottom: 0; color: var(--gray-600);">Direito a sacar integralmente os depósitos para custear o seu tratamento ou de dependentes.</p>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Rede de Apoio no Distrito Federal</h2>
+
+    <div class="map-container" style="border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 3rem;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d122843.43575971485!2d-48.016369527632665!3d-15.823908990145452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1shospitais%20oncologia%20df!5e0!3m2!1spt-BR!2sbr!4v1717772655000!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+
+        <div style="background: var(--branco); padding: 2rem; border-radius: 16px; border-top: 5px solid #14b8a6; box-shadow: var(--shadow-md);">
+            <h3 style="color: #0f766e; font-size: 1.3rem;">Rede SUS (DF)</h3>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>Hospital de Base (HBDF)</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Referência em alta complexidade.</span><br>
+                    <a href="tel:+556135508900" style="color: var(--primary); text-decoration: none; font-weight: 500;">📞 (61) 3550-8900</a> | <a href="https://igesdf.org.br/" target="_blank" style="color: var(--primary); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>HRT (Taguatinga)</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Centro de radioterapia.</span><br>
+                    <a href="tel:+556133531000" style="color: var(--primary); text-decoration: none; font-weight: 500;">📞 (61) 3353-1000</a> | <a href="https://www.saude.df.gov.br/" target="_blank" style="color: var(--primary); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+                <li>
+                    <strong>HUB (Hospital Universitário)</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Ensino e pesquisa UnB.</span><br>
+                    <a href="tel:+556120285000" style="color: var(--primary); text-decoration: none; font-weight: 500;">📞 (61) 2028-5000</a> | <a href="https://www.gov.br/ebserh/pt-br/hospitais-universitarios/regiao-centro-oeste/hub-unb" target="_blank" style="color: var(--primary); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+            </ul>
+        </div>
+
+        <div style="background: var(--branco); padding: 2rem; border-radius: 16px; border-top: 5px solid var(--warning); box-shadow: var(--shadow-md);">
+            <h3 style="color: var(--warning); font-size: 1.3rem;">ONGs (DF)</h3>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>Rede Feminina de Combate ao Câncer</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Acolhimento e hospedagem (Casa Rosa).</span><br>
+                    <a href="tel:+556133151221" style="color: var(--warning); text-decoration: none; font-weight: 500;">📞 (61) 3315-1221</a> | <a href="https://redefemininabrasilia.org.br/" target="_blank" style="color: var(--warning); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>ABAC-Luz</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Educação e apoio psicológico.</span><br>
+                    <a href="https://abacluz.org.br/" target="_blank" style="color: var(--warning); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+                <li>
+                    <strong>Canomama</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Reabilitação via esportes.</span><br>
+                    <a href="https://canomama.com.br/" target="_blank" style="color: var(--warning); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+            </ul>
+        </div>
+
+        <div style="background: var(--branco); padding: 2rem; border-radius: 16px; border-top: 5px solid var(--secondary); box-shadow: var(--shadow-md);">
+            <h3 style="color: var(--secondary); font-size: 1.3rem;">Rede Privada</h3>
+            <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                <li style="margin-bottom: 1.5rem;">
+                    <strong>DF Star / Sírio-Libanês</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Tecnologia de ponta.</span><br>
+                    <a href="tel:+556132488000" style="color: var(--secondary); text-decoration: none; font-weight: 500;">📞 (61) 3248-8000</a> | <a href="https://www.rededor.com.br/hospitais/df-star" target="_blank" style="color: var(--secondary); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+                <li>
+                    <strong>Oncologia Daher</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--gray-500);">Atendimento integrado.</span><br>
+                    <a href="tel:+556132134848" style="color: var(--secondary); text-decoration: none; font-weight: 500;">📞 (61) 3213-4848</a> | <a href="https://hospitaldaher.com.br/oncologia/" target="_blank" style="color: var(--secondary); text-decoration: none;">🌐 Site Oficial</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section-accent reveal">
+    <h2 style="color: white; text-align: center; margin-bottom: 2rem;">
+        Como Acessar Esses Serviços?
+    </h2>
+
+    <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📱</div>
+            <h4 style="color: white; margin-bottom: 0.75rem;">Pelo SUS</h4>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                Procure a Unidade Básica de Saúde mais próxima ou solicite encaminhamento ao HBDF ou HRT.
+            </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">☎️</div>
+            <h4 style="color: white; margin-bottom: 0.75rem;">Contato Direto</h4>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                Ligue diretamente para os hospitais ou ONGs. As equipes estão preparadas para orientar.
+            </p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px);">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🤝</div>
+            <h4 style="color: white; margin-bottom: 0.75rem;">Assistência Social</h4>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
+                A maioria dos hospitais possui equipe de assistência social que ajuda com documentação e acesso.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="reveal">
+    <h2>Dúvidas Frequentes</h2>
+
+    <div class="list-refined">
+        <li>
+            <strong>Preciso de documentos para solicitar esses direitos?</strong>
+            <p>Sim. Você precisará de atestado médico, comprovante de renda, CPF, RG e comprovante de residência.
+            Guarde cópias autenticadas de todos os laudos e biópsias.</p>
+        </li>
+        <li>
+            <strong>Posso usar SUS e plano de saúde simultaneamente?</strong>
+            <p>Sim. Você tem o direito de usar ambos. Muitas pessoas combinam para melhor cobertura de tratamentos.</p>
+        </li>
+        <li>
+            <strong>O que fazer se meu pedido de direito for negado?</strong>
+            <p>Você pode fazer recurso administrativo. As ONGs também oferecem orientação jurídica gratuita.</p>
+        </li>
+        <li>
+            <strong>Existem programas de hospedagem para pacientes que vêm de outras cidades?</strong>
+            <p>Sim. A Casa Rosa (Rede Feminina) e outros programas oferecem hospedagem e refeições gratuitas.</p>
+        </li>
+        <li>
+            <strong>Como encontro grupos de apoio?</strong>
+            <p>Procure as ONGs listadas ou converse com o assistente social do hospital onde você é atendido.</p>
+        </li>
+    </div>
+</section>
+
 {% endblock %}
