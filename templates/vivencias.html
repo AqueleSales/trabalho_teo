@@ -4,142 +4,56 @@
 
 {% block content %}
 <style>
-    /* Estilos do Pop-up (Modal) LGPD */
     .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(15, 23, 42, 0.6);
-        backdrop-filter: blur(4px);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
+        display: none; align-items: center; justify-content: center;
+        z-index: 1000; opacity: 0; transition: opacity 0.3s ease;
     }
-
-    .modal-overlay.active {
-        display: flex;
-        opacity: 1;
-    }
-
+    .modal-overlay.active { display: flex; opacity: 1; }
     .modal-content {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 16px;
-        width: 90%;
-        max-width: 550px;
-        position: relative;
-        transform: translateY(-20px);
-        transition: transform 0.3s ease;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        border-top: 6px solid var(--primary);
+        background: white; padding: 2.5rem; border-radius: 16px;
+        width: 90%; max-width: 550px; position: relative;
+        transform: translateY(-20px); transition: transform 0.3s ease;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-top: 6px solid var(--primary);
     }
-
-    .modal-overlay.active .modal-content {
-        transform: translateY(0);
-    }
-
+    .modal-overlay.active .modal-content { transform: translateY(0); }
     .modal-close {
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: var(--gray-500);
-        transition: color 0.2s;
+        position: absolute; top: 15px; right: 20px; font-size: 1.5rem;
+        cursor: pointer; color: var(--gray-500); transition: color 0.2s;
     }
-
-    .modal-close:hover {
-        color: var(--danger);
-    }
-
-    .modal-body {
-        margin: 1.5rem 0;
-        color: var(--gray-700);
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    .modal-body ul {
-        margin-top: 1rem;
-        padding-left: 1.5rem;
-    }
-
-    .modal-body li {
-        margin-bottom: 0.5rem;
-    }
-
+    .modal-close:hover { color: var(--danger); }
+    .modal-body { margin: 1.5rem 0; color: var(--gray-700); font-size: 0.95rem; line-height: 1.6; }
+    .modal-body ul { margin-top: 1rem; padding-left: 1.5rem; }
+    .modal-body li { margin-bottom: 0.5rem; }
     .modal-checkbox-label {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        cursor: pointer;
-        background: #f8fafc;
-        padding: 1rem;
-        border-radius: 8px;
-        border: 1px solid #e2e8f0;
-        margin-bottom: 1.5rem;
+        display: flex; gap: 12px; align-items: flex-start; cursor: pointer;
+        background: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;
     }
-
-    .modal-checkbox-label input[type="checkbox"] {
-        margin-top: 3px;
-        width: 18px;
-        height: 18px;
-        accent-color: var(--primary);
-        cursor: pointer;
-    }
-
+    .modal-checkbox-label input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
     .btn-publicar-final {
-        width: 100%;
-        padding: 1rem;
-        font-size: 1.1rem;
-        border-radius: 8px;
-        background: var(--primary);
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-        transition: background 0.3s, opacity 0.3s;
+        width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 8px;
+        background: var(--primary); color: white; border: none; cursor: pointer;
+        font-weight: 600; transition: background 0.3s, opacity 0.3s;
     }
+    .btn-publicar-final:disabled { background: var(--gray-400); cursor: not-allowed; opacity: 0.7; }
 
-    .btn-publicar-final:disabled {
-        background: var(--gray-400);
-        cursor: not-allowed;
-        opacity: 0.7;
-    }
-
-    /* LIMITADOR E SCROLL INVISÍVEL DOS COMENTÁRIOS */
+    /* SCROLL INVISÍVEL */
     .comentario-texto {
-        max-height: 200px;
-        overflow-y: auto;
-        color: var(--gray-700);
-        line-height: 1.6;
-        font-size: 1.05rem;
-        padding-right: 5px;
-        margin-top: 10px;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none;  /* IE and Edge */
+        max-height: 200px; overflow-y: auto; color: var(--gray-700); line-height: 1.6; font-size: 1.05rem;
+        padding-right: 5px; margin-top: 10px; scrollbar-width: none; -ms-overflow-style: none;
     }
-
-    .comentario-texto::-webkit-scrollbar {
-        display: none; /* Chrome, Safari and Opera */
-    }
+    .comentario-texto::-webkit-scrollbar { display: none; }
 </style>
 
 <section class="hero-vivencias">
     <div class="hero-content">
         <h1 class="hero-title" style="color: var(--primary);">Vivências & Relatos</h1>
-        <h2 class="hero-subtitle" style="color: var(--gray-600);">
-            Histórias reais que inspiram e conectam quem vive essa realidade
-        </h2>
+        <h2 class="hero-subtitle" style="color: var(--gray-600);">Histórias reais que inspiram e conectam quem vive essa realidade</h2>
     </div>
 </section>
 
-<!-- CITAÇÃO DE CICELY SAUNDERS (Precursora dos Cuidados Paliativos) -->
+<!-- CITAÇÃO DE CICELY SAUNDERS -->
 <section class="reveal" style="text-align: center; margin-top: 2rem; margin-bottom: 3rem;">
     <blockquote style="font-size: 1.4rem; font-style: italic; color: var(--primary-dark); max-width: 800px; margin: 0 auto; line-height: 1.6;">
         "Você importa pelo que você é, e você importa até o último momento da sua vida. Faremos tudo o que estiver ao nosso alcance não apenas para ajudá-lo a morrer em paz, mas para ajudá-lo a viver até o dia de sua morte."
@@ -147,231 +61,80 @@
     <p style="color: var(--gray-600); margin-top: 1rem; font-weight: bold; font-size: 1.1rem;">— Cicely Saunders</p>
 </section>
 
-<!-- STORYTELLING INTRO -->
 <section class="reveal" style="text-align: center; margin-bottom: 3rem;">
     <h2>Por Que as Histórias Importam?</h2>
-    <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: var(--gray-600);">
-        Conhecer relatos de pessoas que passaram ou estão passando pelos cuidados paliativos nos ajuda
-        a entender a importância do acolhimento, da rede de apoio familiar e da resiliência humana.
-    </p>
-</section>
-
-<!-- VIDEO/STORY CARDS -->
-<section class="reveal">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-        <div class="card" style="overflow: hidden;">
-               <div class="card-header" style="background: url('/static/images/acolhimento.jpg') center/cover no-repeat; min-height: 200px;"></div>
-            <div class="card-body">
-                <h3>O Poder do Acolhimento</h3>
-                <p>
-                    Relato emocionante sobre como a equipe de enfermagem transformou a rotina de cuidados
-                    em casa, trazendo esperança e dignidade.
-                </p>
-            </div>
-            <div class="card-footer">
-                <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" class="btn btn-primary">Assistir</a>
-            </div>
-        </div>
-
-        <div class="card" style="overflow: hidden;">
-            <div class="card-header" style="background: url('/static/images/familiavive.jpg') center/cover no-repeat; min-height: 200px;"></div>
-            <div class="card-body">
-                <h3>A Força da Família</h3>
-                <p>
-                    Uma conversa emocionante sobre o impacto positivo da rede de apoio no tratamento oncológico
-                    e na ressignificação da vida.
-                </p>
-            </div>
-            <div class="card-footer">
-                <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" class="btn btn-primary">Assistir</a>
-            </div>
-        </div>
-
-        <div class="card" style="overflow: hidden;">
-            <div class="card-header" style="background: url('/static/images/esperança.jpg') center/cover no-repeat; min-height: 200px;"></div>
-            <div class="card-body">
-                <h3>Transformação e Esperança</h3>
-                <p>
-                    A jornada de uma sobrevivente que encontrou propósito e beleza depois do câncer,
-                    inspirando outros a acreditar na vida.
-                </p>
-            </div>
-            <div class="card-footer">
-                <a href="https://www.youtube.com/watch?v=SEU_LINK_AQUI" target="_blank" class="btn btn-primary">Assistir</a>
-            </div>
-        </div>
-    </div>
+    <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: var(--gray-600);">Conhecer relatos de pessoas que passaram ou estão passando pelos cuidados paliativos nos ajuda a entender a importância do acolhimento, da rede de apoio familiar e da resiliência humana.</p>
 </section>
 
 <!-- MURAL DE VIVÊNCIAS -->
 <section class="reveal">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Mural de Vivências</h2>
-        <p style="color: var(--gray-600);">
-            Um espaço seguro onde você pode compartilhar sua história, deixar uma mensagem de apoio
-            ou simplesmente ler as experiências de outras pessoas. Aqui todos têm voz.
-        </p>
+        <p style="color: var(--gray-600);">Um espaço seguro onde você pode compartilhar sua história. Aqui todos têm voz.</p>
     </div>
 
     <div class="mural-container">
-        <div class="mural-header">
-            Compartilhe Sua História (Local de Fala Seguro)
-        </div>
+        <div class="mural-header">Compartilhe Sua História (Local de Fala Seguro)</div>
 
         <div id="feed" class="feed-comentarios">
-            <div style="text-align: center; padding: 2rem; color: var(--gray-400);">
-                <p style="font-style: italic; margin: 0;">
-                    Seja a primeira pessoa a compartilhar sua experiência ou deixar uma mensagem de apoio. 💚
-                </p>
-            </div>
+            <div style="text-align: center; padding: 2rem; color: var(--gray-400);">Carregando relatos seguros...</div>
         </div>
 
         <form id="form-mural" class="form-comentario">
-            <input
-                type="text"
-                id="input-nome"
-                placeholder="Como prefere ser chamado? (Recomendamos o uso de um pseudônimo ou iniciais)"
-                required
-                style="font-weight: 500;"
-            >
-
-            <textarea
-                id="input-mensagem"
-                placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..."
-                required
-                style="min-height: 120px; resize: vertical;"
-            ></textarea>
-
-            <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; margin-top: 1rem;">
-                Publicar Relato
-            </button>
+            <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500;">
+            <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 120px; resize: vertical;"></textarea>
+            <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; margin-top: 1rem;">Publicar Relato</button>
         </form>
     </div>
 </section>
 
-<!-- POP-UP / MODAL LGPD -->
+<!-- POP-UP LGPD -->
 <div id="modal-lgpd" class="modal-overlay">
     <div class="modal-content">
         <span class="modal-close" id="fechar-modal">&times;</span>
         <h3 style="color: var(--primary-dark); margin-top: 0; margin-bottom: 10px;">Termos de Segurança e Privacidade</h3>
-
         <div class="modal-body">
-            <p>Para garantir um espaço seguro e em conformidade com as diretrizes éticas e a LGPD, leia as regras abaixo:</p>
+            <p>Para garantir um espaço seguro, leia as regras:</p>
             <ul>
-                <li><strong>Anonimato e Sigilo:</strong> Não utilize nomes completos, contatos pessoais ou exponha dados de terceiros e prontuários.</li>
-                <li><strong>Respeito Mútuo:</strong> Este é um local de acolhimento. Discursos de ódio ou julgamentos serão removidos.</li>
-                <li><strong>Moderação de Conteúdo:</strong> Ao prosseguir, você concorda que seu relato passará por nosso sistema inteligente de moderação para garantir a conformidade ética antes e depois da publicação.</li>
+                <li><strong>Anonimato:</strong> Não exponha dados de terceiros e prontuários.</li>
+                <li><strong>Respeito:</strong> Discursos de ódio ou julgamentos serão removidos.</li>
+                <li><strong>Moderação:</strong> Seu relato passará por nossa IA para garantir a conformidade ética.</li>
             </ul>
         </div>
-
         <label class="modal-checkbox-label">
             <input type="checkbox" id="checkbox-termos">
-            <span>Li, compreendo as diretrizes e aceito os Termos de Uso.</span>
+            <span>Li e aceito os Termos de Uso.</span>
         </label>
-
-        <button id="btn-enviar-banco" class="btn-publicar-final" disabled>
-            Aceitar e Publicar
-        </button>
+        <button id="btn-enviar-banco" class="btn-publicar-final" disabled>Aceitar e Publicar</button>
     </div>
 </div>
 
-<!-- ORIENTAÇÕES ÉTICAS -->
 <section class="section-accent reveal">
-    <h2 style="color: white; text-align: center; margin-bottom: 2rem;">
-        Espaço Seguro & Respeitoso
-    </h2>
-    <p style="color: rgba(255,255,255,0.95); text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-        Este é um espaço de acolhimento onde respeitamos todas as experiências e emoções.
-        Sua história importa e você é ouvido com empatia.
-    </p>
-
+    <h2 style="color: white; text-align: center; margin-bottom: 2rem;">Espaço Seguro & Respeitoso</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-            <div style="font-size: 4rem; margin-bottom: 0.75rem;">🛡️</div>
-            <h4 style="color: white; margin-bottom: 0.75rem; font-weight: 600;">Privacidade</h4>
-            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
-                Seus dados não são compartilhados. Escolha um apelido se preferir anonimato.
-            </p>
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px;">
+            <div style="font-size: 4rem; margin-bottom: 0.75rem;">🛡️</div><h4 style="color: white;">Privacidade</h4>
         </div>
-
-        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-            <div style="font-size: 4rem; margin-bottom: 0.75rem;">❤️</div>
-            <h4 style="color: white; margin-bottom: 0.75rem; font-weight: 600;">Respeito Mútuo</h4>
-            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
-                Evite julgamentos. Cada história é válida e merece ser ouvida com empatia.
-            </p>
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px;">
+            <div style="font-size: 4rem; margin-bottom: 0.75rem;">❤️</div><h4 style="color: white;">Respeito Mútuo</h4>
         </div>
-
-        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px; backdrop-filter: blur(10px);">
-            <div style="font-size: 4rem; margin-bottom: 0.75rem;">🌈</div>
-            <h4 style="color: white; margin-bottom: 0.75rem; font-weight: 600;">Diversidade</h4>
-            <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">
-                Celebramos a diversidade de experiências, gêneros, identidades e crenças.
-            </p>
+        <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 12px;">
+            <div style="font-size: 4rem; margin-bottom: 0.75rem;">🌈</div><h4 style="color: white;">Diversidade</h4>
         </div>
     </div>
-</section>
-
-<!-- DICAS PARA COMPARTILHAR -->
-<section class="reveal">
-    <h2>Dicas para Compartilhar Sua História</h2>
-
-    <div class="list-refined">
-        <li>
-            <strong>Você não precisa contar tudo</strong>
-            <p>Compartilhe apenas o que se sente confortável. Não há "história certa" ou "história errada".</p>
-        </li>
-        <li>
-            <strong>Sinta-se livre para expressar emoções</strong>
-            <p>Medo, raiva, esperança, gratidão... todas as emoções são válidas e bem-vindas aqui.</p>
-        </li>
-        <li>
-            <strong>Use um tom que seja seu</strong>
-            <p>Poético, científico, coloquial, desabafo... escolha a forma que fizer sentido para você.</p>
-        </li>
-        <li>
-            <strong>Se preferir ser anônimo</strong>
-            <p>Use um apelido. O importante é que sua voz seja ouvida, não quem você é.</p>
-        </li>
-        <li>
-            <strong>Releia antes de publicar</strong>
-            <p>Tenha certeza de que está confortável com o que escreveu. Você pode editar depois se desejar.</p>
-        </li>
-        <li>
-            <strong>Seja gentil com os outros</strong>
-            <p>Ao ler histórias, responda com compaixão. Uma palavra de apoio pode fazer toda a diferença.</p>
-        </li>
-    </div>
-</section>
-
-<!-- MENSAGEM FINAL -->
-<section class="reveal" style="text-align: center; padding: 4rem 2rem; background: linear-gradient(135deg, rgba(15, 118, 110, 0.05) 0%, rgba(99, 102, 241, 0.05) 100%); border-radius: 20px;">
-    <h2 style="margin-bottom: 1rem;">Você Não Está Sozinho</h2>
-    <p style="font-size: 1.1rem; color: var(--gray-700); max-width: 700px; margin: 0 auto;">
-        Milhares de pessoas vivem experiências similares. Suas lutas, seus triunfos e suas esperanças
-        conectam você a uma comunidade global de resiliência e amor.
-    </p>
-    <p style="font-size: 1.05rem; color: var(--primary); margin-top: 1.5rem; font-weight: 600;">
-        💚 Sua história importa. Compartilhe-a.
-    </p>
 </section>
 
 {% endblock %}
 {% block extra_scripts %}
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs, deleteDoc, doc, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCaUnIGrgvWO9xA1yEDAP0K-BEApjYfFOs",
   authDomain: "paliarparacuidar-be84e.firebaseapp.com",
-  projectId: "paliarparacuidar-be84e",
-  storageBucket: "paliarparacuidar-be84e.firebasestorage.app",
-  messagingSenderId: "1066823185976",
-  appId: "1:1066823185976:web:9a8b543787f8ab138ad8cd",
-  measurementId: "G-YF219MPQ5Y"
+  projectId: "paliarparacuidar-be84e"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -380,7 +143,6 @@ const feed = document.getElementById('feed');
 const inputNome = document.getElementById('input-nome');
 const inputMensagem = document.getElementById('input-mensagem');
 
-// Elementos do Modal LGPD
 const btnAbrirModal = document.getElementById('btn-abrir-modal');
 const modalLgpd = document.getElementById('modal-lgpd');
 const btnFecharModal = document.getElementById('fechar-modal');
@@ -388,206 +150,77 @@ const checkboxTermos = document.getElementById('checkbox-termos');
 const btnEnviarBanco = document.getElementById('btn-enviar-banco');
 
 async function carregarComentarios() {
-    feed.innerHTML = '<div style="text-align: center; padding: 2rem; color: var(--primary);">Carregando relatos seguros...</div>';
-
     try {
         const q = query(collection(db, "relatos"), orderBy("timestamp", "desc"));
         const querySnapshot = await getDocs(q);
-
+        feed.innerHTML = '';
         if (querySnapshot.empty) {
-            feed.innerHTML = `
-                <div style="text-align: center; padding: 2rem; color: var(--gray-400);">
-                    <p style="font-style: italic; margin: 0;">
-                        Seja a primeira pessoa a compartilhar sua experiência ou deixar uma mensagem de apoio. 💚
-                    </p>
-                </div>
-            `;
+            feed.innerHTML = `<div style="text-align: center; padding: 2rem;">Seja o primeiro a compartilhar!</div>`;
             return;
         }
-
-        feed.innerHTML = '';
-        let indexAnimacao = 0;
-
         querySnapshot.forEach((docSnap) => {
             const relato = docSnap.data();
-            const docId = docSnap.id;
-
             const div = document.createElement('div');
             div.className = 'comentario';
-            div.style.animationDelay = (indexAnimacao * 0.1) + 's';
-            indexAnimacao++;
-
-            const fotoFinal = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome) + '&background=0f766e&color=fff';
             const curtidas = relato.curtidas || 0;
-
             div.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; position: relative;">
-                    <img src="${fotoFinal}" alt="Avatar anonimizado" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary);">
-                    <div style="flex: 1;">
-                        <strong style="color: var(--primary); display: block; font-size: 1.1rem;">${relato.nome}</strong>
-                        <span style="font-size: 0.85rem; color: #888;">${relato.data}</span>
-                    </div>
-                    <button class="btn-deletar" data-id="${docId}" style="background: #e63946; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 600;">
-                        Deletar
-                    </button>
+                <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                    <div style="flex: 1;"><strong style="color: var(--primary);">${relato.nome}</strong><br><span style="font-size: 0.85rem; color: #888;">${relato.data}</span></div>
+                    <button class="btn-deletar" data-id="${docSnap.id}" style="background: #e63946; color: white; border: none; padding: 5px 12px; border-radius: 6px; cursor: pointer;">Deletar</button>
                 </div>
-
                 <div class="comentario-texto">${relato.mensagem.replace(/\n/g, '<br>')}</div>
-
-                <div style="margin-top: 15px; display: flex; gap: 15px; align-items: center;">
-                    <button class="btn-curtir" data-id="${docId}" data-curtidas="${curtidas}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0;">
-                        <span style="font-size: 1.3rem;">❤️</span>
-                        <span style="color: #e63946; font-weight: 600; font-size: 1rem;" class="contador-curtidas">${String(curtidas).padStart(2, '0')}</span>
-                    </button>
-                    <button class="btn-compartilhar" data-nome="${relato.nome}" data-mensagem="${relato.mensagem}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px; padding: 0; color: var(--primary); font-weight: 600;">
-                        <span style="font-size: 1.2rem;">🔗</span>
-                        Compartilhar
-                    </button>
+                <div style="margin-top: 15px; display: flex; gap: 15px;">
+                    <button class="btn-curtir" data-id="${docSnap.id}" data-curtidas="${curtidas}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 8px;">❤️ <span style="color: #e63946; font-weight: 600;">${String(curtidas).padStart(2, '0')}</span></button>
                 </div>
             `;
-
             div.querySelector('.btn-curtir').addEventListener('click', async (e) => {
-                const id = e.currentTarget.dataset.id;
-                const qtdAtual = parseInt(e.currentTarget.dataset.curtidas);
-                await updateDoc(doc(db, "relatos", id), { curtidas: qtdAtual + 1 });
+                await updateDoc(doc(db, "relatos", e.currentTarget.dataset.id), { curtidas: parseInt(e.currentTarget.dataset.curtidas) + 1 });
                 carregarComentarios();
             });
-
-            div.querySelector('.btn-compartilhar').addEventListener('click', (e) => {
-                const nomeCompartilhado = e.currentTarget.dataset.nome;
-                const msgCompartilhada = e.currentTarget.dataset.mensagem;
-                const textoCompartilhado = `${nomeCompartilhado} compartilhou:\n\n"${msgCompartilhada}"\n\nVocê também pode compartilhar sua história de forma anônima na plataforma Palioguia! 💚`;
-
-                if (navigator.share) {
-                    navigator.share({
-                        title: 'Palioguia - Vivência',
-                        text: textoCompartilhado
-                    }).catch(err => console.log('Erro ao compartilhar:', err));
-                } else {
-                    navigator.clipboard.writeText(textoCompartilhado).then(() => {
-                        alert('Texto copiado para a área de transferência!');
-                    }).catch(err => {
-                        alert('Não foi possível compartilhar.');
-                    });
-                }
-            });
-
             div.querySelector('.btn-deletar').addEventListener('click', async (e) => {
-                if(confirm("Tem certeza que deseja apagar permanentemente este relato?")) {
-                    const id = e.currentTarget.dataset.id;
-                    await deleteDoc(doc(db, "relatos", id));
-                    carregarComentarios();
-                }
+                if(confirm("Deseja apagar?")) { await deleteDoc(doc(db, "relatos", e.currentTarget.dataset.id)); carregarComentarios(); }
             });
-
             feed.appendChild(div);
         });
-    } catch (error) {
-        console.error("Erro ao carregar:", error);
-        feed.innerHTML = '<div style="text-align: center; padding: 2rem;">Houve um problema de conexão com o banco de dados seguro.</div>';
-    }
+    } catch (error) { feed.innerHTML = 'Erro de conexão com banco de dados.'; }
 }
 
-// Lógica de Abertura do Modal
 btnAbrirModal.addEventListener('click', () => {
-    const nome = inputNome.value.trim();
-    const mensagem = inputMensagem.value.trim();
-
-    if (!nome || !mensagem) {
-        alert('Por favor, preencha seu nome/apelido e sua mensagem antes de publicar.');
-        return;
-    }
-
+    if (!inputNome.value.trim() || !inputMensagem.value.trim()) return alert('Preencha tudo!');
     modalLgpd.classList.add('active');
 });
 
-// Fechar Modal no X
-btnFecharModal.addEventListener('click', () => {
-    modalLgpd.classList.remove('active');
-});
+btnFecharModal.addEventListener('click', () => modalLgpd.classList.remove('active'));
+checkboxTermos.addEventListener('change', () => btnEnviarBanco.disabled = !checkboxTermos.checked);
 
-// Fechar Modal clicando fora dele
-modalLgpd.addEventListener('click', (e) => {
-    if (e.target === modalLgpd) {
-        modalLgpd.classList.remove('active');
-    }
-});
-
-// Habilitar botão apenas quando o checkbox for marcado
-checkboxTermos.addEventListener('change', () => {
-    btnEnviarBanco.disabled = !checkboxTermos.checked;
-});
-
-// CONEXÃO COM A INTELIGÊNCIA ARTIFICIAL
+// O ENVIO AGORA É APENAS PRO PYTHON! O NAVEGADOR NÃO SALVA NADA.
 btnEnviarBanco.addEventListener('click', async () => {
-    const nome = inputNome.value.trim();
-    const mensagemOriginal = inputMensagem.value.trim();
-
     btnEnviarBanco.disabled = true;
-    btnEnviarBanco.innerText = "Analisando com IA...";
-
+    btnEnviarBanco.innerText = "IA Analisando e Publicando...";
     try {
-        // 1. Envia para o Backend (Flask) analisar
-        const respostaIA = await fetch('/api/moderar', {
+        const resposta = await fetch('/api/moderar', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ mensagem: mensagemOriginal })
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ nome: inputNome.value.trim(), mensagem: inputMensagem.value.trim() })
         });
+        const resultado = await resposta.json();
 
-        const dadosIA = await respostaIA.json();
-        let mensagemFinal = dadosIA.texto_limpo;
-
-        // 2. Travas de segurança baseadas na resposta da IA
-        if (mensagemFinal.includes("BLOQUEADO_SPAM")) {
-            alert('🚫 Não é permitido postar links, propagandas ou spam no mural.');
-            btnEnviarBanco.disabled = false;
-            btnEnviarBanco.innerText = "Aceitar e Publicar";
-            modalLgpd.classList.remove('active');
-            return;
+        if (resultado.status === 'sucesso') {
+            form.reset(); checkboxTermos.checked = false;
+            btnEnviarBanco.innerText = "✅ Publicado!"; btnEnviarBanco.style.background = "#10b981";
+            await carregarComentarios();
+            setTimeout(() => {
+                modalLgpd.classList.remove('active'); btnEnviarBanco.innerText = "Aceitar e Publicar";
+                btnEnviarBanco.style.background = "var(--primary)"; btnEnviarBanco.disabled = false;
+            }, 1500);
+        } else if (resultado.status === 'bloqueado_spam') {
+            alert('🚫 Não é permitido postar links ou spam.');
+            btnEnviarBanco.innerText = "Aceitar e Publicar"; btnEnviarBanco.disabled = false;
+        } else if (resultado.status === 'bloqueado_odio') {
+            alert('⚠️ Seu relato contém ofensas e viola as regras do espaço.');
+            btnEnviarBanco.innerText = "Aceitar e Publicar"; btnEnviarBanco.disabled = false;
         }
-
-        if (mensagemFinal.includes("BLOQUEADO_ODIO")) {
-            alert('⚠️ Seu relato contém ofensas diretas ou discurso de ódio e viola as regras de respeito do espaço.');
-            btnEnviarBanco.disabled = false;
-            btnEnviarBanco.innerText = "Aceitar e Publicar";
-            modalLgpd.classList.remove('active');
-            return;
-        }
-
-        // 3. Salva no banco de dados
-        btnEnviarBanco.innerText = "Salvando...";
-        await addDoc(collection(db, "relatos"), {
-            nome: nome,
-            mensagem: mensagemFinal,
-            data: new Date().toLocaleDateString('pt-BR'),
-            timestamp: Date.now(),
-            curtidas: 0
-        });
-
-        // 4. Limpa, atualiza e dá feedback visual (Sem Alert nativo chato)
-        form.reset();
-        checkboxTermos.checked = false;
-
-        btnEnviarBanco.innerText = "✅ Publicado!";
-        btnEnviarBanco.style.background = "#10b981"; // Verde sucesso
-
-        await carregarComentarios();
-        feed.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-        setTimeout(() => {
-            modalLgpd.classList.remove('active');
-            btnEnviarBanco.innerText = "Aceitar e Publicar";
-            btnEnviarBanco.style.background = "var(--primary)";
-            btnEnviarBanco.disabled = false;
-        }, 1500);
-
-    } catch (error) {
-        console.error(error);
-        btnEnviarBanco.disabled = false;
-        btnEnviarBanco.innerText = "Aceitar e Publicar";
-    }
+    } catch (e) { alert('Erro na conexão.'); btnEnviarBanco.disabled = false; }
 });
 
 carregarComentarios();
