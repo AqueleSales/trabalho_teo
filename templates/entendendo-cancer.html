@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Entendendo o Câncer - Palioguia{% endblock %}
+{% block title %}Entendendo o Câncer - Paliar para Cuidar{% endblock %}
 
 {% block content %}
 
@@ -330,7 +330,6 @@
     </div>
 </section>
 
-<!-- MITOS E VERDADES EMBUTIDOS (À prova de falhas) -->
 <section class="reveal">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Mitos vs Verdades</h2>
@@ -339,7 +338,7 @@
         </p>
     </div>
 
-    <!-- Container original que o seu CSS e JS reconhecem -->
+    <!-- O Javascript vai inserir os cartões perfeitamente alinhados aqui -->
     <div id="mitos-container" class="interactive-cards"></div>
 </section>
 
@@ -348,38 +347,43 @@
 {% block extra_scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Usando o método original do seu projeto que renderiza e alinha via JS
-    fetch('/api/mitos-verdades')
-        .then(response => response.json())
-        .then(dados => {
-            const container = document.getElementById('mitos-container');
-            dados.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = 'flip-card';
-                card.style.animationDelay = (index * 0.1) + 's';
+    // Banco de dados embutido - Não depende mais do Backend!
+    const dados = [
+        { pergunta: "Se não tem histórico familiar não há risco", resposta: "❌ MITO. Apenas 5-10% dos casos estão relacionados a histórico familiar. Fatores ambientais e comportamentais são muito relevantes." },
+        { pergunta: "Mamografia substitui o cuidado com as mamas", resposta: "❌ MITO. A mamografia complementa, mas não substitui o auto-exame e a atenção às mudanças nas mamas." },
+        { pergunta: "É possível evitar o câncer através da alimentação", resposta: "✅ VERDADE. Uma dieta rica em alimentos in natura, especialmente de origem vegetal, reduz significativamente o risco." },
+        { pergunta: "Existem alimentos milagrosos que curam câncer", resposta: "❌ MITO. Não há alimento que cure câncer. A alimentação saudável apenas contribui para a prevenção e melhor resposta ao tratamento." },
+        { pergunta: "Exposição a forno micro-ondas provoca câncer", resposta: "❌ MITO. A radiação do micro-ondas apenas aquece alimentos, não alterando sua estrutura molecular ou criando substâncias cancerígenas." },
+        { pergunta: "Atividade física reduz risco de câncer mesmo sem perder peso", resposta: "✅ VERDADE. O exercício reduz risco independentemente da perda de peso, através do equilíbrio hormonal e fortalecimento imunológico." },
+        { pergunta: "Excesso de gordura corporal aumenta o risco de câncer", resposta: "✅ VERDADE. O excesso de gordura provoca alterações hormonais e inflamatórias que estimulam proliferação celular anormal." },
+        { pergunta: "Câncer é sempre uma sentença de morte", resposta: "❌ MITO. Muitos tipos de câncer têm altas taxas de cura quando detectados precocemente. A qualidade de vida é possível em todas as fases." }
+    ];
 
-                card.innerHTML = `
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span style="font-size: 1.1rem; font-weight: 600; padding: 10px; display: block; text-align: center;">${item.pergunta}</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span style="padding: 10px; display: block; text-align: center; font-size: 0.95rem;">${item.resposta}</span>
-                        </div>
-                    </div>
-                `;
+    const container = document.getElementById('mitos-container');
+    container.innerHTML = '';
 
-                card.addEventListener('click', function() {
-                    this.classList.toggle('is-flipped');
-                });
+    dados.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'flip-card';
+        card.style.animationDelay = (index * 0.1) + 's';
 
-                container.appendChild(card);
-            });
-        })
-        .catch(error => {
-            console.error('Erro ao carregar mitos:', error);
-            document.getElementById('mitos-container').innerHTML = '<p style="color: red; text-align: center; width: 100%;">Não foi possível carregar os mitos no momento.</p>';
+        card.innerHTML = `
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <span style="font-size: 1.1rem; font-weight: 600;">${item.pergunta}</span>
+                </div>
+                <div class="flip-card-back">
+                    <span>${item.resposta}</span>
+                </div>
+            </div>
+        `;
+
+        card.addEventListener('click', function() {
+            this.classList.toggle('is-flipped');
         });
+
+        container.appendChild(card);
+    });
 });
 </script>
 {% endblock %}
