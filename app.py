@@ -136,7 +136,7 @@ def moderar_texto():
 
     try:
         # ATUALIZADO: Usando o nome correto do modelo (gemini-1.5-flash-latest)
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={chave_api}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={chave_api}"
         payload = {"contents": [{"parts": [{"text": prompt_comando}]}]}
         headers = {"Content-Type": "application/json"}
 
