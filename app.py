@@ -12,10 +12,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 # CONFIGURAÇÃO DO FIREBASE ADMIN
 # ==========================================
 try:
-    # O Render esconde os arquivos secretos nesta pasta do Linux:
     caminho_chave = '/etc/secrets/firebase-key.json'
-
-    # Se você for testar no seu PC (onde essa pasta não existe), ele usa o arquivo local:
     if not os.path.exists(caminho_chave):
         caminho_chave = 'firebase-key.json'
 
@@ -62,6 +59,7 @@ def moderar_texto():
     dados = request.json
     nome = dados.get('nome', 'Anônimo')
     texto_original = dados.get('mensagem', '')
+    foto_base64 = dados.get('foto', '')  # <--- AGORA O PYTHON RECEBE A FOTO DO SEU FRONTEND
     chave_api = os.environ.get("GEMINI_API_KEY")
 
     if not chave_api:
@@ -82,11 +80,8 @@ def moderar_texto():
     """
 
     try:
-        # ATUALIZADO: Forçando o modelo mais recente de 2026 (Gemini 3.5 Flash ou 3.1 Flash-Lite)
-        # Vamos tentar o gemini-3.5-flash primeiro, que é o modelo atual e gratuito
         modelo_ativo = "models/gemini-3.5-flash"
 
-        # Faz uma verificação rápida para ver quais modelos a chave suporta, e pega o primeiro ativo
         try:
             get_models_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={chave_api}"
             lista_modelos = requests.get(get_models_url, timeout=3).json()
@@ -94,13 +89,12 @@ def moderar_texto():
                 for m in lista_modelos['models']:
                     nome_modelo = m.get('name', '')
                     metodos = m.get('supportedGenerationMethods', [])
-                    # Preferência para modelos 3.5 ou 3.1
                     if 'generateContent' in metodos and (
                             'gemini-3.5-flash' in nome_modelo or 'gemini-3.1-flash-lite' in nome_modelo):
                         modelo_ativo = nome_modelo
                         break
         except:
-            pass  # Se a checagem falhar, usa o fallback 3.5-flash
+            pass
 
         url = f"https://generativelanguage.googleapis.com/v1beta/{modelo_ativo}:generateContent?key={chave_api}"
         payload = {"contents": [{"parts": [{"text": prompt_comando}]}]}
@@ -111,7 +105,6 @@ def moderar_texto():
 
         if 'error' in dados_resposta:
             print(f"❌ Erro do Google Gemini: {dados_resposta['error']}")
-            # Tentativa de fallback de emergência
             fallback_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key={chave_api}"
             resposta_fallback = requests.post(fallback_url, json=payload, headers=headers)
             dados_resposta = resposta_fallback.json()
@@ -132,6 +125,7 @@ def moderar_texto():
         db.collection("relatos").add({
             "nome": nome,
             "mensagem": texto_limpo,
+            "foto": foto_base64,  # <--- E SALVA A FOTO DIRETAMENTE NO FIREBASE!
             "data": datetime.now().strftime("%d/%m/%Y"),
             "timestamp": datetime.now().timestamp(),
             "curtidas": 0
