@@ -330,6 +330,60 @@
     </div>
 </section>
 
+<!-- ============================================== -->
+<!-- CSS EMBUTIDO APENAS PARA OS CARTÕES DOS MITOS  -->
+<!-- ============================================== -->
+<style>
+    .mitos-grid-block {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        margin-top: 2rem;
+    }
+    .mito-card-box {
+        background-color: transparent;
+        width: 100%;
+        height: 280px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+    .mito-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+    .mito-card-box.is-flipped .mito-card-inner {
+        transform: rotateY(180deg);
+    }
+    .mito-card-front, .mito-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        border-radius: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .mito-card-front {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light, #14b8a6) 100%);
+        color: white;
+    }
+    .mito-card-back {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light, #fbbf24) 100%);
+        color: white;
+        transform: rotateY(180deg);
+        font-size: 0.95rem;
+    }
+</style>
+
 <section class="reveal">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Mitos vs Verdades</h2>
@@ -338,51 +392,76 @@
         </p>
     </div>
 
-    <!-- O Javascript vai inserir os cartões perfeitamente alinhados aqui -->
-    <div id="mitos-container" class="interactive-cards"></div>
+    <!-- O GRID DOS MITOS ESCRITO DIRETO AQUI PARA NÃO QUEBRAR NUNCA -->
+    <div class="mitos-grid-block">
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Se não tem histórico familiar não há risco</span></div>
+                <div class="mito-card-back"><span>❌ MITO. Apenas 5-10% dos casos estão relacionados a histórico familiar. Fatores ambientais e comportamentais são muito relevantes.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Mamografia substitui o cuidado com as mamas</span></div>
+                <div class="mito-card-back"><span>❌ MITO. A mamografia complementa, mas não substitui o auto-exame e a atenção às mudanças nas mamas.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">É possível evitar o câncer através da alimentação</span></div>
+                <div class="mito-card-back"><span>✅ VERDADE. Uma dieta rica em alimentos in natura, especialmente de origem vegetal, reduz significativamente o risco.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Existem alimentos milagrosos que curam câncer</span></div>
+                <div class="mito-card-back"><span>❌ MITO. Não há alimento que cure câncer. A alimentação saudável apenas contribui para prevenção e melhor resposta ao tratamento.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Exposição a forno micro-ondas provoca câncer</span></div>
+                <div class="mito-card-back"><span>❌ MITO. A radiação do micro-ondas apenas aquece alimentos, não alterando sua estrutura molecular ou criando substâncias cancerígenas.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Atividade física reduz risco de câncer mesmo sem perder peso</span></div>
+                <div class="mito-card-back"><span>✅ VERDADE. O exercício reduz risco independentemente da perda de peso, através do equilíbrio hormonal e fortalecimento imunológico.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Excesso de gordura corporal aumenta o risco de câncer</span></div>
+                <div class="mito-card-back"><span>✅ VERDADE. O excesso de gordura provoca alterações hormonais e inflamatórias que estimulam proliferação celular anormal.</span></div>
+            </div>
+        </div>
+
+        <div class="mito-card-box">
+            <div class="mito-card-inner">
+                <div class="mito-card-front"><span style="font-size: 1.1rem;">Câncer é sempre uma sentença de morte</span></div>
+                <div class="mito-card-back"><span>❌ MITO. Muitos tipos de câncer têm altas taxas de cura quando detectados precocemente. A qualidade de vida é possível em todas as fases.</span></div>
+            </div>
+        </div>
+    </div>
 </section>
 
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
+// Um script muito simples apenas para fazer a carta girar ao clicar
 document.addEventListener('DOMContentLoaded', () => {
-    // Banco de dados embutido - Não depende mais do Backend!
-    const dados = [
-        { pergunta: "Se não tem histórico familiar não há risco", resposta: "❌ MITO. Apenas 5-10% dos casos estão relacionados a histórico familiar. Fatores ambientais e comportamentais são muito relevantes." },
-        { pergunta: "Mamografia substitui o cuidado com as mamas", resposta: "❌ MITO. A mamografia complementa, mas não substitui o auto-exame e a atenção às mudanças nas mamas." },
-        { pergunta: "É possível evitar o câncer através da alimentação", resposta: "✅ VERDADE. Uma dieta rica em alimentos in natura, especialmente de origem vegetal, reduz significativamente o risco." },
-        { pergunta: "Existem alimentos milagrosos que curam câncer", resposta: "❌ MITO. Não há alimento que cure câncer. A alimentação saudável apenas contribui para a prevenção e melhor resposta ao tratamento." },
-        { pergunta: "Exposição a forno micro-ondas provoca câncer", resposta: "❌ MITO. A radiação do micro-ondas apenas aquece alimentos, não alterando sua estrutura molecular ou criando substâncias cancerígenas." },
-        { pergunta: "Atividade física reduz risco de câncer mesmo sem perder peso", resposta: "✅ VERDADE. O exercício reduz risco independentemente da perda de peso, através do equilíbrio hormonal e fortalecimento imunológico." },
-        { pergunta: "Excesso de gordura corporal aumenta o risco de câncer", resposta: "✅ VERDADE. O excesso de gordura provoca alterações hormonais e inflamatórias que estimulam proliferação celular anormal." },
-        { pergunta: "Câncer é sempre uma sentença de morte", resposta: "❌ MITO. Muitos tipos de câncer têm altas taxas de cura quando detectados precocemente. A qualidade de vida é possível em todas as fases." }
-    ];
-
-    const container = document.getElementById('mitos-container');
-    container.innerHTML = '';
-
-    dados.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'flip-card';
-        card.style.animationDelay = (index * 0.1) + 's';
-
-        card.innerHTML = `
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <span style="font-size: 1.1rem; font-weight: 600;">${item.pergunta}</span>
-                </div>
-                <div class="flip-card-back">
-                    <span>${item.resposta}</span>
-                </div>
-            </div>
-        `;
-
+    document.querySelectorAll('.mito-card-box').forEach(card => {
         card.addEventListener('click', function() {
             this.classList.toggle('is-flipped');
         });
-
-        container.appendChild(card);
     });
 });
 </script>
