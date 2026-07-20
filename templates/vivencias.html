@@ -125,10 +125,13 @@
     <div class="mural-container" style="max-width: 800px; margin: 0 auto; background: var(--primary); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
         <div class="mural-header" style="color: white; padding: 1.5rem; font-weight: bold; text-align: center; font-size: 1.2rem;">Compartilhe Sua História (Local de Fala Seguro)</div>
 
-        <form id="form-mural" class="form-comentario" style="background: #fff; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <!-- Mudei o padding para '2rem 4rem' (aperta as laterais por igual) -->
+        <form id="form-mural" class="form-comentario" style="background: #fff; padding: 2rem 5rem; display: flex; flex-direction: column; gap: 1.5rem;">
 
+            <!-- Width voltou para 100% -->
             <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
 
+            <!-- Width voltou para 100% -->
             <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 250px; resize: vertical; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; font-family: inherit; font-size: 1.1rem;"></textarea>
 
             <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; padding: 1rem 2rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Publicar Relato</button>
