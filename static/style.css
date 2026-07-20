@@ -283,7 +283,7 @@ MAIN CONTENT
 ==================================== */
 
 main {
-    max-width: 100%; /* ou até 100% */
+    max-width: 1600px; /* ou até 100% */
     margin: 0 auto;
     padding: 0 2rem;
 }
