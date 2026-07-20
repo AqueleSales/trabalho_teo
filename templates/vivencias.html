@@ -110,33 +110,29 @@
     </div>
 </section>
 
-<!-- MURAL DE VIVÊNCIAS -->
+<!-- MURAL DE VIVÊNCIAS (AGORA SEM IMAGENS E ANONIMO) -->
 <section class="reveal">
     <div style="text-align: center; margin-bottom: 3rem;">
         <h2>Mural de Vivências</h2>
         <p style="color: var(--gray-600);">Um espaço seguro onde você pode compartilhar sua história. Aqui todos têm voz.</p>
     </div>
 
-    <div class="mural-container" style="max-width: 800px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <!-- Container dos Comentários Antigos -->
+    <div id="feed" class="feed-comentarios" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem;">
+        <div style="text-align: center; padding: 2rem; color: var(--gray-400);">Carregando relatos seguros...</div>
+    </div>
 
-        <!-- FEED DOS RELATOS -->
-        <div id="feed" style="padding: 20px;">
-            <!-- Os relatos vão aparecer aqui -->
-        </div>
+    <div class="mural-container" style="max-width: 800px; margin: 0 auto; background: var(--primary); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <div class="mural-header" style="color: white; padding: 1.5rem; font-weight: bold; text-align: center; font-size: 1.2rem;">Compartilhe Sua História (Local de Fala Seguro)</div>
 
-        <!-- FORMULÁRIO -->
-        <div style="background: #f8fafc; padding: 20px; border-top: 1px solid #e2e8f0; border-radius: 0 0 12px 12px;">
-            <div style="background: var(--primary); color: white; padding: 10px; border-radius: 8px; margin-bottom: 15px; text-align: center; font-weight: bold;">
-                Compartilhe Sua História (Local de Fala Seguro)
-            </div>
-            <form id="form-mural" style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" id="input-nome" placeholder="Como prefere ser chamado?" required style="width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box;">
+        <form id="form-mural" class="form-comentario" style="background: #fff; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
 
-                <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="width: 100%; min-height: 150px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; box-sizing: border-box; resize: vertical;"></textarea>
+            <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
 
-                <button type="button" id="btn-abrir-modal" style="width: 100%; padding: 12px; background: #fb923c; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Publicar Relato</button>
-            </form>
-        </div>
+            <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 150px; resize: vertical; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; font-family: inherit;"></textarea>
+
+            <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; padding: 1rem 2rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Publicar Relato</button>
+        </form>
     </div>
 </section>
 
