@@ -126,13 +126,13 @@
         <div class="mural-header" style="color: white; padding: 1.5rem; font-weight: bold; text-align: center; font-size: 1.2rem;">Compartilhe Sua História (Local de Fala Seguro)</div>
 
         <!-- Mudei o padding para '2rem 4rem' (aperta as laterais por igual) -->
-        <form id="form-mural" class="form-comentario" style="background: #fff; padding: 2rem 4rem; display: flex; flex-direction: column; gap: 1.5rem;">
+        <form id="form-mural" class="form-comentario" style="background: #fff; padding: 2rem 5rem; display: flex; flex-direction: column; gap: 1.5rem;">
 
             <!-- Width voltou para 100% -->
-            <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+            <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 95%;">
 
             <!-- Width voltou para 100% -->
-            <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 250px; resize: vertical; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; font-family: inherit; font-size: 1.1rem;"></textarea>
+            <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 250px; resize: vertical; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 95%; font-family: inherit; font-size: 1.1rem;"></textarea>
 
             <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; padding: 1rem 2rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Publicar Relato</button>
         </form>
@@ -149,7 +149,7 @@
             <ul>
                 <li><strong>Anonimato:</strong> Não exponha dados de terceiros e prontuários.</li>
                 <li><strong>Respeito:</strong> Discursos de ódio ou julgamentos serão removidos.</li>
-                <li><strong>Moderação:</strong> Seu relato passará por nossa IA para garantir a conformidade ética.</li>
+                <li><strong>Moderação:</strong> Seu relato passará por nossa moderação para garantir a conformidade ética.</li>
             </ul>
         </div>
         <label class="modal-checkbox-label">
@@ -240,22 +240,13 @@ const btnEnviarBanco = document.getElementById('btn-enviar-banco');
 // RENDERIZAR COMENTÁRIOS ANONIMOS (IGUAL AO PRINT 1)
 async function carregarComentarios() {
     try {
-        const relatosRef = collection(db, "relatos");
-        // Tenta buscar ordenado. Se falhar, busca tudo sem ordem.
-        let querySnapshot;
-        try {
-            const q = query(relatosRef, orderBy("timestamp", "desc"));
-            querySnapshot = await getDocs(q);
-        } catch (e) {
-            querySnapshot = await getDocs(relatosRef); // Busca todos sem ordem se faltar o campo
-        }
-
+        const q = query(collection(db, "relatos"), orderBy("timestamp", "desc"));
+        const querySnapshot = await getDocs(q);
         feed.innerHTML = '';
         if (querySnapshot.empty) {
             feed.innerHTML = `<div style="text-align: center; padding: 2rem;">Seja o primeiro a compartilhar!</div>`;
             return;
         }
-
         querySnapshot.forEach((docSnap) => {
             const relato = docSnap.data();
             const div = document.createElement('div');
@@ -265,27 +256,27 @@ async function carregarComentarios() {
             div.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
 
             const curtidas = relato.curtidas || 0;
-            const iconeAnonimo = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome || 'A') + '&background=0f766e&color=fff&rounded=true';
+            // Ícone anônimo gerado automaticamente
+            const iconeAnonimo = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome) + '&background=0f766e&color=fff&rounded=true';
 
             div.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <img src="${iconeAnonimo}" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div>
-                            <strong style="color: var(--primary-dark); font-size: 1.1rem; display: block;">${relato.nome || 'Anônimo'}</strong>
+                            <strong style="color: var(--primary-dark); font-size: 1.1rem; display: block;">${relato.nome}</strong>
                             <span style="font-size: 0.85rem; color: #64748b;">${relato.data || 'Data desconhecida'}</span>
                         </div>
                     </div>
                     <button class="btn-deletar" data-id="${docSnap.id}" style="background: #ef4444; color: white; border: none; padding: 5px 15px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">Deletar</button>
                 </div>
-                <div class="comentario-texto" style="color: #334155; margin-bottom: 15px;">${(relato.mensagem || '').replace(/\n/g, '<br>')}</div>
+                <div class="comentario-texto" style="color: #334155; margin-bottom: 15px;">${relato.mensagem.replace(/\n/g, '<br>')}</div>
                 <div>
                     <button class="btn-curtir" data-id="${docSnap.id}" data-curtidas="${curtidas}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #ef4444; font-weight: bold; font-size: 1rem; padding: 0;">
                         ❤️ <span style="font-size: 0.9rem;">${String(curtidas).padStart(2, '0')}</span>
                     </button>
                 </div>
             `;
-            // ... (restante dos event listeners que você já tem)
             div.querySelector('.btn-curtir').addEventListener('click', async (e) => {
                 await updateDoc(doc(db, "relatos", e.currentTarget.dataset.id), { curtidas: parseInt(e.currentTarget.dataset.curtidas) + 1 });
                 carregarComentarios();
@@ -295,10 +286,7 @@ async function carregarComentarios() {
             });
             feed.appendChild(div);
         });
-    } catch (error) {
-        console.error("Erro no feed:", error);
-        feed.innerHTML = '<div style="text-align: center; color: red;">Erro ao carregar relatos.</div>';
-    }
+    } catch (error) { feed.innerHTML = '<div style="text-align: center; color: red;">Erro de conexão com o banco de dados.</div>'; }
 }
 
 btnAbrirModal.addEventListener('click', () => {
@@ -311,7 +299,7 @@ checkboxTermos.addEventListener('change', () => btnEnviarBanco.disabled = !check
 
 btnEnviarBanco.addEventListener('click', async () => {
     btnEnviarBanco.disabled = true;
-    btnEnviarBanco.innerText = "IA Analisando e Publicando...";
+    btnEnviarBanco.innerText = "A Moderação esta analisando e Publicando...";
     try {
         const resposta = await fetch('/api/moderar', {
             method: 'POST',
