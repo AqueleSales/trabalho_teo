@@ -72,6 +72,10 @@ body {
   flex-direction: column;
 }
 
+main {
+  flex: 1; /* Isso força o conteúdo a preencher o espaço, empurrando o rodapé para baixo */
+}
+
 /* O novo bloco do título com imagem transparente */
 .hero-vivencias {
 position: relative;
@@ -288,9 +292,9 @@ MAIN CONTENT
 ==================================== */
 
 main {
-    max-width: 1600px; /* ou até 100% */
-    margin: 0 auto;
-    padding: 0;
+  max-width: 100%; /* Tire o max-width para ocupar a tela toda */
+  margin: 0 auto;
+  padding: 0; /* Isso remove o espaço das laterais */
 }
 
 section {
