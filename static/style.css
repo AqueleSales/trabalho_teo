@@ -217,7 +217,7 @@ background-size: cover;
     position: relative;
     text-align: center;
     background-color: rgba(197, 197, 197, 0.42);
-    background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/enfermagem.jpg');
+    background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/enfermagem.png');
     background-size: cover;
     background-position: center;
     border-bottom: 1px solid #EEEEEE;
