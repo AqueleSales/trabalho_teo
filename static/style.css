@@ -107,7 +107,8 @@ background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255,
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 0 0 2rem 2rem; / Arredondado SÓ embaixo */
+border-radius: 2rem 2rem 2rem 2rem;
+    height: 600rem;
 }
 
 .hero-sobre {
@@ -118,7 +119,7 @@ background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255,
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 0 0 2rem 2rem;
+border-radius: 2rem 2rem 2rem 2rem;
 }
 
 .hero-entendendo {
@@ -129,7 +130,8 @@ background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255,
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 0 0 2rem 2rem;
+border-radius: 2rem 2rem 2rem 2rem;
+    height: 600rem;
 }
 
 .hero-cuidado {
@@ -140,7 +142,8 @@ background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255,
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 0 0 2rem 2rem;
+border-radius: 2rem 2rem 2rem 2rem;
+    height: 600rem;
 }
 
 .hero-direitos {
@@ -151,7 +154,8 @@ background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255,
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 0 0 2rem 2rem;
+border-radius: 2rem 2rem 2rem 2rem;
+    height: 600rem;
 }
 
 .hero-home {
@@ -162,7 +166,8 @@ background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255,
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 0 0 2rem 2rem;
+border-radius: 2rem 2rem 2rem 2rem;
+    height: 600rem;
 }
 
 /* ====================================
