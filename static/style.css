@@ -48,8 +48,9 @@ PALIAR PARA CUIDAR - DESIGN
 --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* O ASTERISCO AQUI FECHA AS BORDAS BRANCAS LATERAIS DO NAVEGADOR */
-* {
+/* STREAMING_CHUNK:Configurando Resets */
+
+{
 margin: 0;
 padding: 0;
 box-sizing: border-box;
@@ -66,100 +67,108 @@ background-color: rgb(255, 247, 229);
 color: var(--gray-700);
 line-height: 1.6;
 overflow-x: hidden;
-
-/* MANTÉM O RODAPÉ NO FUNDO DA PÁGINA */
 min-height: 100vh;
 display: flex;
 flex-direction: column;
 }
 
-/* O MAIN VOLTOU A TER A TRAVA CENTRAL PARA NÃO ESTICAR O CONTEÚDO */
+/* MAIN DEVE OCUPAR TUDO PARA OS HEROES FUNCIONAREM */
 main {
 flex: 1;
 width: 100%;
-max-width: 1400px;
-margin: 0 auto;
+max-width: 100%;
+margin: 0;
+padding: 0;
+}
+
+/* A MÁGICA AQUI: CENTRALIZA TODAS AS SEÇÕES E NÃO DEIXA ESTICAR */
+section {
+width: 100%;
+max-width: 1200px;
+margin: 5rem auto;
 padding: 0 2rem;
+}
+
+/* EXCEÇÃO: OS BANNERS HERO DEVEM ESTICAR ATÉ A BORDA /
+section[class="hero-"] {
+max-width: 100%;
+margin: 0;
+padding: 8rem 2rem;
 }
 
 /* O novo bloco do título com imagem transparente */
 .hero-vivencias {
 position: relative;
-padding: 8rem 2rem;
 text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/vivencias.jpg');
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem;
+border-radius: 0 0 2rem 2rem;
 }
 
 .hero-sobre {
 position: relative;
-padding: 8rem 2rem;
 text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/sobres.jpg');
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem;
+border-radius: 0 0 2rem 2rem;
 }
 
 .hero-entendendo {
 position: relative;
-padding: 8rem 2rem;
 text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cancers.jpg');
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem;
+border-radius: 0 0 2rem 2rem;
 }
 
 .hero-cuidado {
 position: relative;
-padding: 8rem 2rem;
 text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cuidados.jpg');
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem;
+border-radius: 0 0 2rem 2rem;
 }
 
 .hero-direitos {
 position: relative;
-padding: 8rem 2rem;
 text-align: center;
 background-color: rgba(255, 255, 255, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/direito.jpg');
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem;
+border-radius: 0 0 2rem 2rem;
 }
 
 .hero-home {
 position: relative;
-padding: 8rem 2rem;
 text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/heme.jpg');
 background-size: cover;
 background-position: center;
 border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem;
+border-radius: 0 0 2rem 2rem;
 }
 
 h1, h2, h3 {
 font-family: var(--font-titulo);
 }
 
-/* ====================================
+/* STREAMING_CHUNK:Configurando Header /
+/ ====================================
 HEADER & NAVIGATION
 ==================================== */
 
@@ -172,6 +181,7 @@ top: 0;
 z-index: 999;
 box-shadow: var(--shadow-sm);
 animation: slideDown 0.6s ease;
+width: 100%;
 }
 
 @keyframes slideDown {
@@ -186,7 +196,7 @@ transform: translateY(0);
 }
 
 .navbar {
-max-width: 1400px;
+max-width: 1200px;
 margin: 0 auto;
 padding: 1rem 2rem;
 display: flex;
@@ -293,14 +303,7 @@ box-shadow: var(--shadow-lg);
 transform: translateY(0);
 }
 
-/* ====================================
-MAIN CONTENT
-==================================== */
-
-section {
-margin: 5rem 0;
-}
-
+/* STREAMING_CHUNK:Configurando Textos */
 h1, h2, h3, h4, h5, h6 {
 font-weight: 700;
 line-height: 1.3;
@@ -332,46 +335,6 @@ color: var(--gray-600);
 margin-bottom: 1rem;
 font-size: 1.05rem;
 line-height: 1.8;
-}
-
-/* ====================================
-HERO SECTION
-==================================== */
-
-.hero-section {
-padding: 6rem 2rem;
-text-align: center;
-position: relative;
-overflow: hidden;
-}
-
-.hero-section::before {
-content: '';
-position: absolute;
-top: -50%;
-right: -20%;
-width: 600px;
-height: 600px;
-background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
-border-radius: 50%;
-animation: float 6s ease-in-out infinite;
-}
-
-.hero-section::after {
-content: '';
-position: absolute;
-bottom: -30%;
-left: -10%;
-width: 500px;
-height: 500px;
-background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
-border-radius: 50%;
-animation: float 8s ease-in-out infinite reverse;
-}
-
-@keyframes float {
-0%, 100% { transform: translateY(0px); }
-50% { transform: translateY(30px); }
 }
 
 .hero-content {
@@ -409,29 +372,8 @@ margin-bottom: 2.5rem;
 font-weight: 600;
 }
 
-.hero-card {
-background: rgba(255, 255, 255, 0.7);
-backdrop-filter: blur(10px);
-font-family: var(--font-texto);
-text-align: justify;
-border: 1px solid rgba(255, 255, 255, 0.5);
-padding: 3rem;
-border-radius: 20px;
-margin-top: 3rem;
-box-shadow: var(--shadow-xl);
-max-width: 900px;
-margin-left: auto;
-margin-right: auto;
-animation: fadeInUp 0.8s ease 0.4s both;
-}
-
-.hero-card p {
-font-size: 1.1rem;
-color: var(--gray-700);
-line-height: 1.9;
-}
-
-/* ====================================
+/* STREAMING_CHUNK:Configurando Grades e Cartões /
+/ ====================================
 FEATURE ROWS (Zigue-Zague)
 ==================================== */
 
@@ -440,7 +382,6 @@ display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 4rem;
 align-items: center;
-margin: 5rem 0;
 animation: fadeInUp 0.8s ease both;
 }
 
@@ -519,14 +460,14 @@ font-size: 1.3rem;
 }
 
 /* ====================================
-CARDS GRID E CARD BASE (CORRIGIDO)
+CARDS GRID E CARD BASE
 ==================================== */
 
 .cards-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 gap: 2rem;
-margin: 3rem 0;
+margin-top: 3rem;
 }
 
 .card {
@@ -537,11 +478,6 @@ box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 display: flex;
 flex-direction: column;
 }
-
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
 
 .card:hover {
 transform: translateY(-8px);
@@ -577,6 +513,7 @@ margin-bottom: 1.5rem;
 padding: 0 2rem 2rem;
 }
 
+/* STREAMING_CHUNK:Configurando Botões */
 .btn {
 display: inline-flex;
 align-items: center;
@@ -603,11 +540,6 @@ transform: translateY(-2px);
 box-shadow: var(--shadow-lg);
 }
 
-.btn-secondary {
-background: linear-gradient(135deg, var(--secondary) 0%, #818cf8 100%);
-color: white;
-}
-
 .btn-outline {
 border: 2px solid var(--primary);
 color: var(--primary);
@@ -619,7 +551,8 @@ background: var(--primary);
 color: white;
 }
 
-/* ====================================
+/* STREAMING_CHUNK:Configurando Seção Accent /
+/ ====================================
 SECTION WITH ACCENT
 ==================================== */
 
@@ -628,7 +561,6 @@ background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%)
 color: white;
 padding: 4rem 2rem;
 border-radius: 20px;
-margin: 4rem 0;
 box-shadow: var(--shadow-xl);
 position: relative;
 overflow: hidden;
@@ -657,7 +589,8 @@ position: relative;
 z-index: 2;
 }
 
-/* ====================================
+/* STREAMING_CHUNK:Configurando Journey Timeline /
+/ ====================================
 JOURNEY (Timeline)
 ==================================== */
 
@@ -666,7 +599,6 @@ display: flex;
 justify-content: space-between;
 align-items: stretch;
 gap: 2rem;
-margin: 4rem 0;
 position: relative;
 }
 
@@ -680,10 +612,6 @@ text-align: center;
 transition: var(--transition);
 animation: fadeInUp 0.6s ease both;
 }
-
-.journey-step:nth-child(1) { animation-delay: 0.1s; }
-.journey-step:nth-child(2) { animation-delay: 0.2s; }
-.journey-step:nth-child(3) { animation-delay: 0.3s; }
 
 .journey-step:hover {
 transform: translateY(-10px);
@@ -724,7 +652,8 @@ font-size: 3rem;
 margin-bottom: 1rem;
 }
 
-/* ====================================
+/* STREAMING_CHUNK:Configurando Componentes Diversos /
+/ ====================================
 LIST STYLES
 ==================================== */
 
@@ -756,183 +685,77 @@ margin-bottom: 0.5rem;
 }
 
 /* ====================================
-INTERACTIVE CARDS (Mitos & Verdades)
+ACCORDION (Sanfona para PICS)
 ==================================== */
-
-.interactive-cards {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 2rem;
-margin: 3rem 0;
-}
-
-.flip-card {
-background-color: transparent;
-width: 100%;
-height: 300px;
-perspective: 1000px;
-cursor: pointer;
-animation: fadeInUp 0.6s ease both;
-}
-
-.flip-card:nth-child(1) { animation-delay: 0.1s; }
-.flip-card:nth-child(2) { animation-delay: 0.2s; }
-.flip-card:nth-child(3) { animation-delay: 0.3s; }
-.flip-card:nth-child(4) { animation-delay: 0.4s; }
-.flip-card:nth-child(5) { animation-delay: 0.5s; }
-
-.flip-card-inner {
-position: relative;
-width: 100%;
-height: 100%;
-text-align: center;
-transition: transform 0.6s;
-transform-style: preserve-3d;
-}
-
-.flip-card.is-flipped .flip-card-inner {
-transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-position: absolute;
-width: 100%;
-height: 100%;
-backface-visibility: hidden;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 2rem;
-border-radius: 16px;
-font-weight: 600;
-box-shadow: var(--shadow-lg);
-}
-
-.flip-card-front {
-background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-color: white;
-font-size: 1.2rem;
-}
-
-.flip-card-back {
-background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-color: white;
-transform: rotateY(180deg);
-font-size: 1rem;
-line-height: 1.6;
-}
-
-/* ====================================
-COMMENT WALL
-==================================== */
-
-.mural-container {
-background: white;
-border-radius: 16px;
-overflow: hidden;
-box-shadow: var(--shadow-xl);
-max-width: 800px;
-margin: 4rem auto;
-}
-
-.mural-header {
-background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-color: white;
-padding: 2rem;
-font-size: 1.3rem;
-font-weight: 700;
-display: flex;
-align-items: center;
-gap: 1rem;
-}
-
-.feed-comentarios {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.comentario {
-background: white;
-padding: 1.5rem;
-border-radius: 12px;
-box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-
-@keyframes slideInLeft {
-from {
-opacity: 0;
-transform: translateX(-20px);
-}
-to {
-opacity: 1;
-transform: translateX(0);
-}
-}
-
-.comentario-nome {
-font-weight: 700;
-color: var(--primary);
-display: block;
-margin-bottom: 0.5rem;
-}
-
-.comentario-data {
-font-size: 0.85rem;
-color: var(--gray-400);
-}
-
-.comentario-texto {
-margin-top: 0.75rem;
-color: var(--gray-700);
-line-height: 1.6;
-}
-
-.form-comentario {
-padding: 2rem;
-background: white;
+.accordion-container {
 display: flex;
 flex-direction: column;
 gap: 1rem;
+max-width: 1000px;
+margin: 0 auto;
 }
 
-.form-comentario input,
-.form-comentario textarea {
-padding: 1rem;
+.accordion-item {
+background: white;
 border: 1px solid var(--gray-200);
-border-radius: 8px;
-font-family: inherit;
-font-size: 1rem;
-transition: var(--transition);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: var(--shadow-sm);
+transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.form-comentario input:focus,
-.form-comentario textarea:focus {
-outline: none;
-border-color: var(--primary);
-box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
-transform: translateY(-2px);
-}
-
-.btn-postar {
-background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
-color: white;
-border: none;
-padding: 1rem;
-border-radius: 8px;
-font-weight: 600;
-cursor: pointer;
-transition: var(--transition);
+.accordion-item:hover {
 box-shadow: var(--shadow-md);
+border-color: var(--primary-light);
 }
 
-.btn-postar:hover {
-transform: translateY(-2px);
-box-shadow: var(--shadow-lg);
+.accordion-header {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.5rem 2rem;
+background: transparent;
+border: none;
+cursor: pointer;
+text-align: left;
+color: var(--primary);
+font-size: 1.15rem;
+font-family: var(--font-titulo);
+transition: background-color 0.3s ease;
+}
+
+.accordion-header:focus {
+outline: none;
+background-color: var(--gray-50);
+}
+
+.accordion-icon {
+font-size: 1.8rem;
+font-weight: 300;
+line-height: 1;
+color: var(--primary);
+transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-icon {
+transform: rotate(45deg);
+color: var(--accent);
+}
+
+.accordion-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease-out;
+background-color: white;
+}
+
+.accordion-content p {
+padding: 0 2rem 1.5rem 2rem;
+margin: 0;
+color: var(--gray-600);
+line-height: 1.6;
+font-size: 1.05rem;
 }
 
 /* ====================================
@@ -1005,14 +828,15 @@ padding: 2rem;
 
 @media (max-width: 480px) {
 main {
-padding: 0 1rem;
+padding: 0;
 }
 
 section {
-margin: 3rem 0;
+margin: 3rem auto;
+padding: 0 1rem;
 }
 
-.hero-section {
+section[class*="hero-"] {
 padding: 3rem 1rem;
 }
 
@@ -1094,7 +918,6 @@ border-radius: 16px;
 
 /* ====================================
 ACESSIBILIDADE VISUAL (A+ / A-)
-Focado estritamente na área de leitura ()
 ==================================== */
 
 .fonte-ampliada-1 main p,
@@ -1135,75 +958,3 @@ line-height: 1.5;
 .fonte-reduzida main h1 { font-size: 2.8rem; }
 .fonte-reduzida main h2 { font-size: 1.8rem; }
 .fonte-reduzida main h3 { font-size: 1.3rem; }
-
-/* ====================================
-ACCORDION (Sanfona para PICS)
-==================================== */
-.accordion-container {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-.accordion-item {
-background: white;
-border: 1px solid var(--gray-200);
-border-radius: 12px;
-overflow: hidden;
-box-shadow: var(--shadow-sm);
-transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.accordion-item:hover {
-box-shadow: var(--shadow-md);
-border-color: var(--primary-light);
-}
-
-.accordion-header {
-width: 100%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1.5rem 2rem;
-background: transparent;
-border: none;
-cursor: pointer;
-text-align: left;
-color: var(--primary);
-font-size: 1.15rem;
-font-family: var(--font-titulo);
-transition: background-color 0.3s ease;
-}
-
-.accordion-header:focus {
-outline: none;
-background-color: var(--gray-50);
-}
-
-.accordion-icon {
-font-size: 1.8rem;
-font-weight: 300;
-line-height: 1;
-color: var(--primary);
-transition: transform 0.3s ease;
-}
-
-.accordion-item.active .accordion-icon {
-transform: rotate(45deg);
-color: var(--accent);
-}
-
-.accordion-content {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.4s ease-out;
-background-color: white;
-}
-
-.accordion-content p {
-padding: 0 2rem 1.5rem 2rem;
-margin: 0;
-color: var(--gray-600);
-line-height: 1.6;
-font-size: 1.05rem;
-}
