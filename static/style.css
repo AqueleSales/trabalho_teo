@@ -60,11 +60,16 @@ scroll-padding-top: 100px;
 }
 
 body {
-font-family: var(--font-texto);
-background-color: rgb(255, 247, 229);
-color: var(--gray-700);
-line-height: 1.6;
-overflow-x: hidden;
+  font-family: var(--font-texto);
+  background-color: rgb(255, 247, 229);
+  color: var(--gray-700);
+  line-height: 1.6;
+  overflow-x: hidden;
+
+  /* Adicione estas linhas abaixo */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* O novo bloco do título com imagem transparente */
