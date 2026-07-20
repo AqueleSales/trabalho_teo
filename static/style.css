@@ -105,10 +105,17 @@ text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/vivencias.jpg');
 background-size: cover;
-background-position: center;
-border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem 2rem 2rem 2rem;
-    height: 17rem;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+
+    /* AS TRÊS LINHAS MÁGICAS PARA CENTRALIZAR O TEXTO 👇 */
+    display: flex;
+    align-items: center;       /* Centraliza no eixo Vertical (Cima/Baixo) */
+    justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
+
+    /* DICA EXTRA: Use min-height no lugar de height */
+    min-height: 25rem;
 }
 
 .hero-sobre {
@@ -117,10 +124,17 @@ text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/sobres.jpg');
 background-size: cover;
-background-position: center;
-border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem 2rem 2rem 2rem;
-    height: 17rem;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+
+    /* AS TRÊS LINHAS MÁGICAS PARA CENTRALIZAR O TEXTO 👇 */
+    display: flex;
+    align-items: center;       /* Centraliza no eixo Vertical (Cima/Baixo) */
+    justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
+
+    /* DICA EXTRA: Use min-height no lugar de height */
+    min-height: 25rem;
 }
 
 .hero-entendendo {
@@ -139,7 +153,7 @@ border-radius: 2rem 2rem 2rem 2rem;
     justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
 
     /* DICA EXTRA: Use min-height no lugar de height */
-    min-height: 17rem;
+    min-height: 25rem;
 }
 
 .hero-cuidado {
@@ -148,10 +162,17 @@ text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cuidados.jpg');
 background-size: cover;
-background-position: center;
-border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem 2rem 2rem 2rem;
-    height: 17rem;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+
+    /* AS TRÊS LINHAS MÁGICAS PARA CENTRALIZAR O TEXTO 👇 */
+    display: flex;
+    align-items: center;       /* Centraliza no eixo Vertical (Cima/Baixo) */
+    justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
+
+    /* DICA EXTRA: Use min-height no lugar de height */
+    min-height: 25rem;
 }
 
 .hero-direitos {
@@ -160,10 +181,17 @@ text-align: center;
 background-color: rgba(255, 255, 255, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/direito.jpg');
 background-size: cover;
-background-position: center;
-border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem 2rem 2rem 2rem;
-    height: 17rem;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+
+    /* AS TRÊS LINHAS MÁGICAS PARA CENTRALIZAR O TEXTO 👇 */
+    display: flex;
+    align-items: center;       /* Centraliza no eixo Vertical (Cima/Baixo) */
+    justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
+
+    /* DICA EXTRA: Use min-height no lugar de height */
+    min-height: 25rem;
 }
 
 .hero-home {
@@ -172,10 +200,32 @@ text-align: center;
 background-color: rgba(197, 197, 197, 0.42);
 background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/heme.jpg');
 background-size: cover;
-background-position: center;
-border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem 2rem 2rem 2rem;
-    height: 17rem;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+
+    /* AS TRÊS LINHAS MÁGICAS PARA CENTRALIZAR O TEXTO 👇 */
+    display: flex;
+    align-items: center;       /* Centraliza no eixo Vertical (Cima/Baixo) */
+    justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
+
+    /* DICA EXTRA: Use min-height no lugar de height */
+    min-height: 25rem;
+}
+
+.hero-enfermagem {
+    position: relative;
+    text-align: center;
+    background-color: rgba(197, 197, 197, 0.42);
+    background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/enfermagem.jpg');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 25rem;
 }
 
 /* ====================================

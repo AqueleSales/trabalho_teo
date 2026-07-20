@@ -53,6 +53,10 @@ def vivencias():
 def sobre():
     return render_template('sobre.html')
 
+@app.route('/papel-enfermagem')
+def papel_enfermagem():
+    return render_template('papel-enfermagem.html')
+
 
 @app.route('/api/moderar', methods=['POST'])
 def moderar_texto():
