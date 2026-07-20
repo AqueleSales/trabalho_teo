@@ -285,7 +285,7 @@ MAIN CONTENT
 main {
     max-width: 1600px; /* ou até 100% */
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0;
 }
 
 section {
