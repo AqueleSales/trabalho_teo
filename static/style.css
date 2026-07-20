@@ -292,7 +292,7 @@ MAIN CONTENT
 ==================================== */
 
 main {
-  max-width: 100%; /* Tire o max-width para ocupar a tela toda */
+  max-width: 1600px; /* Tire o max-width para ocupar a tela toda */
   margin: 0 auto;
   padding: 0; /* Isso remove o espaço das laterais */
 }
