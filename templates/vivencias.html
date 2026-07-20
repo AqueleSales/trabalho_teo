@@ -240,13 +240,22 @@ const btnEnviarBanco = document.getElementById('btn-enviar-banco');
 // RENDERIZAR COMENTÁRIOS ANONIMOS (IGUAL AO PRINT 1)
 async function carregarComentarios() {
     try {
-        const q = query(collection(db, "relatos"), orderBy("timestamp", "desc"));
-        const querySnapshot = await getDocs(q);
+        const relatosRef = collection(db, "relatos");
+        // Tenta buscar ordenado. Se falhar, busca tudo sem ordem.
+        let querySnapshot;
+        try {
+            const q = query(relatosRef, orderBy("timestamp", "desc"));
+            querySnapshot = await getDocs(q);
+        } catch (e) {
+            querySnapshot = await getDocs(relatosRef); // Busca todos sem ordem se faltar o campo
+        }
+
         feed.innerHTML = '';
         if (querySnapshot.empty) {
             feed.innerHTML = `<div style="text-align: center; padding: 2rem;">Seja o primeiro a compartilhar!</div>`;
             return;
         }
+
         querySnapshot.forEach((docSnap) => {
             const relato = docSnap.data();
             const div = document.createElement('div');
@@ -256,27 +265,27 @@ async function carregarComentarios() {
             div.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
 
             const curtidas = relato.curtidas || 0;
-            // Ícone anônimo gerado automaticamente
-            const iconeAnonimo = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome) + '&background=0f766e&color=fff&rounded=true';
+            const iconeAnonimo = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(relato.nome || 'A') + '&background=0f766e&color=fff&rounded=true';
 
             div.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <img src="${iconeAnonimo}" alt="Avatar" style="width: 45px; height: 45px; border-radius: 50%;">
                         <div>
-                            <strong style="color: var(--primary-dark); font-size: 1.1rem; display: block;">${relato.nome}</strong>
+                            <strong style="color: var(--primary-dark); font-size: 1.1rem; display: block;">${relato.nome || 'Anônimo'}</strong>
                             <span style="font-size: 0.85rem; color: #64748b;">${relato.data || 'Data desconhecida'}</span>
                         </div>
                     </div>
                     <button class="btn-deletar" data-id="${docSnap.id}" style="background: #ef4444; color: white; border: none; padding: 5px 15px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">Deletar</button>
                 </div>
-                <div class="comentario-texto" style="color: #334155; margin-bottom: 15px;">${relato.mensagem.replace(/\n/g, '<br>')}</div>
+                <div class="comentario-texto" style="color: #334155; margin-bottom: 15px;">${(relato.mensagem || '').replace(/\n/g, '<br>')}</div>
                 <div>
                     <button class="btn-curtir" data-id="${docSnap.id}" data-curtidas="${curtidas}" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #ef4444; font-weight: bold; font-size: 1rem; padding: 0;">
                         ❤️ <span style="font-size: 0.9rem;">${String(curtidas).padStart(2, '0')}</span>
                     </button>
                 </div>
             `;
+            // ... (restante dos event listeners que você já tem)
             div.querySelector('.btn-curtir').addEventListener('click', async (e) => {
                 await updateDoc(doc(db, "relatos", e.currentTarget.dataset.id), { curtidas: parseInt(e.currentTarget.dataset.curtidas) + 1 });
                 carregarComentarios();
@@ -286,7 +295,10 @@ async function carregarComentarios() {
             });
             feed.appendChild(div);
         });
-    } catch (error) { feed.innerHTML = '<div style="text-align: center; color: red;">Erro de conexão com o banco de dados.</div>'; }
+    } catch (error) {
+        console.error("Erro no feed:", error);
+        feed.innerHTML = '<div style="text-align: center; color: red;">Erro ao carregar relatos.</div>';
+    }
 }
 
 btnAbrirModal.addEventListener('click', () => {
