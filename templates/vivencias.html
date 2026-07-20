@@ -149,7 +149,7 @@
             <ul>
                 <li><strong>Anonimato:</strong> Não exponha dados de terceiros e prontuários.</li>
                 <li><strong>Respeito:</strong> Discursos de ódio ou julgamentos serão removidos.</li>
-                <li><strong>Moderação:</strong> Seu relato passará por nossa IA para garantir a conformidade ética.</li>
+                <li><strong>Moderação:</strong> Seu relato passará por nossa moderação para garantir a conformidade ética.</li>
             </ul>
         </div>
         <label class="modal-checkbox-label">
@@ -299,7 +299,7 @@ checkboxTermos.addEventListener('change', () => btnEnviarBanco.disabled = !check
 
 btnEnviarBanco.addEventListener('click', async () => {
     btnEnviarBanco.disabled = true;
-    btnEnviarBanco.innerText = "IA Analisando e Publicando...";
+    btnEnviarBanco.innerText = "A Moderação esta analisando e Publicando...";
     try {
         const resposta = await fetch('/api/moderar', {
             method: 'POST',
