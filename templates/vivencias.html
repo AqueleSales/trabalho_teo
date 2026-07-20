@@ -129,10 +129,10 @@
         <form id="form-mural" class="form-comentario" style="background: #fff; padding: 2rem 4rem; display: flex; flex-direction: column; gap: 1.5rem;">
 
             <!-- Width voltou para 100% -->
-            <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%;">
+            <input type="text" id="input-nome" placeholder="Como prefere ser chamado? (Recomendamos um pseudônimo)" required style="font-weight: 500; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 95%;">
 
             <!-- Width voltou para 100% -->
-            <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 250px; resize: vertical; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 100%; font-family: inherit; font-size: 1.1rem;"></textarea>
+            <textarea id="input-mensagem" placeholder="Compartilhe sua história, sentimento ou mensagem de apoio..." required style="min-height: 250px; resize: vertical; padding: 1rem; border: 1px solid #cbd5e1; border-radius: 8px; width: 95%; font-family: inherit; font-size: 1.1rem;"></textarea>
 
             <button type="button" id="btn-abrir-modal" class="btn-postar" style="align-self: flex-end; padding: 1rem 2rem; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s;">Publicar Relato</button>
         </form>
@@ -149,7 +149,7 @@
             <ul>
                 <li><strong>Anonimato:</strong> Não exponha dados de terceiros e prontuários.</li>
                 <li><strong>Respeito:</strong> Discursos de ódio ou julgamentos serão removidos.</li>
-                <li><strong>Moderação:</strong> Seu relato passará por nossa IA para garantir a conformidade ética.</li>
+                <li><strong>Moderação:</strong> Seu relato passará por nossa moderação para garantir a conformidade ética.</li>
             </ul>
         </div>
         <label class="modal-checkbox-label">
@@ -299,7 +299,7 @@ checkboxTermos.addEventListener('change', () => btnEnviarBanco.disabled = !check
 
 btnEnviarBanco.addEventListener('click', async () => {
     btnEnviarBanco.disabled = true;
-    btnEnviarBanco.innerText = "IA Analisando e Publicando...";
+    btnEnviarBanco.innerText = "A moderação esta analisando e Publicando...";
     try {
         const resposta = await fetch('/api/moderar', {
             method: 'POST',
