@@ -124,15 +124,22 @@ border-radius: 2rem 2rem 2rem 2rem;
 }
 
 .hero-entendendo {
-position: relative;
-text-align: center;
-background-color: rgba(197, 197, 197, 0.42);
-background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cancers.jpg');
-background-size: cover;
-background-position: center;
-border-bottom: 1px solid #EEEEEE;
-border-radius: 2rem 2rem 2rem 2rem;
-    height: 17rem;
+    position: relative;
+    text-align: center;
+    background-color: rgba(197, 197, 197, 0.42);
+    background-image: linear-gradient(rgba(255, 255, 255, 100%), rgba(255, 255, 255, 0.25)), url('/static/images/cancers.jpg');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #EEEEEE;
+    border-radius: 2rem;
+
+    /* AS TRÊS LINHAS MÁGICAS PARA CENTRALIZAR O TEXTO 👇 */
+    display: flex;
+    align-items: center;       /* Centraliza no eixo Vertical (Cima/Baixo) */
+    justify-content: center;   /* Centraliza no eixo Horizontal (Esquerda/Direita) */
+
+    /* DICA EXTRA: Use min-height no lugar de height */
+    min-height: 17rem;
 }
 
 .hero-cuidado {
@@ -452,6 +459,7 @@ display: grid;
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 gap: 2rem;
 margin: 3rem 0;
+
 }
 
 .card {
