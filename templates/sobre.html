@@ -56,7 +56,7 @@
         <!-- Inclusão das Logos para identificar a origem institucional como exigido pela banca -->
         <div style="display: inline-flex; gap: 15px; align-items: center; background: rgba(255,255,255,0.9); padding: 10px 15px; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
             <img src="{{ url_for('static', filename='images/logo-unb.png.png') }}" alt="Universidade de Brasília" style="height: 50px;" onerror="this.style.display='none';">
-            <img src="{{ url_for('static', filename='images/logo-enfermagem.jpg') }}" alt="Departamento de Enfermagem" style="height: 50px;" onerror="this.style.display='none';">
+                <img src="{{ url_for('static', filename='images/logo-enfermagem.png') }}" alt="Departamento de Enfermagem" style="height: 50px;" onerror="this.style.display='none';">
             <span style="font-weight: bold; color: var(--primary-dark); font-size: 1.1rem; border-left: 2px solid var(--gray-300); padding-left: 15px;">FS - UnB</span>
         </div>
 
@@ -116,12 +116,13 @@
             </div>
         </div>
 
-        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md);">
+        <!-- Cartão Apoio Técnico -->
+        <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); display: flex; flex-direction: column;">
             <div style="background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%); padding: 2rem; text-align: center;">
                 <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💻</div>
                 <h3 style="color: white; margin: 0; font-size: 1.2rem;">Apoio Técnico Interdisciplinar</h3>
             </div>
-            <div style="padding: 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+            <div style="padding: 2rem; text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; flex-grow: 1;">
                 <p style="color: var(--gray-800); margin: 0.5rem 0; font-size: 1.1rem;">
                     <strong>Gabriel Sales Nogueira</strong>
                 </p>
